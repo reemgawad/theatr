@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_183613) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_215858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,49 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183613) do
     t.integer "question_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_questions", force: :cascade do |t|
+    t.string "question_text"
+    t.string "response_text"
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_activity_questions_on_activity_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_badges_on_activity_id"
+    t.index ["user_id"], name: "index_badges_on_user_id"
+  end
+
+  create_table "teacher_comments", force: :cascade do |t|
+    t.string "text"
+    t.bigint "activity_id", null: false
+    t.bigint "student_id", null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_teacher_comments_on_activity_id"
+    t.index ["student_id"], name: "index_teacher_comments_on_student_id"
+    t.index ["teacher_id"], name: "index_teacher_comments_on_teacher_id"
+  end
+
+  create_table "user_responses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "activity_question_id", null: false
+    t.string "text"
+    t.string "picture"
+    t.boolean "correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_question_id"], name: "index_user_responses_on_activity_question_id"
+    t.index ["user_id"], name: "index_user_responses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +77,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183613) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activity_questions", "activities"
+  add_foreign_key "badges", "activities"
+  add_foreign_key "badges", "users"
+  add_foreign_key "teacher_comments", "activities"
+  add_foreign_key "teacher_comments", "users", column: "student_id"
+  add_foreign_key "teacher_comments", "users", column: "teacher_id"
+  add_foreign_key "user_responses", "activity_questions"
+  add_foreign_key "user_responses", "users"
 end
