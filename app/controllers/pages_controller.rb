@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @students = User.where(teacher: false)
+    @user_response = UserResponse.new()
   end
 
   def play
