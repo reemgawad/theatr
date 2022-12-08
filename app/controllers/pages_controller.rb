@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @students = User.where(teacher: false)
   end
+
+  def play
+
+  end
 end
