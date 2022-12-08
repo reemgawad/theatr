@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_232043) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_185327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
-    t.integer "type"
     t.integer "question_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "activity_type"
   end
 
   create_table "activity_questions", force: :cascade do |t|

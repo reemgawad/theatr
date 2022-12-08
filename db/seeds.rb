@@ -1,7 +1,232 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+puts "Destroying everything in the database!"
+UserResponse.destroy_all
+TeacherComment.destroy_all
+Badge.destroy_all
+User.destroy_all
+ActivityQuestion.destroy_all
+Activity.destroy_all
+
+puts "Creating users."
+teacher1 = User.create({
+                          first_name: "John",
+                          last_name: "Smith",
+                          user_name: "johnsmith",
+                          email: "a@a.a",
+                          password: "aaa111",
+                          teacher: true
+                        })
+student1 = User.create({
+                          first_name: "Jim",
+                          last_name: "Halpert",
+                          user_name: "jimhalpert",
+                          email: "c@c.c",
+                          password: "aaa111",
+                          teacher: false
+                        })
+student2 = User.create({
+                          first_name: "Doug",
+                          last_name: "Jones",
+                          user_name: "dougjones",
+                          email: "d@d.d",
+                          password: "aaa111",
+                          teacher: false
+                        })
+student3 = User.create({
+                          first_name: "Mark",
+                          last_name: "Hamil",
+                          user_name: "markhamil",
+                          email: "b@b.b",
+                          password: "aaa111",
+                          teacher: false
+                        })
+
+puts "Creating activities!"
+activity1 = Activity.create({
+                              title: "Theatre Quiz 1",
+                              activity_type: "Quiz",
+                              question_amount: 3
+                            })
+activity2 = Activity.create({
+                              title: "Theatre Quiz 2",
+                              activity_type: "Quiz",
+                              question_amount: 3
+                            })
+
+puts "Creating activity questions!"
+act_question1 = ActivityQuestion.create({
+                                          question_text: "What is the lead's name?",
+                                          response_text: "Marky Mark",
+                                          activity: activity1
+                                        })
+act_question2 = ActivityQuestion.create({
+                                          question_text: "What is the villain's name?",
+                                          response_text: "Evil Tom",
+                                          activity: activity1
+                                        })
+act_question3 = ActivityQuestion.create({
+                                          question_text: "What is the love's name?",
+                                          response_text: "Travissimo",
+                                          activity: activity1
+                                        })
+act_question4 = ActivityQuestion.create({
+                                          question_text: "What is the lead's name?",
+                                          response_text: "Fat Mike",
+                                          activity: activity2
+                                        })
+act_question5 = ActivityQuestion.create({
+                                          question_text: "What is the villain's name?",
+                                          response_text: "Smelly",
+                                          activity: activity2
+                                        })
+act_question6 = ActivityQuestion.create({
+                                          question_text: "What is the love's name?",
+                                          response_text: "Melvin",
+                                          activity: activity2
+                                        })
+
+puts "Creating badges!"
+badge1 = Badge.create({
+                        status: 1,
+                        activity: activity1,
+                        user: student1
+                      })
+badge2 = Badge.create({
+                        status: 2,
+                        activity: activity2,
+                        user: student1
+                      })
+badge3 = Badge.create({
+                        status: 1,
+                        activity: activity1,
+                        user: student2
+                      })
+badge4 = Badge.create({
+                        status: 3,
+                        activity: activity2,
+                        user: student2
+                      })
+badge5 = Badge.create({
+                        status: 3,
+                        activity: activity1,
+                        user: student3
+                      })
+badge6 = Badge.create({
+                        status: 3,
+                        activity: activity2,
+                        user: student3
+                      })
+
+puts "Creating teacher comments!"
+comment1 = TeacherComment.create({
+                                    text: "Get started!",
+                                    activity: activity1,
+                                    student: student1,
+                                    teacher: teacher1
+                                  })
+comment2 = TeacherComment.create({
+                                    text: "Very Okay!",
+                                    activity: activity2,
+                                    student: student1,
+                                    teacher: teacher1
+                                  })
+comment3 = TeacherComment.create({
+                                    text: "Get started!",
+                                    activity: activity1,
+                                    student: student2,
+                                    teacher: teacher1
+                                  })
+comment4 = TeacherComment.create({
+                                    text: "Very bad!",
+                                    activity: activity2,
+                                    student: student2,
+                                    teacher: teacher1
+                                  })
+comment5 = TeacherComment.create({
+                                    text: "Very good!",
+                                    activity: activity1,
+                                    student: student3,
+                                    teacher: teacher1
+                                  })
+comment6 = TeacherComment.create({
+                                    text: "Very good!",
+                                    activity: activity2,
+                                    student: student3,
+                                    teacher: teacher1
+                                  })
+
+puts "Creating user responses!"
+response1 = UserResponse.create({
+                                  user: student1,
+                                  activity_question: act_question4,
+                                  text: "Mat Fike",
+                                  correct: false
+                                  })
+response2 = UserResponse.create({
+                                  user: student1,
+                                  activity_question: act_question5,
+                                  text: "Melly",
+                                  correct: false
+                                  })
+response3 = UserResponse.create({
+                                  user: student1,
+                                  activity_question: act_question6,
+                                  text: "Melvin",
+                                  correct: true
+                                  })
+response4 = UserResponse.create({
+                                  user: student2,
+                                  activity_question: act_question4,
+                                  text: "Some guy",
+                                  correct: false
+                                  })
+response5 = UserResponse.create({
+                                  user: student2,
+                                  activity_question: act_question5,
+                                  text: "Some other guy",
+                                  correct: false
+                                  })
+response6 = UserResponse.create({
+                                  user: student2,
+                                  activity_question: act_question6,
+                                  text: "Yet another guy",
+                                  correct: false
+                                  })
+response7 = UserResponse.create({
+                                  user: student3,
+                                  activity_question: act_question1,
+                                  text: "Marky Mark",
+                                  correct: true
+                                  })
+response8 = UserResponse.create({
+                                  user: student3,
+                                  activity_question: act_question2,
+                                  text: "Evil Tom",
+                                  correct: true
+                                  })
+response9 = UserResponse.create({
+                                  user: student3,
+                                  activity_question: act_question3,
+                                  text: "Travissimo",
+                                  correct: true
+                                  })
+response10 = UserResponse.create({
+                                  user: student3,
+                                  activity_question: act_question4,
+                                  text: "Fat Mike",
+                                  correct: true
+                                  })
+response11 = UserResponse.create({
+                                  user: student3,
+                                  activity_question: act_question5,
+                                  text: "Smelly",
+                                  correct: true
+                                  })
+response12 = UserResponse.create({
+                                  user: student3,
+                                  activity_question: act_question6,
+                                  text: "Melvin",
+                                  correct: true
+                                  })
