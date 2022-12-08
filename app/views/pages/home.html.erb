@@ -10,7 +10,9 @@
   <br>
 
   <% @students.each do |student| %>
-    <p><%= student.first_name %> <%= student.last_name %></p>
+    <div>
+      <p><%= student.first_name %> <%= student.last_name %></p>
+    </div>
   <% end %>
 
 <% else %>
