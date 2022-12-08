@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :badges
   has_many :user_responses
   has_many :teacher_comments, foreign_key: :teacher_id
+  has_many :teacher_comments, foreign_key: :student_id
 end
