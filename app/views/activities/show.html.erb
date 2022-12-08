@@ -2,11 +2,11 @@
 
 <% @activity.activity_questions.each do |question| %>
   <p><%= question.question_text %></p>
-<% end %>
-
-<%= simple_form_for([@activity, @user_response]) do |f| %>
-  <%= f.input :text %>
-  <%= f.submit "Save Answer" %>
+  <%= simple_form_for([question, @user_response]) do |f| %>
+    <%= f.input :text %>
+    <%= f.hidden_field :activity_question_id, value: question.id %>
+    <%= f.submit "Save Answer" %>
+  <% end %>
 <% end %>
 
 
