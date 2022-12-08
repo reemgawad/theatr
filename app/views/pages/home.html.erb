@@ -1,1 +1,20 @@
-<h1>Pages#home</h1>
+<% if user_signed_in? %>
+
+  <h1>Your Classroom</h1>
+  <% if current_user.teacher %>
+    <h2>View your students' progress:</h2>
+  <% else %>
+    <h2>View your classmates' progress:</h2>
+  <% end %>
+
+  <br>
+
+  <% @students.each do |student| %>
+    <div>
+      <p><%= student.first_name %> <%= student.last_name %></p>
+    </div>
+  <% end %>
+
+<% else %>
+  <h2>Please sign in to see your classroom.</h2>
+<% end %>
