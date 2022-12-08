@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   get "/play", to: 'pages#play', as: :play
 
   resources :activities, only: [:show, :index]
+
+  resources :activity_questions do
+    resources :user_responses, only: [:create]
+  end
 end
