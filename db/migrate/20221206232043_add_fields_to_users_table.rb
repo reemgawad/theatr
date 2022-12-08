@@ -3,6 +3,6 @@ class AddFieldsToUsersTable < ActiveRecord::Migration[7.0]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_column :users, :user_name, :string
-    add_column :users, :teacher, :boolean, default: :false
+    add_column :users, :teacher, :boolean, default: false
   end
 end
