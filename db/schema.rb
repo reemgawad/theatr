@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_185327) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_162859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,14 +43,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_185327) do
 
   create_table "teacher_comments", force: :cascade do |t|
     t.string "text"
-    t.bigint "activity_id", null: false
-    t.bigint "student_id", null: false
     t.bigint "teacher_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_teacher_comments_on_activity_id"
-    t.index ["student_id"], name: "index_teacher_comments_on_student_id"
+    t.bigint "user_response_id", null: false
     t.index ["teacher_id"], name: "index_teacher_comments_on_teacher_id"
+    t.index ["user_response_id"], name: "index_teacher_comments_on_user_response_id"
   end
 
   create_table "user_responses", force: :cascade do |t|
@@ -84,8 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_185327) do
   add_foreign_key "activity_questions", "activities"
   add_foreign_key "badges", "activities"
   add_foreign_key "badges", "users"
-  add_foreign_key "teacher_comments", "activities"
-  add_foreign_key "teacher_comments", "users", column: "student_id"
+  add_foreign_key "teacher_comments", "user_responses"
   add_foreign_key "teacher_comments", "users", column: "teacher_id"
   add_foreign_key "user_responses", "activity_questions"
   add_foreign_key "user_responses", "users"
