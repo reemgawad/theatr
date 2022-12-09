@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/play", to: 'pages#play', as: :play
-
+  get "/profiles/:user_id/activities/:id/results", to: "activities#results", as: :results
   resources :activities, only: [:show, :index]
 
   resources :activity_questions do

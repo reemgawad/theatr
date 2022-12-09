@@ -7,6 +7,10 @@ class ActivityPolicy < ApplicationPolicy
     true
   end
 
+  def results?
+    user.teacher? || record == user
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve

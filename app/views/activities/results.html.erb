@@ -1,0 +1,13 @@
+<h1><%= @activity.title %></h1>
+
+
+<div>
+  <%# get all activities questions %>
+  <% @activity_questions.each do |question| %>
+    <h4><%= question.question_text %></h4>
+      <%# get the response where the user is the @profile(params) %>
+      <% question.user_responses.where(user: @profile).each do |response| %>
+        <p><%= response.text %></p>
+      <% end %>
+  <% end %>
+</div>
