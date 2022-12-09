@@ -11,7 +11,7 @@
 
   <% @students.each do |student| %>
     <div>
-      <p><%= student.first_name %> <%= student.last_name %></p>
+      <%= link_to "#{student.first_name} #{student.last_name}", profile_path(student) %>
     </div>
   <% end %>
 
