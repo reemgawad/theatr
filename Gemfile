@@ -78,3 +78,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
+# pg_search for simplified activity seaches
+gem "pg_search"
