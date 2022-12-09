@@ -11,6 +11,7 @@
         <% if current_user.teacher? %>
           <%= simple_form_for([response, @teacher_comment]) do |f| %>
             <%= f.input :text %>
+            <%= f.hidden_field :user_response_id, value: response.id %>
             <%= f.submit "Save Comment!" %>
           <% end %>
         <% end  %>
