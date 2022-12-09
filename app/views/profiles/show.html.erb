@@ -8,5 +8,8 @@
     <p>Activity title: <%= b.activity.title %></p>
     <p>Activity Type: <%= b.activity.activity_type %></p>
     <p>I'm a badge</p>
+    <% if current_user.teacher? || current_user == @user%>
+      <%= link_to 'results', results_path(@user, b.activity) %>
+    <% end %>
   <% end %>
 </h4>
