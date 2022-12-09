@@ -1,3 +1,15 @@
+<h1>Activities</h1>
+
+<h2>Search activities</h2>
+<%= form_with url: activities_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an activity"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <% @activities.each do |e| %>
   <p><%= link_to e.title, activity_path(e) %></p>
 <% end %>

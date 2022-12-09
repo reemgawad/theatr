@@ -7,6 +7,11 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = policy_scope(Activity)
+    if params[:query].present?
+      @activities = Activity.search_by_title_and_type(params[:query])
+    else
+      @activities = Activity.all
+    end
   end
 
   def results

@@ -54,6 +54,11 @@ activity2 = Activity.create({
                               activity_type: "Quiz",
                               question_amount: 3
                             })
+activity3 = Activity.create({
+                              title: "Theatre Match Game",
+                              activity_type: "Match",
+                              question_amount: 3
+                            })
 
 puts "Creating activity questions!"
 act_question1 = ActivityQuestion.create({
