@@ -17,6 +17,7 @@ class ActivitiesController < ApplicationController
   def results
     @profile = User.find(params[:user_id])
     @activity = Activity.find(params[:id])
+    @teacher_comment = TeacherComment.new
 
     # find the activity_questions
     @activity_questions = @activity.activity_questions

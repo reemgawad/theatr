@@ -2,8 +2,8 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 puts "Destroying everything in the database!"
-UserResponse.destroy_all
 TeacherComment.destroy_all
+UserResponse.destroy_all
 Badge.destroy_all
 User.destroy_all
 ActivityQuestion.destroy_all
@@ -220,11 +220,11 @@ comment4 = TeacherComment.create({
                                 })
 comment5 = TeacherComment.create({
                                   text: "Very good!",
-                                  user_response: response8,
+                                  user_response: response10,
                                   teacher: teacher1
                                 })
 comment6 = TeacherComment.create({
                                   text: "Very good!",
-                                  user_response: response9,
+                                  user_response: response11,
                                   teacher: teacher1
                                 })
