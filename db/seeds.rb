@@ -2,8 +2,8 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 puts "Destroying everything in the database!"
-UserResponse.destroy_all
 TeacherComment.destroy_all
+UserResponse.destroy_all
 Badge.destroy_all
 User.destroy_all
 ActivityQuestion.destroy_all
@@ -124,44 +124,6 @@ badge6 = Badge.create({
                         user: student3
                       })
 
-puts "Creating teacher comments!"
-comment1 = TeacherComment.create({
-                                    text: "Get started!",
-                                    activity: activity1,
-                                    student: student1,
-                                    teacher: teacher1
-                                  })
-comment2 = TeacherComment.create({
-                                    text: "Very Okay!",
-                                    activity: activity2,
-                                    student: student1,
-                                    teacher: teacher1
-                                  })
-comment3 = TeacherComment.create({
-                                    text: "Get started!",
-                                    activity: activity1,
-                                    student: student2,
-                                    teacher: teacher1
-                                  })
-comment4 = TeacherComment.create({
-                                    text: "Very bad!",
-                                    activity: activity2,
-                                    student: student2,
-                                    teacher: teacher1
-                                  })
-comment5 = TeacherComment.create({
-                                    text: "Very good!",
-                                    activity: activity1,
-                                    student: student3,
-                                    teacher: teacher1
-                                  })
-comment6 = TeacherComment.create({
-                                    text: "Very good!",
-                                    activity: activity2,
-                                    student: student3,
-                                    teacher: teacher1
-                                  })
-
 puts "Creating user responses!"
 response1 = UserResponse.create({
                                   user: student1,
@@ -235,3 +197,34 @@ response12 = UserResponse.create({
                                   text: "Melvin",
                                   correct: true
                                   })
+puts "Creating teacher comments!"
+comment1 = TeacherComment.create({
+                                  text: "Get started!",
+                                  user_response: response1,
+                                  teacher: teacher1
+                                })
+comment2 = TeacherComment.create({
+                                  text: "Very Okay!",
+                                  user_response: response2,
+                                  teacher: teacher1
+                                })
+comment3 = TeacherComment.create({
+                                  text: "Get started!",
+                                  user_response: response5,
+                                  teacher: teacher1
+                                })
+comment4 = TeacherComment.create({
+                                  text: "Very bad!",
+                                  user_response: response6,
+                                  teacher: teacher1
+                                })
+comment5 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: response10,
+                                  teacher: teacher1
+                                })
+comment6 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: response11,
+                                  teacher: teacher1
+                                })

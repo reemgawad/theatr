@@ -5,4 +5,8 @@ class TeacherCommentPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
+  def create?
+    user.teacher?
+  end
 end
