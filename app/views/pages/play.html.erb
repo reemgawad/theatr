@@ -1,4 +1,4 @@
-<div>
+<div data-controller="hello">
   <img class="rounded mx-auto d-block m-3"src="https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dGhlYXRyZXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="" style="height: 400px">
 </div>
 
@@ -30,3 +30,8 @@
 <h4>Who's Who:</h4>
 
 <h4>FYI: Show Information</h4>
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
