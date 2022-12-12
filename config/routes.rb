@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :activity_questions do
-    resources :user_responses, only: [ :create ]
+    resources :user_responses, only: [ :create, :update ]
   end
 
   resources :classrooms, only: [ :show ]

@@ -1,0 +1,11 @@
+<div data-controller="edit-ajax">
+  <div data-edit-ajax-target="responseInfo">
+    <p><%= response.text %> <%= link_to "Edit", "#", data: {action: "click->edit-ajax#revealForm"} %></p>
+  </div>
+
+  <%= simple_form_for([question, response], html: {class: "d-none", data: {edit_ajax_target: "responseEdit"} }) do |f| %>
+    <%= f.input :text %>
+    <%= f.hidden_field :activity_question_id, value: question.id %>
+    <%= f.submit "Save Answer" %>
+  <% end %>
+</div>
