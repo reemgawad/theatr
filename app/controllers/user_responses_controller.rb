@@ -12,16 +12,17 @@ class UserResponsesController < ApplicationController
     authorize @user_response
   end
 
-  def update
-    @user_response = UserResponse.find(params[:id])
-    @user_response.update(user_response_params)
-    if @user_response.save!
-      redirect_to results_path(current_user, @activity)
-    else
-      render 'activities/results', status: :unprocessable_entity
-    end
-    authorize @user_response
-  end
+  # TODO: implement edit/update for user_response
+  # def update
+  #   @user_response = UserResponse.find(params[:id])
+  #   @user_response.update(user_response_params)
+  #   if @user_response.save!
+  #     redirect_to results_path(current_user, @activity)
+  #   else
+  #     render 'activities/results', status: :unprocessable_entity
+  #   end
+  #   authorize @user_response
+  # end
 
   private
 
