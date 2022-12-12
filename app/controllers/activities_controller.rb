@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
+    @user = current_user
     @user_response = UserResponse.new()
     authorize @activity
   end
@@ -18,6 +19,7 @@ class ActivitiesController < ApplicationController
     @profile = User.find(params[:user_id])
     @activity = Activity.find(params[:id])
     @teacher_comment = TeacherComment.new
+    @user_response = UserResponse.new()
 
     # find the activity_questions
     @activity_questions = @activity.activity_questions

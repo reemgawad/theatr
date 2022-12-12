@@ -5,9 +5,17 @@
   <%# get all activities questions %>
   <% @activity_questions.each do |question| %>
     <h4><%= question.question_text %></h4>
+      <%# submit a response to each question %>
+      <%= simple_form_for([question, @user_response]) do |f| %>
+        <%= f.input :text %>
+        <%= f.hidden_field :activity_question_id, value: question.id %>
+        <%= f.submit "Save Answer" %>
+      <% end %>
       <%# get the response where the user is the @profile(params) %>
       <% question.user_responses.where(user: @profile).each do |response| %>
         <p><%= response.text %></p>
+
+
         <% if current_user.teacher? %>
           <%= simple_form_for([response, @teacher_comment]) do |f| %>
             <%= f.input :text %>
@@ -22,3 +30,6 @@
       <% end %>
   <% end %>
 </div>
+
+<br>
+<%= link_to "Back to activities", activities_path %>
