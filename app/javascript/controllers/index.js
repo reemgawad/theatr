@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import EditAjaxController from "./edit_ajax_controller"
+application.register("edit-ajax", EditAjaxController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

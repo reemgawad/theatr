@@ -6,7 +6,7 @@
   <%# get all activities questions %>
   <% @activity_questions.each do |question| %>
     <h4><%= question.question_text %></h4>
-      <%# submit a response to each question ONLY if no response is already present %>
+      <%# Submit a response to each question ONLY if no response is already present %>
       <%# to prevent multiple responses to 1 question %>
       <% if question.user_responses.where(user: @profile).empty? %>
         <%= simple_form_for([question, @user_response]) do |f| %>
@@ -15,9 +15,10 @@
           <%= f.submit "Save Answer" %>
         <% end %>
       <% end %>
+
       <%# get the response where the user is the @profile(params) %>
       <% question.user_responses.where(user: @profile).each do |response| %>
-        <p><%= response.text %></p>
+        <%= render 'activities/user_responses_info', question: question, response: response %>
 
         <% if current_user.teacher? %>
           <%= simple_form_for([response, @teacher_comment]) do |f| %>
@@ -26,6 +27,7 @@
             <%= f.submit "Save Comment!" %>
           <% end %>
         <% end  %>
+
         <%# find the teacher comment for this user_response %>
         <% TeacherComment.where(user_response: response).each do |comment| %>
           <p><%= comment.text %> - <%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %> </p>
