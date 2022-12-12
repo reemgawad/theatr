@@ -2,12 +2,18 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 puts "Destroying everything in the database!"
+Classroom.destroy_all
 TeacherComment.destroy_all
 UserResponse.destroy_all
 Badge.destroy_all
 User.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
+
+puts "Creating classrooms!"
+class1 = Classroom.create({ name: "Class 1" })
+class2 = Classroom.create({ name: "Class 2" })
+
 
 puts "Creating users."
 teacher1 = User.create({
@@ -16,7 +22,8 @@ teacher1 = User.create({
                           user_name: "johnsmith",
                           email: "a@a.a",
                           password: "aaa111",
-                          teacher: true
+                          teacher: true,
+                          classroom: class1
                         })
 student1 = User.create({
                           first_name: "Jim",
@@ -24,7 +31,8 @@ student1 = User.create({
                           user_name: "jimhalpert",
                           email: "c@c.c",
                           password: "aaa111",
-                          teacher: false
+                          teacher: false,
+                          classroom: class1
                         })
 student2 = User.create({
                           first_name: "Doug",
@@ -32,7 +40,8 @@ student2 = User.create({
                           user_name: "dougjones",
                           email: "d@d.d",
                           password: "aaa111",
-                          teacher: false
+                          teacher: false,
+                          classroom: class1
                         })
 student3 = User.create({
                           first_name: "Mark",
@@ -40,7 +49,8 @@ student3 = User.create({
                           user_name: "markhamil",
                           email: "b@b.b",
                           password: "aaa111",
-                          teacher: false
+                          teacher: false,
+                          classroom: class1
                         })
 
 puts "Creating activities!"
@@ -197,6 +207,7 @@ response12 = UserResponse.create({
                                   text: "Melvin",
                                   correct: true
                                   })
+
 puts "Creating teacher comments!"
 comment1 = TeacherComment.create({
                                   text: "Get started!",
