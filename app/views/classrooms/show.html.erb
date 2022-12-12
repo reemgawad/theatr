@@ -1,0 +1,30 @@
+<% if @user.teacher == false %>
+  </div>
+    <p>Your teacher's name is:</p>
+    <%= "#{@teacher.first_name} #{@teacher.last_name}" %>
+  <div>
+<% end %>
+
+<div>
+  <% if @user == @teacher %>
+    <% @students.each do |e| %>
+      <% if e.teacher? == false %>
+        <div>
+          <%= link_to "#{e.first_name} #{e.last_name}", profile_path(e) %>
+        </div>
+        <div>
+          <p>
+            <% e.badges.each do |b| %>
+              <p>Activity title: <%= b.activity.title %></p>
+              <p>Activity Type: <%= b.activity.activity_type %></p>
+              <%= link_to "I'm a badge", results_path(e, b.activity) %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+    <%= link_to "Home", root_path %>
+  <% else %>
+    <%= link_to "Home", root_path %>
+  <% end %>
+</div>

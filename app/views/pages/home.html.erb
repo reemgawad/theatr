@@ -2,7 +2,7 @@
 
   <h1>Your Classroom</h1>
   <% if current_user.teacher %>
-    <h2>View your students' progress:</h2>
+    <h2><%= link_to "View your classroom", classroom_path(@user.classroom) %></h2>
   <% else %>
     <h2>View your classmates' progress:</h2>
   <% end %>

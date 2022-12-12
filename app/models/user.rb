@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :user_responses
   has_many :teacher_comments, foreign_key: :teacher_id
   has_many :teacher_comments, foreign_key: :student_id
+  belongs_to :classroom
 end
