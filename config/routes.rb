@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :activity_questions do
     resources :user_responses, only: [ :create ]
   end
+
+  resources :classrooms, only: [ :show ]
 end
