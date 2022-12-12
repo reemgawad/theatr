@@ -12,7 +12,6 @@ class UserResponsesController < ApplicationController
     authorize @user_response
   end
 
-  # TODO: implement edit/update for user_response
   def update
     @user_response = UserResponse.find(params[:id])
     @user = @user_response.user
