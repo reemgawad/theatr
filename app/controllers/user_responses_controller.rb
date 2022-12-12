@@ -5,9 +5,20 @@ class UserResponsesController < ApplicationController
     @user_response = UserResponse.new(user_response_params)
     @user_response.user = current_user
     if @user_response.save!
-      redirect_to activity_path(@activity)
+      redirect_to results_path(current_user, @activity)
     else
-      render 'activities/show', status: :unprocessable_entity
+      render 'activities/results', status: :unprocessable_entity
+    end
+    authorize @user_response
+  end
+
+  def update
+    @user_response = UserResponse.find(params[:id])
+    @user_response.update(user_response_params)
+    if @user_response.save!
+      redirect_to results_path(current_user, @activity)
+    else
+      render 'activities/results', status: :unprocessable_entity
     end
     authorize @user_response
   end

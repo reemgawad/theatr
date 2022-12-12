@@ -1,20 +1,23 @@
 <h1><%= @activity.title %></h1>
-
+<h3><%= "#{@profile.first_name} #{@profile.last_name}'s Answers:" %></h3>
+<br>
 
 <div>
   <%# get all activities questions %>
   <% @activity_questions.each do |question| %>
     <h4><%= question.question_text %></h4>
-      <%# submit a response to each question %>
-      <%= simple_form_for([question, @user_response]) do |f| %>
-        <%= f.input :text %>
-        <%= f.hidden_field :activity_question_id, value: question.id %>
-        <%= f.submit "Save Answer" %>
+      <%# submit a response to each question ONLY if no response is already present %>
+      <%# to prevent multiple responses to 1 question %>
+      <% if question.user_responses.where(user: @profile).empty? %>
+        <%= simple_form_for([question, @user_response]) do |f| %>
+          <%= f.input :text %>
+          <%= f.hidden_field :activity_question_id, value: question.id %>
+          <%= f.submit "Save Answer" %>
+        <% end %>
       <% end %>
       <%# get the response where the user is the @profile(params) %>
       <% question.user_responses.where(user: @profile).each do |response| %>
         <p><%= response.text %></p>
-
 
         <% if current_user.teacher? %>
           <%= simple_form_for([response, @teacher_comment]) do |f| %>
@@ -25,7 +28,7 @@
         <% end  %>
         <%# find the teacher comment for this user_response %>
         <% TeacherComment.where(user_response: response).each do |comment| %>
-          <p><%= comment.text %></p>
+          <p><%= comment.text %> - <%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %> </p>
         <% end %>
       <% end %>
   <% end %>
