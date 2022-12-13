@@ -2,11 +2,11 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 puts "Destroying everything in the database!"
-Classroom.destroy_all
 TeacherComment.destroy_all
-UserResponse.destroy_all
 Badge.destroy_all
+UserResponse.destroy_all
 User.destroy_all
+Classroom.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
 
