@@ -48,7 +48,6 @@ class ActivitiesController < ApplicationController
         activity.badges.each do |badge|
           if Date.today >= badge.user.classroom.date
             badge.available!
-            @activity_availability = true
           end
         end
       end
