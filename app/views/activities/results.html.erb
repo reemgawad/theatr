@@ -10,7 +10,11 @@
       <%# to prevent multiple responses to 1 question %>
       <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
         <%= simple_form_for([question, @user_response]) do |f| %>
-          <%= f.input :text %>
+          <% if question.activity.activity_type == "Review" %>
+            <%= f.input :text, as: :text %>
+          <% else %>
+            <%= f.input :text %>
+          <% end %>
           <%= f.hidden_field :activity_question_id, value: question.id %>
           <%= f.submit "Save Answer" %>
         <% end %>
