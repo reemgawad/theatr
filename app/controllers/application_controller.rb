@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
   #   flash[:alert] = "You are not authorized to perform this action."
   #   redirect_to(root_path)
   # end
-    def configure_devise_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:classroom_id])
-      # devise_parameter_sanitizer.permit(:account_update, keys: [:username, { tags: [] }, :age, :description, photos: []])
-    end
 
   private
 
@@ -24,5 +20,10 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
+  protected
 
+  def configure_devise_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:classroom_id, :first_name, :last_name])
+    # devise_parameter_sanitizer.permit(:account_update, keys: [:username, { tags: [] }, :age, :description, photos: []])
+  end
 end
