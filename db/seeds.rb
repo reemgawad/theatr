@@ -58,20 +58,31 @@ activity1 = Activity.create({
                               title: "Theatre Quiz 1",
                               activity_type: "Quiz",
                               question_amount: 3,
-                              level: 1
+                              level: 1,
+                              available: true
                             })
 activity2 = Activity.create({
                               title: "Theatre Quiz 2",
                               activity_type: "Quiz",
                               question_amount: 3,
-                              level: 2
+                              level: 2,
+                              available: true
                             })
 activity3 = Activity.create({
                               title: "Theatre Match Game",
                               activity_type: "Match",
                               question_amount: 3,
-                              level: 3
+                              level: 3,
+                              available: true
                             })
+activity4 = Activity.create({
+                              title: "Review the Show",
+                              activity_type: "Review",
+                              question_amount: 1,
+                              level: 4,
+                              available: false
+                            })
+
 
 puts "Creating activity questions!"
 act_question1 = ActivityQuestion.create({
@@ -103,6 +114,11 @@ act_question6 = ActivityQuestion.create({
                                           question_text: "What is the love's name?",
                                           response_text: "Melvin",
                                           activity: activity2
+                                        })
+act_question7 = ActivityQuestion.create({
+                                          question_text: "Write a review for the show!",
+                                          response_text: "",
+                                          activity: activity4
                                         })
 
 puts "Creating badges!"
