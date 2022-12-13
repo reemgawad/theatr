@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_action :update_availability, only: :index
+  before_action :set_activities, only: :index
+  before_action :update_badge_status, only: :show
 
   def show
     @activity = Activity.find(params[:id])
@@ -9,12 +10,7 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @activities = policy_scope(Activity)
-    if params[:query].present?
-      @activities = Activity.where(available: true).search_by_title_and_type(params[:query])
-    else
-      @activities = Activity.where(available: true)
-    end
+    # Moved code to method set_activities to be reusable
   end
 
   def results
@@ -32,7 +28,30 @@ class ActivitiesController < ApplicationController
 
   private
 
-  def update_availability
+  def set_activities
+    @activities = policy_scope(Activity)
+    if params[:query].present?
+      @activities = Activity.search_by_title_and_type(params[:query])
+    else
+      @activities = Activity.all
+    end
+  end
 
+  def update_badge_status
+    # If activity_type == Review
+    # Look at the badges associated
+    # for each badge, check if the user.classroom.date >= today's date
+    # if yes, change the badge's status to available
+    set_activities
+    @activities.each do |activity|
+      if activity.activity_type == "Review"
+        activity.badges.each do |badge|
+          if badge.user.classroom.date >= Date.today
+            badge.available!
+            @activity_availablity = true
+          end
+        end
+      end
+    end
   end
 end

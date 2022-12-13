@@ -163,6 +163,22 @@ badge9 = Badge.create({
                         activity: activity3,
                         user: student3
                       })
+badge10 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student1
+                      })
+badge11 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student2
+                      })
+badge12 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student3
+                      })
+
 
 puts "Creating user responses!"
 response1 = UserResponse.create({
