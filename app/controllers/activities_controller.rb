@@ -40,15 +40,15 @@ class ActivitiesController < ApplicationController
   def update_badge_status
     # If activity_type == Review
     # Look at the badges associated
-    # for each badge, check if the user.classroom.date >= today's date
+    # for each badge, check if today is >= user.classroom.date
     # if yes, change the badge's status to available
     set_activities
     @activities.each do |activity|
       if activity.activity_type == "Review"
         activity.badges.each do |badge|
-          if badge.user.classroom.date >= Date.today
+          if Date.today >= badge.user.classroom.date
             badge.available!
-            @activity_availablity = true
+            @activity_availability = true
           end
         end
       end

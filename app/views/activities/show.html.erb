@@ -5,8 +5,8 @@
 <% end %>
 
 <%# Only show this link to students %>
-<%# && Only show this link if the show's date is >= today %>
-<% if @show_availability %>
+<%# && Only show this link if today >= show's date %>
+<% if @activity_availability %>
   <%= link_to "Start this activity", results_path([current_user, @activity]) unless current_user.teacher %>
 <% end %>
 
