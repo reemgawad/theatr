@@ -11,8 +11,8 @@ ActivityQuestion.destroy_all
 Activity.destroy_all
 
 puts "Creating classrooms!"
-class1 = Classroom.create({ name: "Class 1" })
-class2 = Classroom.create({ name: "Class 2" })
+class1 = Classroom.create({ name: "Class 1", date: Date.new(2023, 2, 21) })
+class2 = Classroom.create({ name: "Class 2", date: Date.new(2023, 2, 22)})
 
 
 puts "Creating users."
