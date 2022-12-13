@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  before_action :update_availability, only: :index
+
   def show
     @activity = Activity.find(params[:id])
     @user = current_user
@@ -9,9 +11,9 @@ class ActivitiesController < ApplicationController
   def index
     @activities = policy_scope(Activity)
     if params[:query].present?
-      @activities = Activity.search_by_title_and_type(params[:query])
+      @activities = Activity.where(available: true).search_by_title_and_type(params[:query])
     else
-      @activities = Activity.all
+      @activities = Activity.where(available: true)
     end
   end
 
@@ -26,5 +28,11 @@ class ActivitiesController < ApplicationController
 
     # authorize @profile with the ActivityPolicy
     authorize @profile, policy_class: ActivityPolicy
+  end
+
+  private
+
+  def update_availability
+
   end
 end
