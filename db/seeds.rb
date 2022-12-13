@@ -3,8 +3,8 @@
 #
 puts "Destroying everything in the database!"
 TeacherComment.destroy_all
-UserResponse.destroy_all
 Badge.destroy_all
+UserResponse.destroy_all
 User.destroy_all
 Classroom.destroy_all
 ActivityQuestion.destroy_all
@@ -12,7 +12,7 @@ Activity.destroy_all
 
 puts "Creating classrooms!"
 class1 = Classroom.create({ name: "Class 1", date: Date.new(2023, 2, 21) })
-class2 = Classroom.create({ name: "Class 2", date: Date.new(2023, 2, 22)})
+class2 = Classroom.create({ name: "Class 2", date: Date.new(2023, 2, 22) })
 
 
 puts "Creating users."
@@ -72,6 +72,13 @@ activity3 = Activity.create({
                               question_amount: 3,
                               level: 3
                             })
+activity4 = Activity.create({
+                              title: "Review the Show",
+                              activity_type: "Review",
+                              question_amount: 1,
+                              level: 4
+                            })
+
 
 puts "Creating activity questions!"
 act_question1 = ActivityQuestion.create({
@@ -103,6 +110,11 @@ act_question6 = ActivityQuestion.create({
                                           question_text: "What is the love's name?",
                                           response_text: "Melvin",
                                           activity: activity2
+                                        })
+act_question7 = ActivityQuestion.create({
+                                          question_text: "Write a review for the show!",
+                                          response_text: "",
+                                          activity: activity4
                                         })
 
 puts "Creating badges!"
@@ -151,6 +163,22 @@ badge9 = Badge.create({
                         activity: activity3,
                         user: student3
                       })
+badge10 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student1
+                      })
+badge11 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student2
+                      })
+badge12 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student3
+                      })
+
 
 puts "Creating user responses!"
 response1 = UserResponse.create({

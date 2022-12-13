@@ -8,9 +8,14 @@
     <h4><%= question.question_text %></h4>
       <%# Submit a response to each question ONLY if no response is already present %>
       <%# to prevent multiple responses to 1 question %>
-      <% if question.user_responses.where(user: @profile).empty? %>
+      <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
         <%= simple_form_for([question, @user_response]) do |f| %>
-          <%= f.input :text %>
+          <%# If it's a review, the input field is a text field %>
+          <% if question.activity.activity_type == "Review" %>
+            <%= f.input :text, as: :text %>
+          <% else %>
+            <%= f.input :text %>
+          <% end %>
           <%= f.hidden_field :activity_question_id, value: question.id %>
           <%= f.submit "Save Answer" %>
         <% end %>
