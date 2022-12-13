@@ -3,7 +3,7 @@ class ClassroomsController < ApplicationController
     @user = current_user
     @classroom = Classroom.find(params[:id])
     @teacher = User.find_by(classroom: @classroom, teacher: true)
-    @students = User.where(classroom: @classroom)
+    @students = User.where(classroom: @classroom, teacher: false)
     authorize @user, policy_class: ClassroomPolicy
   end
 end

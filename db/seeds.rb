@@ -128,28 +128,43 @@ badge1 = Badge.create({
                         user: student1
                       })
 badge2 = Badge.create({
-                        status: 2,
+                        status: 0,
                         activity: activity2,
                         user: student1
                       })
 badge3 = Badge.create({
-                        status: 1,
-                        activity: activity1,
-                        user: student2
+                        status: 0,
+                        activity: activity3,
+                        user: student1
                       })
 badge4 = Badge.create({
-                        status: 3,
-                        activity: activity2,
+                        status: 4,
+                        activity: activity1,
                         user: student2
                       })
 badge5 = Badge.create({
-                        status: 3,
+                        status: 1,
+                        activity: activity2,
+                        user: student2
+                      })
+badge6 = Badge.create({
+                        status: 0,
+                        activity: activity3,
+                        user: student2
+                      })
+badge7 = Badge.create({
+                        status: 4,
                         activity: activity1,
                         user: student3
                       })
-badge6 = Badge.create({
-                        status: 3,
+badge8 = Badge.create({
+                        status: 4,
                         activity: activity2,
+                        user: student3
+                      })
+badge9 = Badge.create({
+                        status: 4,
+                        activity: activity3,
                         user: student3
                       })
 
