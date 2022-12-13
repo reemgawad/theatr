@@ -15,6 +15,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.select :classroom_id,
+                 options_from_collection_for_select(Classroom.all, "id", "name"),
+                 required: true,
+                 input_html: { autocomplete: "classroom" }%>
   </div>
 
   <div class="form-actions">
