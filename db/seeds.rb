@@ -58,29 +58,25 @@ activity1 = Activity.create({
                               title: "Theatre Quiz 1",
                               activity_type: "Quiz",
                               question_amount: 3,
-                              level: 1,
-                              available: true
+                              level: 1
                             })
 activity2 = Activity.create({
                               title: "Theatre Quiz 2",
                               activity_type: "Quiz",
                               question_amount: 3,
-                              level: 2,
-                              available: true
+                              level: 2
                             })
 activity3 = Activity.create({
                               title: "Theatre Match Game",
                               activity_type: "Match",
                               question_amount: 3,
-                              level: 3,
-                              available: true
+                              level: 3
                             })
 activity4 = Activity.create({
                               title: "Review the Show",
                               activity_type: "Review",
                               question_amount: 1,
-                              level: 4,
-                              available: false
+                              level: 4
                             })
 
 
