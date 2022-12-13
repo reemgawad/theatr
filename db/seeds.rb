@@ -57,17 +57,20 @@ puts "Creating activities!"
 activity1 = Activity.create({
                               title: "Theatre Quiz 1",
                               activity_type: "Quiz",
-                              question_amount: 3
+                              question_amount: 3,
+                              level: 1
                             })
 activity2 = Activity.create({
                               title: "Theatre Quiz 2",
                               activity_type: "Quiz",
-                              question_amount: 3
+                              question_amount: 3,
+                              level: 2
                             })
 activity3 = Activity.create({
                               title: "Theatre Match Game",
                               activity_type: "Match",
-                              question_amount: 3
+                              question_amount: 3,
+                              level: 3
                             })
 
 puts "Creating activity questions!"
