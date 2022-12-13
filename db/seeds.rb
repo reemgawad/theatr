@@ -2,17 +2,17 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 puts "Destroying everything in the database!"
-Classroom.destroy_all
 TeacherComment.destroy_all
 UserResponse.destroy_all
 Badge.destroy_all
 User.destroy_all
+Classroom.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
 
 puts "Creating classrooms!"
-class1 = Classroom.create({ name: "Class 1" })
-class2 = Classroom.create({ name: "Class 2" })
+class1 = Classroom.create({ name: "Class 1", date: Date.new(2023, 2, 21) })
+class2 = Classroom.create({ name: "Class 2", date: Date.new(2023, 2, 22)})
 
 
 puts "Creating users."
