@@ -9,6 +9,6 @@ class PagesController < ApplicationController
 
   def play
 
-    @markers = [lat: 45.514707, lng: -73.562758 ]
+    @markers = [lat: 45.49721, lng: -73.57862 ]
   end
 end
