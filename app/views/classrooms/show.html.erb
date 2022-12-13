@@ -2,29 +2,33 @@
   </div>
     <p>Your teacher's name is:</p>
     <%= "#{@teacher.first_name} #{@teacher.last_name}" %>
+    <p>The showing is at <%= @classroom.date %></p>
   <div>
 <% end %>
 
+
 <div>
-  <% if @user == @teacher %>
-    <% @students.each do |e| %>
-      <% if e.teacher? == false %>
+  <% @students.each do |e| %>
+    <div>
+      <%= link_to "#{e.first_name} #{e.last_name}", profile_path(e) %>
+    </div>
+    <div>
+      <p>
+        <% completed_badges = [] %>
+        <% e.badges.each do |b| %>
+          <p>Activity title: <%= b.activity.title %></p>
+          <p>Activity Type: <%= b.activity.activity_type %></p>
+          <%= link_to b.status, results_path(e, b.activity) %>
+          <% completed_badges << b if b.status == "completed" %>
+        <% end %>
         <div>
-          <%= link_to "#{e.first_name} #{e.last_name}", profile_path(e) %>
+          <%= "#{((completed_badges.length / e.badges.length.to_f) * 100).to_i}%" %>
         </div>
-        <div>
-          <p>
-            <% e.badges.each do |b| %>
-              <p>Activity title: <%= b.activity.title %></p>
-              <p>Activity Type: <%= b.activity.activity_type %></p>
-              <%= link_to "I'm a badge", results_path(e, b.activity) %>
-            <% end %>
-          </p>
-        </div>
-      <% end %>
-    <% end %>
-    <%= link_to "Home", root_path %>
-  <% else %>
-    <%= link_to "Home", root_path %>
+      </p>
+    </div>
+    <div>
+    </div>
   <% end %>
 </div>
+
+<%= link_to "Home", root_path %>
