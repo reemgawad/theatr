@@ -1,18 +1,24 @@
-<h1>Activities</h1>
+<div class="container">
+  <h1>Activities</h1>
 
-<h2>Search activities</h2>
-<%= form_with url: activities_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find an activity"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+  <div class="blurb">
+    <p>Have a look at all the activities you can do!</p>
+    <p>Or search for an activity below:</p>
+    <%= form_with url: activities_path, method: :get, class: "d-flex w-50 my-2 mx-auto" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an activity"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
-<% @activities.each do |e| %>
-  <p><%= link_to e.title, activity_path(e) %></p>
-  <p>This activity is level: <%= e.level %></p>
-<% end %>
 
-<%= link_to "Back to homepage", root_path %>
+  <% @activities.each do |e| %>
+    <p><%= link_to e.title, activity_path(e) %></p>
+    <p>This activity is level: <%= e.level %></p>
+  <% end %>
+
+  <%= link_to "Back to homepage", root_path %>
+</div>
