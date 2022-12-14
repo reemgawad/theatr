@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  after_action :create_badges, only: :create
   include Pundit::Authorization
 
   # Pundit: allow-list approach
@@ -20,7 +21,24 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
+  def create_badges
+    # find all activities
+    @activities = Activity.all
+
+    #  for all activity create a badge for the user and this activity
+    @activities.each do |activity|
+      if activity.activity_type == 'Review'
+        Badge.create(user: current_user, activity: activity, status: 'unavailable')
+      else
+        Badge.create(user: current_user, activity: activity, status: 'available')
+      end
+    end
+
+  end
+
   protected
+
+
 
   def configure_devise_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:classroom_id, :first_name, :last_name])
