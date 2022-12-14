@@ -1,0 +1,32 @@
+.student-row {
+  display: flex;
+  align-items: center;
+  height: 15vh;
+  border-radius: $border-radius-lg;
+  border: solid 1px $gray;
+  padding: 16px;
+  margin: 24px 0;
+  overflow-x: scroll;
+  box-shadow: 3px 2px 8px rgb(221, 221, 221);
+
+  p {
+    margin: 0 8px;
+    font-size: 12px;
+  }
+
+  .student-name {
+    text-decoration: none;
+  }
+}
+
+.class-blurb {
+  width: 50%;
+  margin: 24px auto;
+  padding: 16px;
+  border-radius: $border-radius;
+  border: solid 1px $gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 3px 2px 8px rgb(221, 221, 221);
+}
