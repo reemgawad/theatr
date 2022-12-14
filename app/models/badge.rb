@@ -9,9 +9,4 @@ class Badge < ApplicationRecord
     marked: 3,
     completed: 4
   }
-
-
-  scope :badge_exist, lambda { |user, activity|
-    where("user_id = ? AND activity_id = ?", user, activity)
-  }
 end
