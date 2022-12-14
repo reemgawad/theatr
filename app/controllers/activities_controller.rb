@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :update_badge_status, only: :show
-
+  before_action :create_badge, only: :show
   def show
     @activity = Activity.find(params[:id])
     @user = current_user
@@ -45,5 +45,18 @@ class ActivitiesController < ApplicationController
         end
       end
     end
+  end
+
+  def create_badge
+    @badge = Badge.badge_exist(current_user, Activity.find(params[:id])).first
+
+    unless @badge
+      @badge = Badge.new
+      @badge.user = current_user
+      @badge.activity = Activity.find(params[:id])
+      Activity.find(params[:id]).activity_type == 'Review'  ? @badge.status = 'unavailable' : @badge.status = 'available'
+      @badge.save
+    end
+
   end
 end
