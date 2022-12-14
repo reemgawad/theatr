@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Activities</h1>
+  <h1 class="text-center mt-3">Activities</h1>
 
   <div class="blurb">
     <p>Have a look at all the activities you can do!</p>
@@ -15,10 +15,15 @@
   </div>
 
 
-  <% @activities.each do |e| %>
-    <p><%= link_to e.title, activity_path(e) %></p>
-    <p>This activity is level: <%= e.level %></p>
-  <% end %>
+  <div class="activity-grid">
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <h3><%= activity.activity_type %>:</h3>
+        <p><%= link_to activity.title, activity_path(activity) %></p>
+        <p>Level: <%= activity.level %></p>
+      </div>
+    <% end %>
+  </div>
 
   <%= link_to "Back to homepage", root_path %>
 </div>
