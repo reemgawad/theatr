@@ -9,9 +9,9 @@
 
   <br>
 
-  <% @students.each do |student| %>
+  <% current_user.classroom.users.each do |user| %>
     <div>
-      <%= link_to "#{student.first_name} #{student.last_name}", profile_path(student) %>
+      <%= link_to "#{user.first_name} #{user.last_name}", profile_path(user) unless user.teacher? %>
     </div>
   <% end %>
 
