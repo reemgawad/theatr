@@ -1,45 +1,50 @@
 <h1><%= @activity.title %></h1>
 <h3><%= "#{@profile.first_name} #{@profile.last_name}'s Answers:" %></h3>
 <br>
-
-<div>
-  <%# get all activities questions %>
-  <% @activity_questions.each do |question| %>
-    <h4><%= question.question_text %></h4>
-      <%# Submit a response to each question ONLY if no response is already present %>
-      <%# to prevent multiple responses to 1 question %>
-      <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
-        <%= simple_form_for([question, @user_response]) do |f| %>
-          <%# If it's a review, the input field is a text field %>
-          <% if question.activity.activity_type == "Review" %>
-            <%= f.input :text, as: :text %>
-          <% else %>
-            <%= f.input :text %>
+<% if !@activity.badges.find_by(user: current_user).unavailable?  %>
+  <div>
+    <%# get all activities questions %>
+    <% @activity_questions.each do |question| %>
+      <h4><%= question.question_text %></h4>
+        <%# Submit a response to each question ONLY if no response is already present %>
+        <%# to prevent multiple responses to 1 question %>
+        <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
+          <%= simple_form_for([question, @user_response]) do |f| %>
+            <%# If it's a review, the input field is a text field %>
+            <% if question.activity.activity_type == "Review" %>
+              <%= f.input :text, as: :text %>
+            <% else %>
+              <%= f.input :text %>
+            <% end %>
+            <%= f.hidden_field :activity_question_id, value: question.id %>
+            <%= f.submit "Save Answer" %>
           <% end %>
-          <%= f.hidden_field :activity_question_id, value: question.id %>
-          <%= f.submit "Save Answer" %>
         <% end %>
-      <% end %>
 
-      <%# get the response where the user is the @profile(params) %>
-      <% question.user_responses.where(user: @profile).each do |response| %>
-        <%= render 'activities/user_responses_info', question: question, response: response %>
+        <%# get the response where the user is the @profile(params) %>
+        <% question.user_responses.where(user: @profile).each do |response| %>
+          <%= render 'activities/user_responses_info', question: question, response: response %>
 
-        <% if current_user.teacher? %>
-          <%= simple_form_for([response, @teacher_comment]) do |f| %>
-            <%= f.input :text %>
-            <%= f.hidden_field :user_response_id, value: response.id %>
-            <%= f.submit "Save Comment!" %>
+          <% if current_user.teacher? %>
+            <%= simple_form_for([response, @teacher_comment]) do |f| %>
+              <%= f.input :text %>
+              <%= f.hidden_field :user_response_id, value: response.id %>
+              <%= f.submit "Save Comment!" %>
+            <% end %>
+          <% end  %>
+
+          <%# find the teacher comment for this user_response %>
+          <% TeacherComment.where(user_response: response).each do |comment| %>
+            <p><%= comment.text %> - <%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %> </p>
           <% end %>
-        <% end  %>
-
-        <%# find the teacher comment for this user_response %>
-        <% TeacherComment.where(user_response: response).each do |comment| %>
-          <p><%= comment.text %> - <%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %> </p>
         <% end %>
-      <% end %>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% else %>
+  <h3>You can't complete this activity yet!</h3>
+<% end %>
+
+
 
 <br>
 <%= link_to "Back to activities", activities_path %>
