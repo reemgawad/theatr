@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "/play", to: 'pages#play', as: :play
   # post "/user_responses/:id/teacher_comments", to: "teacher_comments#create", as:
 
+  get "badges/:id/completed", to: "badges#completed", as: :completed
+
   get "/profiles/:user_id/activities/:id/results", to: "activities#results", as: :results
   resources :profiles, only: [ :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

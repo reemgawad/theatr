@@ -23,8 +23,10 @@ class ActivitiesController < ApplicationController
   def results
     @profile = User.find(params[:user_id])
     @activity = Activity.find(params[:id])
+    @badge = Badge.find_by(user: @profile, activity: @activity)
     @teacher_comment = TeacherComment.new
     @user_response = UserResponse.new()
+    raise
 
     # find the activity_questions
     @activity_questions = @activity.activity_questions
