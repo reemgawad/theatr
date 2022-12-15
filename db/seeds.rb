@@ -366,6 +366,48 @@ c1s1a1r8 = UserResponse.create({
                                   correct: true
                                   })
 
+puts "Creating student 1, class 1, activity 1 teacher comments!"
+c1s1a1t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r1,
+                                  teacher: teacher1
+                                })
+c1s1a1t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r2,
+                                  teacher: teacher1
+                                })
+c1s1a1t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r3,
+                                  teacher: teacher1
+                                })
+c1s1a1t4 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r4,
+                                  teacher: teacher1
+                                })
+c1s1a1t5 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r5,
+                                  teacher: teacher1
+                                })
+c1s1a1t6 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r6,
+                                  teacher: teacher1
+                                })
+c1s1a1t7 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r7,
+                                  teacher: teacher1
+                                })
+c1s1a1t8 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a1r8,
+                                  teacher: teacher1
+                                })
+
 puts "Creating student 1, class 1, activity 2 badge!"
 c1s1_badge2 = Badge.create({
                         status: 4,
@@ -423,6 +465,48 @@ c1s1a2r8 = UserResponse.create({
                                   correct: true
                                   })
 
+puts "Creating student 1, class 1, activity 2 teacher comments!"
+c1s1a2t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r1,
+                                  teacher: teacher1
+                                })
+c1s1a2t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r2,
+                                  teacher: teacher1
+                                })
+c1s1a2t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r3,
+                                  teacher: teacher1
+                                })
+c1s1a2t4 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r4,
+                                  teacher: teacher1
+                                })
+c1s1a2t5 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r5,
+                                  teacher: teacher1
+                                })
+c1s1a2t6 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r6,
+                                  teacher: teacher1
+                                })
+c1s1a2t7 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r7,
+                                  teacher: teacher1
+                                })
+c1s1a2t8 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a2r8,
+                                  teacher: teacher1
+                                })
+
 puts "Creating student 1, class 1, activity 3 badge!"
 c1s1_badge3 = Badge.create({
                         status: 4,
@@ -456,6 +540,28 @@ c1s1a3r4 = UserResponse.create({
                                   correct: true
                                   })
 
+puts "Creating student 1, class 1, activity 3 teacher comments!"
+c1s1a3t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a3r1,
+                                  teacher: teacher1
+                                })
+c1s1a3t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a3r2,
+                                  teacher: teacher1
+                                })
+c1s1a3t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a3r3,
+                                  teacher: teacher1
+                                })
+c1s1a3t4 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a3r4,
+                                  teacher: teacher1
+                                })
+
 puts "Creating student 1, class 1, activity 4 badge!"
 c1s1_badge4 = Badge.create({
                         status: 4,
@@ -470,6 +576,13 @@ c1s1a4r1 = UserResponse.create({
                                   text: "Link to saved art",
                                   correct: true
                                   })
+
+puts "Creating student 1, class 1, activity 4 teacher comments!"
+c1s1a4t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a4r1,
+                                  teacher: teacher1
+                                })
 
 puts "Creating student 1, class 1, activity 5 badge!"
 c1s1_badge5 = Badge.create({
@@ -528,23 +641,124 @@ c1s1a5r8 = UserResponse.create({
                                   correct: true
                                   })
 
-puts "Creating student 2, class 1, activity 6 badge!"
+puts "Creating student 1, class 1, activity 5 teacher comments!"
+c1s1a5t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r1,
+                                  teacher: teacher1
+                                })
+c1s1a5t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r2,
+                                  teacher: teacher1
+                                })
+c1s1a5t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r3,
+                                  teacher: teacher1
+                                })
+c1s1a5t4 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r4,
+                                  teacher: teacher1
+                                })
+c1s1a5t5 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r5,
+                                  teacher: teacher1
+                                })
+c1s1a5t6 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r6,
+                                  teacher: teacher1
+                                })
+c1s1a5t7 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r7,
+                                  teacher: teacher1
+                                })
+c1s1a5t8 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a5r8,
+                                  teacher: teacher1
+                                })
+
+puts "Creating student 1, class 1, activity 6 badge!"
 c1s1_badge6 = Badge.create({
                         status: 3,
                         activity: activity6,
                         user: class1_student1
                       })
+
+puts "Creating student 1, class 1, activity 6 answers!"
+c1s1a6r1 = UserResponse.create({
+                                  user: class1_student1,
+                                  activity_question: act6_question1,
+                                  text: "Match 2",
+                                  correct: true
+                                  })
+c1s1a6r2 = UserResponse.create({
+                                  user: class1_student1,
+                                  activity_question: act6_question2,
+                                  text: "Match 4",
+                                  correct: true
+                                  })
+c1s1a6r3 = UserResponse.create({
+                                  user: class1_student1,
+                                  activity_question: act6_question3,
+                                  text: "Match 6",
+                                  correct: true
+                                  })
+c1s1a6r4 = UserResponse.create({
+                                  user: class1_student1,
+                                  activity_question: act6_question4,
+                                  text: "Match 7",
+                                  correct: false
+                                  })
+
+puts "Creating student 1, class 1, activity 6 teacher comments!"
+c1s1a6t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a6r1,
+                                  teacher: teacher1
+                                })
+c1s1a6t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a6r2,
+                                  teacher: teacher1
+                                })
+c1s1a6t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s1a6r3,
+                                  teacher: teacher1
+                                })
+c1s1a6t4 = TeacherComment.create({
+                                  text: "This one needs work!",
+                                  user_response: c1s1a6r4,
+                                  teacher: teacher1
+                                })
+
+puts "Creating student 1, class 1, activity 7 badge!"
 c1s1_badge7 = Badge.create({
                         status: 2,
                         activity: activity7,
                         user: class1_student1
                       })
+
+puts "Creating student 1, class 1, activity 7 answer!"
+c1s1a7r1 = UserResponse.create({
+                                  user: class1_student1,
+                                  activity_question: act7_question1,
+                                  text: "Link to art",
+                                  correct: true
+                                  })
+
+puts "Creating student 1, class 1, activity 8 badge!"
 c1s1_badge8 = Badge.create({
                         status: 0,
                         activity: activity8,
                         user: class1_student1
                       })
-
 
 puts "Creating student 2, class 1!"
 class1_student2 = User.create({
@@ -557,109 +771,396 @@ class1_student2 = User.create({
                           classroom: class1
                         })
 
-puts "Creating student 3, class 1!"
-class1_student3 = User.create({
-                          first_name: "Jake",
-                          last_name: "Peralta",
-                          user_name: "jakemcclane",
-                          email: "e@e.e",
-                          password: "aaa111",
-                          teacher: false,
-                          classroom: class1
-                        })
+puts "Creating student 2, class 1, activity 1 badge!"
+c1s2_badge1 = Badge.create({
+                        status: 4,
+                        activity: activity1,
+                        user: class1_student2
+                      })
 
-puts "Creating student 4, class 1!"
-class1_student4 = User.create({
-                          first_name: "Charles",
-                          last_name: "Boyle",
-                          user_name: "chuckboyle",
-                          email: "f@f.f",
-                          password: "aaa111",
-                          teacher: false,
-                          classroom: class1
-                        })
+puts "Creating student 2, class 1, activity 1 answers!"
+c1s2a1r1 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question1,
+                                  text: "Marky Mark",
+                                  correct: true
+                                  })
+c1s2a1r2 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question2,
+                                  text: "Evil Tom",
+                                  correct: true
+                                  })
+c1s2a1r3 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question3,
+                                  text: "Travissimo",
+                                  correct: true
+                                  })
+c1s2a1r4 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question4,
+                                  text: "Los Angeles",
+                                  correct: true
+                                  })
+c1s2a1r5 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question5,
+                                  text: "2095",
+                                  correct: true
+                                  })
+c1s2a1r6 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question6,
+                                  text: "Limo",
+                                  correct: true
+                                  })
+c1s2a1r7 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question7,
+                                  text: "The Boss",
+                                  correct: true
+                                  })
+c1s2a1r8 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act1_question8,
+                                  text: "Barcelona",
+                                  correct: true
+                                  })
 
-puts "Creating student 5, class 1!"
-class1_student5 = User.create({
-                          first_name: "Terry",
-                          last_name: "Crews",
-                          user_name: "terrycrews",
-                          email: "g@g.g",
-                          password: "aaa111",
-                          teacher: false,
-                          classroom: class1
-                        })
-
-puts "Creating student 6, class 1!"
-class1_student6 = User.create({
-                          first_name: "Ron",
-                          last_name: "Burgundy",
-                          user_name: "imronburgundy",
-                          email: "h@h.h",
-                          password: "aaa111",
-                          teacher: false,
-                          classroom: class1
-                        })
-
-puts "Creating student 7, class 1!"
-class1_student7 = User.create({
-                          first_name: "Luke",
-                          last_name: "Skywalker",
-                          user_name: "theforce",
-                          email: "i@i.i",
-                          password: "aaa111",
-                          teacher: false,
-                          classroom: class1
-                        })
-
-puts "Creating student 8, class 1!"
-class1_student8 = User.create({
-                          first_name: "Doug",
-                          last_name: "Judy",
-                          user_name: "pontiacbandit",
-                          email: "j@j.j",
-                          password: "aaa111",
-                          teacher: false,
-                          classroom: class1
-                        })
-
-puts "Creating teacher comments!"
-comment1 = TeacherComment.create({
-                                  text: "Get started!",
-                                  user_response: response1,
-                                  teacher: teacher1
-                                })
-comment2 = TeacherComment.create({
-                                  text: "Very Okay!",
-                                  user_response: response2,
-                                  teacher: teacher1
-                                })
-comment3 = TeacherComment.create({
-                                  text: "Get started!",
-                                  user_response: response5,
-                                  teacher: teacher1
-                                })
-comment4 = TeacherComment.create({
-                                  text: "Very bad!",
-                                  user_response: response6,
-                                  teacher: teacher1
-                                })
-comment5 = TeacherComment.create({
+puts "Creating student 2, class 1, activity 1 teacher comments!"
+c1s2a1t1 = TeacherComment.create({
                                   text: "Very good!",
-                                  user_response: response10,
+                                  user_response: c1s2a1r1,
                                   teacher: teacher1
                                 })
-comment6 = TeacherComment.create({
+c1s2a1t2 = TeacherComment.create({
                                   text: "Very good!",
-                                  user_response: response11,
+                                  user_response: c1s2a1r2,
+                                  teacher: teacher1
+                                })
+c1s2a1t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a1r3,
+                                  teacher: teacher1
+                                })
+c1s2a1t4 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a1r4,
+                                  teacher: teacher1
+                                })
+c1s2a1t5 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a1r5,
+                                  teacher: teacher1
+                                })
+c1s2a1t6 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a1r6,
+                                  teacher: teacher1
+                                })
+c1s2a1t7 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a1r7,
+                                  teacher: teacher1
+                                })
+c1s2a1t8 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a1r8,
                                   teacher: teacher1
                                 })
 
+puts "Creating student 2, class 1, activity 2 badge!"
+c1s2_badge2 = Badge.create({
+                        status: 4,
+                        activity: activity2,
+                        user: class1_student2
+                      })
+
+puts "Creating student 2, class 1, activity 2 answers!"
+c1s2a2r1 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question1,
+                                  text: "Harrison Ford",
+                                  correct: true
+                                  })
+c1s2a2r2 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question2,
+                                  text: "Brad Garrett",
+                                  correct: true
+                                  })
+c1s2a2r3 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question3,
+                                  text: "Julie Lewis",
+                                  correct: true
+                                  })
+c1s2a2r4 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question4,
+                                  text: "USA",
+                                  correct: true
+                                  })
+c1s2a2r5 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question5,
+                                  text: "Ford Focus",
+                                  correct: true
+                                  })
+c1s2a2r6 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question6,
+                                  text: "Dana Carvey",
+                                  correct: true
+                                  })
+c1s2a2r7 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question7,
+                                  text: "David Hayter",
+                                  correct: true
+                                  })
+c1s2a2r8 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act2_question8,
+                                  text: "Gun Metal Grey",
+                                  correct: true
+                                  })
+
+puts "Creating student 2, class 1, activity 2 teacher comments!"
+c1s2a2t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r1,
+                                  teacher: teacher1
+                                })
+c1s2a2t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r2,
+                                  teacher: teacher1
+                                })
+c1s2a2t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r3,
+                                  teacher: teacher1
+                                })
+c1s2a2t4 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r4,
+                                  teacher: teacher1
+                                })
+c1s2a2t5 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r5,
+                                  teacher: teacher1
+                                })
+c1s2a2t6 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r6,
+                                  teacher: teacher1
+                                })
+c1s2a2t7 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r7,
+                                  teacher: teacher1
+                                })
+c1s2a2t8 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a2r8,
+                                  teacher: teacher1
+                                })
+
+puts "Creating student 2, class 1, activity 3 badge!"
+c1s2_badge3 = Badge.create({
+                        status: 3,
+                        activity: activity3,
+                        user: class1_student2
+                      })
+
+puts "Creating student 2, class 1, activity 3 answers!"
+c1s2a3r1 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act3_question1,
+                                  text: "Match 2",
+                                  correct: true
+                                  })
+c1s2a3r2 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act3_question2,
+                                  text: "Match 4",
+                                  correct: true
+                                  })
+c1s2a3r3 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act3_question3,
+                                  text: "Match 6",
+                                  correct: true
+                                  })
+c1s2a3r4 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act3_question4,
+                                  text: "Match 7",
+                                  correct: false
+                                  })
+
+puts "Creating student 2, class 1, activity 3 teacher comments!"
+c1s2a3t1 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a3r1,
+                                  teacher: teacher1
+                                })
+c1s2a3t2 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a3r2,
+                                  teacher: teacher1
+                                })
+c1s2a3t3 = TeacherComment.create({
+                                  text: "Very good!",
+                                  user_response: c1s2a3r3,
+                                  teacher: teacher1
+                                })
+c1s2a3t4 = TeacherComment.create({
+                                  text: "Needs work!",
+                                  user_response: c1s2a3r4,
+                                  teacher: teacher1
+                                })
+
+puts "Creating student 2, class 1, activity 4 badge!"
+c1s2_badge4 = Badge.create({
+                        status: 3,
+                        activity: activity4,
+                        user: class1_student2
+                      })
+
+puts "Creating student 2, class 1, activity 4 answer!"
+c1s2a4r1 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act4_question1,
+                                  text: "Link to saved art",
+                                  correct: false
+                                  })
+
+puts "Creating student 2, class 1, activity 4 teacher comments!"
+c1s2a4t1 = TeacherComment.create({
+                                  text: "Needs work!",
+                                  user_response: c1s2a4r1,
+                                  teacher: teacher1
+                                })
+
+puts "Creating student 2, class 1, activity 5 badge!"
+c1s2_badge5 = Badge.create({
+                        status: 0,
+                        activity: activity5,
+                        user: class1_student2
+                      })
+
+puts "Creating student 2, class 1, activity 6 badge!"
+c1s2_badge6 = Badge.create({
+                        status: 2,
+                        activity: activity6,
+                        user: class1_student2
+                      })
+
+puts "Creating student 2, class 1, activity 6 answers!"
+c1s2a6r1 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act6_question1,
+                                  text: "Match 2",
+                                  correct: true
+                                  })
+c1s2a6r2 = UserResponse.create({
+                                  user: class1_student2,
+                                  activity_question: act6_question2,
+                                  text: "Match 4",
+                                  correct: true
+                                  })
+
+puts "Creating student 2, class 1, activity 7 badge!"
+c1s2_badge7 = Badge.create({
+                        status: 1,
+                        activity: activity7,
+                        user: class1_student2
+                      })
+
+puts "Creating student 2, class 1, activity 8 badge!"
+c1s2_badge8 = Badge.create({
+                        status: 0,
+                        activity: activity8,
+                        user: class1_student2
+                      })
+
+# puts "Creating student 3, class 1!"
+# class1_student3 = User.create({
+#                           first_name: "Jake",
+#                           last_name: "Peralta",
+#                           user_name: "jakemcclane",
+#                           email: "e@e.e",
+#                           password: "aaa111",
+#                           teacher: false,
+#                           classroom: class1
+#                         })
+
+# puts "Creating student 4, class 1!"
+# class1_student4 = User.create({
+#                           first_name: "Charles",
+#                           last_name: "Boyle",
+#                           user_name: "chuckboyle",
+#                           email: "f@f.f",
+#                           password: "aaa111",
+#                           teacher: false,
+#                           classroom: class1
+#                         })
+
+# puts "Creating student 5, class 1!"
+# class1_student5 = User.create({
+#                           first_name: "Terry",
+#                           last_name: "Crews",
+#                           user_name: "terrycrews",
+#                           email: "g@g.g",
+#                           password: "aaa111",
+#                           teacher: false,
+#                           classroom: class1
+#                         })
+
+# puts "Creating student 6, class 1!"
+# class1_student6 = User.create({
+#                           first_name: "Ron",
+#                           last_name: "Burgundy",
+#                           user_name: "imronburgundy",
+#                           email: "h@h.h",
+#                           password: "aaa111",
+#                           teacher: false,
+#                           classroom: class1
+#                         })
+
+# puts "Creating student 7, class 1!"
+# class1_student7 = User.create({
+#                           first_name: "Luke",
+#                           last_name: "Skywalker",
+#                           user_name: "theforce",
+#                           email: "i@i.i",
+#                           password: "aaa111",
+#                           teacher: false,
+#                           classroom: class1
+#                         })
+
+# puts "Creating student 8, class 1!"
+# class1_student8 = User.create({
+#                           first_name: "Doug",
+#                           last_name: "Judy",
+#                           user_name: "pontiacbandit",
+#                           email: "j@j.j",
+#                           password: "aaa111",
+#                           teacher: false,
+#                           classroom: class1
+#                         })
 
 
 
 
-teacher2 = User.create({
+
+
+
+# teacher2 = User.create({
                         first_name: "Hugo",
                         last_name: "Professorman",
                         user_name: "hugoproff",
