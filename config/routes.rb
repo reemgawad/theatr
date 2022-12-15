@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "/play", to: 'pages#play', as: :play
   # post "/user_responses/:id/teacher_comments", to: "teacher_comments#create", as:
 
+  get "/badges/:id/completed", to: "badges#completed", as: :completed
+
   get "/dashboard", to: "pages#dashboard", as: :dashboard
 
   get "/:id/toggle", to: "profiles#toggle", as: :toggle
