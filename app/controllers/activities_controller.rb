@@ -1,6 +1,5 @@
 class ActivitiesController < ApplicationController
   before_action :update_badge_status, only: :show
-
   def show
     @activity = Activity.find(params[:id])
     @user = current_user
