@@ -1,0 +1,10 @@
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.first_name %> <%= user.last_name %> : <%= user.teacher? ? "Teacher" : "Student" %>
+      <form action="/<%= user.id %>/toggle">
+        <input type="submit" value="Assign Teacher">
+      </form>
+    </li>
+  <% end %>
+</ul>
