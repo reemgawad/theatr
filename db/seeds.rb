@@ -22,8 +22,8 @@
 
 puts "Destroying everything in the database!"
 TeacherComment.destroy_all
-UserResponse.destroy_all
 Badge.destroy_all
+UserResponse.destroy_all
 User.destroy_all
 Classroom.destroy_all
 ActivityQuestion.destroy_all
@@ -127,6 +127,11 @@ act2_question8 = ActivityQuestion.create({
                                           question_text: "What color was the boat?",
                                           response_text: "Gun Metal Grey",
                                           activity: activity2
+                                        })
+act_question7 = ActivityQuestion.create({
+                                          question_text: "Write a review for the show!",
+                                          response_text: "",
+                                          activity: activity4
                                         })
 
 puts "Creating activity 3!"
@@ -590,6 +595,22 @@ c1s1_badge5 = Badge.create({
                         activity: activity5,
                         user: class1_student1
                       })
+badge10 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student1
+                      })
+badge11 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student2
+                      })
+badge12 = Badge.create({
+                        status: 0,
+                        activity: activity4,
+                        user: student3
+                      })
+
 
 puts "Creating student 1, class 1, activity 5 answers!"
 c1s1a5r1 = UserResponse.create({
@@ -1161,11 +1182,11 @@ c1s2_badge8 = Badge.create({
 
 
 # teacher2 = User.create({
-                        first_name: "Hugo",
-                        last_name: "Professorman",
-                        user_name: "hugoproff",
-                        email: "b@b.b",
-                        password: "aaa111",
-                        teacher: true,
-                        classroom: class2
-                      })
+                      #   first_name: "Hugo",
+                      #   last_name: "Professorman",
+                      #   user_name: "hugoproff",
+                      #   email: "b@b.b",
+                      #   password: "aaa111",
+                      #   teacher: true,
+                      #   classroom: class2
+                      # })

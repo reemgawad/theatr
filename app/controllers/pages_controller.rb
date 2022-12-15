@@ -8,7 +8,10 @@ class PagesController < ApplicationController
   end
 
   def play
+    @markers = [lat: 45.49721, lng: -73.57862 ]
+  end
 
-    @markers = [lat: 45.514707, lng: -73.562758 ]
+  def dashboard
+    @users = User.where(admin: false).order(first_name: :asc)
   end
 end
