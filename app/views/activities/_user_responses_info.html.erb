@@ -11,6 +11,6 @@
   <%= simple_form_for([question, response], html: {class: "d-none", data: {edit_ajax_target: "responseEdit"} }) do |f| %>
     <%= f.input :text %>
     <%= f.hidden_field :activity_question_id, value: question.id %>
-    <%= f.submit "Save Answer" %>
+    <%= f.submit "Save Answer", class: "btn btn-primary" %>
   <% end %>
 </div>
