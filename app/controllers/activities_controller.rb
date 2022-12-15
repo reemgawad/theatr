@@ -26,7 +26,6 @@ class ActivitiesController < ApplicationController
     @badge = Badge.find_by(user: @profile, activity: @activity)
     @teacher_comment = TeacherComment.new
     @user_response = UserResponse.new()
-    raise
 
     # find the activity_questions
     @activity_questions = @activity.activity_questions
