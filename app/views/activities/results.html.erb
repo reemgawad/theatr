@@ -1,7 +1,6 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
   <h3 class="text-center mt-3">Level: <%= @activity.level %></h3>
-  <h3><%= "#{@profile.first_name} #{@profile.last_name}'s Answers:" while @profile.teacher %></h3>
   <% if !@activity.badges.find_by(user: current_user).unavailable? %>
     <div>
       <%# get all activities questions %>
@@ -29,15 +28,15 @@
 
             <% if current_user.teacher? %>
               <%= simple_form_for([response, @teacher_comment]) do |f| %>
-                <%= f.input :text %>
+                <%= f.input :text, label: false, placeholder: "Leave a comment..." %>
                 <%= f.hidden_field :user_response_id, value: response.id %>
-                <%= f.submit "Save Comment!", class: "btn btn-primary" %>
+                <%= f.submit "Save Comment", class: "btn btn-primary" %>
               <% end %>
-            <% end  %>
+            <% end %>
 
             <%# find the teacher comment for this user_response %>
             <% TeacherComment.where(user_response: response).each do |comment| %>
-              <p><%= comment.text %> - <%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %> </p>
+              <p class="align-self-end"><%= comment.text %> - <em><%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %></em> </p>
             <% end %>
           <% end %>
         </div>
