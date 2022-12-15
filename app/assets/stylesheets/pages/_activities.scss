@@ -1,0 +1,23 @@
+.activity-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.activity {
+  width: 20vw;
+  height: 20vh;
+  padding: 16px;
+  border-radius: $border-radius;
+  border: solid 1px $gray;
+  margin: 16px;
+  box-shadow: 3px 2px 8px rgb(221, 221, 221);
+
+  a {
+    text-decoration: none;
+    color: $primary
+  }
+
+  p, h3 {
+    text-align: center;
+  }
+}
