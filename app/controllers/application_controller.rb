@@ -27,10 +27,10 @@ class ApplicationController < ActionController::Base
 
     #  for all activity create a badge for the user and this activity
     @activities.each do |activity|
-      if activity.activity_type == 'Review'
-        Badge.create(user: current_user, activity: activity, status: 'unavailable')
-      else
+      if activity.level == '1'
         Badge.create(user: current_user, activity: activity, status: 'available')
+      else
+        Badge.create(user: current_user, activity: activity, status: 'unavailable')
       end
     end
 

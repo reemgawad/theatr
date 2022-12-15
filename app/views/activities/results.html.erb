@@ -41,5 +41,11 @@
   <% end %>
 </div>
 
+<% if current_user.teacher? && @badge.status != "completed" %>
+  <form action="/badges/<%= @badge.id %>/completed">
+    <input type="submit" value="Mark As Completed">
+  </form>
+<% end %>
+
 <br>
 <%= link_to "Back to activities", activities_path %>
