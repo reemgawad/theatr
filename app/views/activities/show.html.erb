@@ -8,6 +8,8 @@
 <%# && Only show this link if the badge is not unavailable %>
 <% if !@activity.badges.find_by(user: current_user).unavailable?  %>
   <%= link_to "Start this activity", results_path([current_user, @activity]) unless current_user.teacher %>
+<% else %>
+  <h3>You can't complete this activity yet!</h3>
 <% end %>
 
 <%= link_to "Back to activities", activities_path %>
