@@ -11,6 +11,7 @@
 .header-box {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .profile-avatar {
@@ -23,8 +24,8 @@
   flex-direction: column;
 }
 
-.profile-block {
-  border: solid 1px $gray;
-  border-radius: $border-radius;
-  height: 124px;
+
+.center {
+  position: absolute;
+  right: 40%;
 }
