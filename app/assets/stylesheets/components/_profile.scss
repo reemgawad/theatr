@@ -10,21 +10,10 @@
 
 .header-box {
   display: flex;
-  justify-content: space-between;
+  justify-content:  flex-start;
 }
 
 .profile-avatar {
   width: 256px;
   border-radius: 32%;
-}
-
-.name-div {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-block {
-  border: solid 1px $gray;
-  border-radius: $border-radius;
-  height: 124px;
 }
