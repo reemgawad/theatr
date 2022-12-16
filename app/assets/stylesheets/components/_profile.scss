@@ -1,0 +1,30 @@
+.profile-box {
+  border: solid 1px $gray;
+  border-radius: $border-radius;
+  padding: 16px;
+  margin: 12px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-avatar {
+  width: 256px;
+  border-radius: 32%;
+}
+
+.name-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-block {
+  border: solid 1px $gray;
+  border-radius: $border-radius;
+  height: 124px;
+}
