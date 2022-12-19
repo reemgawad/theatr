@@ -15,9 +15,9 @@
 
   <hr>
 
-    <% @user.badges.each do |badge| %>
+    <% @badges.each do |badge| %>
       <div class="profile-box">
-        <p> <%= @user.first_name %> Achieved:</p>
+        <p> <%= @user.first_name %> <%= badge.status == "completed" ? "Achieved" : "Completed" %></p>
         <p><%= badge.updated_at.strftime("%a %b %e at %l:%M %p") %></p>
         <% if current_user.teacher? || current_user == @user%>
           <%= link_to 'See More', results_path(@user, badge.activity), class: "btn btn-primary" %>
