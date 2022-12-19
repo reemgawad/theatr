@@ -10,7 +10,6 @@
 
 .header-box {
   display: flex;
-  justify-content: space-between;
   position: relative;
 }
 
@@ -22,10 +21,14 @@
 .name-div {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  right: 30%;
 }
 
-
-.center {
-  position: absolute;
-  right: 40%;
+.info-box {
+  border: solid 1px $gray;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  width: 400px;
+  max-height: 200px;
 }
