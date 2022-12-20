@@ -1,5 +1,5 @@
 .badge {
-  border: 1px solid $primary;
+  border: 1px solid;
   width: 70px;
   height: 70px;
   border-radius: 100%;
@@ -8,6 +8,6 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: $primary;
+  // color: $primary;
   font-size: 12px;
 }
