@@ -1,20 +1,28 @@
-<% if user_signed_in? %>
+<div class="container">
+  <img class="rounded mx-auto d-block m-3"src="https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dGhlYXRyZXxlbnwwfHwwfHw%3D&w=1000&q=80" alt="" style="height: 400px">
 
-  <h1>Your Classroom</h1>
-  <% if current_user.teacher %>
-    <h2><%= link_to "View your classroom", classroom_path(@user.classroom) %></h2>
-  <% else %>
-    <h2>View your classmates' progress:</h2>
-  <% end %>
+  <div class="home-box">
+    <p>
+      Welcome to the show Mizushōbai (The Water Trade), this is an interactive theatre companion:
+      We're so lucky to have you here!
+    </p>
+  </div>
 
-  <br>
+  <div class="home-box">
+    <p>This is how you use the guide:</p>
+    <ul>
+      <li>Blah</li>
+      <li>Blah</li>
+      <li>Blah</li>
+      <li>Blah</li>
+    </ul>
+  </div>
 
-  <% current_user.classroom.users.each do |user| %>
-    <div>
-      <%= link_to "#{user.first_name} #{user.last_name}", profile_path(user) unless user.teacher? %>
+  <% if current_user %>
+    <div class="d-flex justify-content-evenly">
+      <%= link_to "Enter The Classroom", classroom_path(current_user.classroom), class: "btn btn-primary" %>
+      <%= link_to "Show Information", play_path, class: "btn btn-primary" %>
+      <%= link_to "Your Activities", activities_path, class: "btn btn-primary" if current_user.teacher != false  %>
     </div>
   <% end %>
-
-<% else %>
-  <h2>Please sign in to see your classroom.</h2>
-<% end %>
+</div>
