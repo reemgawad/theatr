@@ -9,4 +9,10 @@ class User < ApplicationRecord
   has_many :teacher_comments, foreign_key: :teacher_id
   has_many :teacher_comments, foreign_key: :student_id
   belongs_to :classroom
+
+  before_create :validate_access_code
+
+  def validate_access_code
+
+  end
 end
