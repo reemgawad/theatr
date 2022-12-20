@@ -281,8 +281,23 @@ puts "Creating activity 8 question!"
 act8_question1 = ActivityQuestion.create({
                                           question_text: "Please leave a review of the show.",
                                           response_text: "Thank you!",
-                                          activity: activity6
+                                          activity: activity8
                                         })
+
+puts "Crearting Admin Classroom"
+class0 = Classroom.create({name: "Class 0", date: DateTime.new(2022, 12, 14, 5, 30)})
+
+puts "Creating Admin 1"
+admin1 = User.create({
+                          first_name: "Ann",
+                          last_name: "Perkins",
+                          user_name: "fixthepit",
+                          email: "a@admin.com",
+                          password: "aaa111",
+                          teacher: true,
+                          classroom: class0,
+                          admin: true
+                        })
 
 puts "Creating classroom 1!"
 class1 = Classroom.create({ name: "Class 1", date: DateTime.new(2023, 2, 21, 19, 30) })
