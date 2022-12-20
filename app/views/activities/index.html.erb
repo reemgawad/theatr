@@ -15,7 +15,7 @@
   </div>
 
   <div class="activity-grid">
-    <% @unlocked_activities.each do |activity| %>
+    <% @unlocked_activities&.each do |activity| %>
       <div class="activity">
         <h3><%= activity.activity_type %>:</h3>
         <p><%= link_to activity.title, activity_path(activity) %></p>
@@ -23,7 +23,7 @@
       </div>
     <% end %>
 
-    <% @locked_activities.each do |activity| %>
+    <% @locked_activities&.each do |activity| %>
       <div class="activity">
         <h3><%= activity.activity_type %>:</h3>
         <p>activity locked</p>
