@@ -19,9 +19,10 @@ class User < ApplicationRecord
     if self.access_code == "placeholderTC"
       self.teacher = true
     else
-      # get all Classrooms access_codes and check if access code entered is one of them
+      # Check if access code entered is found in Classroom
       # if yes, self.classroom = that classroom
-      # if not, access code is incorrect
+      classroom = Classroom.find_by(access_code: self.access_code)
+      self.classroom = classroom unless classroom.nil?
     end
   end
 
