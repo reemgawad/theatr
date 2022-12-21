@@ -20,7 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "activity_type"
-    t.string "level"
   end
 
   create_table "activity_questions", force: :cascade do |t|
@@ -29,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194551) do
     t.bigint "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "choices", default: [], array: true
     t.index ["activity_id"], name: "index_activity_questions_on_activity_id"
   end
 

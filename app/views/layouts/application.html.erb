@@ -15,7 +15,11 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%= yield %>
+
+    <div class="content-wrap">
+      <%= yield %>
+    </div>
+
     <%= render "shared/flashes" %>
     <%= render "shared/footer" %>
   </body>

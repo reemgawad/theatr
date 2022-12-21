@@ -1,6 +1,5 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
-  <h3 class="text-center mt-3">Level: <%= @activity.level %></h3>
   <% if !@activity.badges.find_by(user: current_user).unavailable? || current_user.teacher %>
     <div>
       <%# get all activities questions %>
