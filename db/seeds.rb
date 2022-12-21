@@ -33,7 +33,7 @@ puts "Creating General Theater activity"
 
 general_theater = Activity.create({
   title: "General Theater",
-  activity_type: "Quiz",
+  activity_type: "Multiple",
   question_amount: 10
   })
 
