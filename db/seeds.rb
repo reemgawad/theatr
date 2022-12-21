@@ -29,15 +29,15 @@ Classroom.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
 
-puts "Creating General Theater activity"
+puts "Creating General Theater activity!"
 
 general_theater = Activity.create({
   title: "General Theater",
-  activity_type: "Multiple",
+  activity_type: "Quiz",
   question_amount: 10
   })
 
-puts "Creating General Theater questions"
+puts "Creating General Theater questions!"
 
 gen_theater_ques1 = ActivityQuestion.create({
                                           question_text: "This type of theatre was developed after the abolition of the existing theaters during the French Revolution.",
@@ -101,6 +101,93 @@ gen_theater_ques10 = ActivityQuestion.create({
                                           choices: ["wrap","draw","prop","cast"]
                                         })
 
+
+puts "Creating Post Show Activity!"
+post_show = Activity.create({
+                            title: "Post Show",
+                            activity_type: "quiz",
+                            question_amount: 10
+                            })
+
+puts "creating post show activity questions!"
+post_show_question1 = Activity.Create({
+                                      question_text: "Japan has a strong tradition of women",
+                                      response_text: "Being housewives after marriage",
+                                      activity: post_show,
+                                      choices: ["Being housewives after marriage","Becoming Geishas after marriage","Serving as government officials","Serving as nurses in the armed forces"]
+                                     })
+post_show_question2 = Activity.Create({
+                                      question_text: "The first Japanese immigrants came to San Francisco, or 'Soko' as they called it,
+                                      in 1869. Originally, these immigrants were predominantly",
+                                      response_text: "young men searching for new economic opportunities",
+                                      activity: post_show,
+                                      choices: ["children who were sent by their parents to work in factories","elderly widowed women with a small wealth to invest","Young women eager to marry an American man","young men searching for new economic opportunities"]
+                                     })
+post_show_question3 = Activity.Create({
+                                      question_text: "The state or quality of being worthy of honor or respect is",
+                                      response_text: "Dignity",
+                                      activity: post_show,
+                                      choices: ["Allowance","Dignity","Freedom","Trust"]
+                                     })
+post_show_question4 = Activity.Create({
+                                      question_text: "The Japanese word geisha literally means",
+                                      response_text: "Art person",
+                                      activity: post_show,
+                                      choices: ["Woman who greets","Likable one","Master of tea ceremony","Art person"]
+                                     })
+post_show_question5 = Activity.Create({
+                                      question_text: "In the play, Mizushobai, characters are referred to as",
+                                      response_text: "Earth elements",
+                                      activity: post_show,
+                                      choices: ["Earth Elements","War criminals","Sand patterns","Ageless entities"]
+                                     })
+post_show_question6 = Activity.Create({
+                                      question_text: "The character KIYOKO decides to go America to",
+                                      response_text: "Mke enough money to buy back the mountain of mikan",
+                                      activity: post_show,
+                                      choices: ["Make enough money to buy back the mountain of mikan","Restore honor to her family","Allow for the passage of the rest of her family to America","Start a brothel"]
+                                     })
+post_show_question7 = Activity.Create({
+                                      question_text: "In which city does KI arrive when she travels from Japan?",
+                                      response_text: "Victoria",
+                                      activity: post_show,
+                                      choices: ["Kamloops","Vancouver","Kamloops","Nanaimo"]
+                                     })
+post_show_question8 = Activity.Create({
+                                      question_text: "MAMA K is displaced and loses everything due to the racial backlashes of World War II. What happens to her?",
+                                      response_text: "She labors in jail",
+                                      activity: post_show,
+                                      choices: ["She flees back to Japan","She builds another brothel","She marries a poor sailor","She labors in jail"]
+                                     })
+post_show_question9 = Activity.Create({
+                                      question_text: "ENEMY ALIEN KIYO can be described as angry, forceful and driving.",
+                                      response_text: "True",
+                                      activity: post_show,
+                                      choices: ["True","False"]
+                                     })
+post_show_question10 = Activity.Create({
+                                      question_text: "A “Beppinsan” is a euphemism for a",
+                                      response_text: "Prostitute",
+                                      activity: post_show,
+                                      choices: ["Judge","Prostitute","Cobbler","Priest"]
+                                     })
+
+puts "Creating Pre Show Activity!"
+pre_show = Activity.create({
+                            title: "Pre Show",
+                            activity_type: "Review",
+                            question_amount: 1
+                          })
+
+puts "Creating pre show activity questions!"
+pre_show_question = ActivityQuestion.create({
+                                          question_text: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).
+                                          Research the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words.",
+                                          response_text: "",
+                                          activity: pre_show,
+                                          choices: []
+                                        })
+
 puts "Creating activity 1!"
 activity1 = Activity.create({
                               title: "Quiz 1",
@@ -113,7 +200,6 @@ act1_question1 = ActivityQuestion.create({
                                           question_text: "What is the lead's name?",
                                           response_text: "Marky Mark",
                                           activity: activity1,
-                                          choices: [],
                                           choices: []
                                         })
 act1_question2 = ActivityQuestion.create({
