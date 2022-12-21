@@ -110,62 +110,62 @@ post_show = Activity.create({
                             })
 
 puts "creating post show activity questions!"
-post_show_question1 = Activity.Create({
+post_show_question1 = ActivityQuestion.create({
                                       question_text: "Japan has a strong tradition of women",
                                       response_text: "Being housewives after marriage",
                                       activity: post_show,
                                       choices: ["Being housewives after marriage","Becoming Geishas after marriage","Serving as government officials","Serving as nurses in the armed forces"]
                                      })
-post_show_question2 = Activity.Create({
+post_show_question2 = ActivityQuestion.create({
                                       question_text: "The first Japanese immigrants came to San Francisco, or 'Soko' as they called it,
                                       in 1869. Originally, these immigrants were predominantly",
                                       response_text: "young men searching for new economic opportunities",
                                       activity: post_show,
                                       choices: ["children who were sent by their parents to work in factories","elderly widowed women with a small wealth to invest","Young women eager to marry an American man","young men searching for new economic opportunities"]
                                      })
-post_show_question3 = Activity.Create({
+post_show_question3 = ActivityQuestion.create({
                                       question_text: "The state or quality of being worthy of honor or respect is",
                                       response_text: "Dignity",
                                       activity: post_show,
                                       choices: ["Allowance","Dignity","Freedom","Trust"]
                                      })
-post_show_question4 = Activity.Create({
+post_show_question4 = ActivityQuestion.create({
                                       question_text: "The Japanese word geisha literally means",
                                       response_text: "Art person",
                                       activity: post_show,
                                       choices: ["Woman who greets","Likable one","Master of tea ceremony","Art person"]
                                      })
-post_show_question5 = Activity.Create({
+post_show_question5 = ActivityQuestion.create({
                                       question_text: "In the play, Mizushobai, characters are referred to as",
                                       response_text: "Earth elements",
                                       activity: post_show,
                                       choices: ["Earth Elements","War criminals","Sand patterns","Ageless entities"]
                                      })
-post_show_question6 = Activity.Create({
+post_show_question6 = ActivityQuestion.create({
                                       question_text: "The character KIYOKO decides to go America to",
                                       response_text: "Mke enough money to buy back the mountain of mikan",
                                       activity: post_show,
                                       choices: ["Make enough money to buy back the mountain of mikan","Restore honor to her family","Allow for the passage of the rest of her family to America","Start a brothel"]
                                      })
-post_show_question7 = Activity.Create({
+post_show_question7 = ActivityQuestion.create({
                                       question_text: "In which city does KI arrive when she travels from Japan?",
                                       response_text: "Victoria",
                                       activity: post_show,
                                       choices: ["Kamloops","Vancouver","Kamloops","Nanaimo"]
                                      })
-post_show_question8 = Activity.Create({
+post_show_question8 = ActivityQuestion.create({
                                       question_text: "MAMA K is displaced and loses everything due to the racial backlashes of World War II. What happens to her?",
                                       response_text: "She labors in jail",
                                       activity: post_show,
                                       choices: ["She flees back to Japan","She builds another brothel","She marries a poor sailor","She labors in jail"]
                                      })
-post_show_question9 = Activity.Create({
+post_show_question9 = ActivityQuestion.create({
                                       question_text: "ENEMY ALIEN KIYO can be described as angry, forceful and driving.",
                                       response_text: "True",
                                       activity: post_show,
                                       choices: ["True","False"]
                                      })
-post_show_question10 = Activity.Create({
+post_show_question10 = ActivityQuestion.create({
                                       question_text: "A “Beppinsan” is a euphemism for a",
                                       response_text: "Prostitute",
                                       activity: post_show,
@@ -509,7 +509,24 @@ class1_student1 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 1, class 1, pre show activity badge!"
+c1s1_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student1
+                      })
+puts "Creating student 1, class 1, post show activity badge!"
+c1s1_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class1_student1
+})
+puts "Creating student 1, class 1, general theater 1 badge!"
+c1s1_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student1
+})
 puts "Creating student 1, class 1, activity 1 badge!"
 c1s1_badge1 = Badge.create({
                         status: 4,
@@ -971,7 +988,30 @@ class1_student2 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 2, class 1, pre showactivity  badge!"
+c1s2_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student2
+                      })
+puts "Creating student 2, class 1, post show activity badge!"
+c1s2_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class1_student2
+                      })
+puts "Creating student 2, class 1, general theater activity badge!"
+c1s2_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student2
+                      })
+puts "Creating student 2, class 1, activity 1 badge!"
+c1s2_badge1 = Badge.create({
+                        status: 4,
+                        activity: activity1,
+                        user: class1_student2
+                      })
 puts "Creating student 2, class 1, activity 1 badge!"
 c1s2_badge1 = Badge.create({
                         status: 4,
@@ -1299,13 +1339,31 @@ class1_student3 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 3, class 1, pre show activity badge!"
+c1s3_pre_show_badge = Badge.create({
+                            status: 1,
+                            activity: pre_show,
+                            user: class1_student3
+                          })
+puts "Creating student 3, class 1, post show activity badge!"
+c1s3_post_show_badge = Badge.create({
+                            status: 1,
+                            activity: post_show,
+                            user: class1_student3
+                          })
+puts "Creating student 3, class 1, general theater activity badge!"
+c1s3_general_theater_badge = Badge.create({
+                            status: 1,
+                            activity: general_theater,
+                            user: class1_student3
+                          })
 puts "Creating student 3, class 1, activity 1 badge!"
 c1s3_badge1 = Badge.create({
                         status: 4,
                         activity: activity1,
                         user: class1_student3
                       })
+
 
 puts "Creating student 3, class 1, activity 1 answers!"
 c1s3a1r1 = UserResponse.create({
@@ -1627,7 +1685,24 @@ class1_student4 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 4, class 1, pre show activity badge!"
+c1s4_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student4
+                      })
+puts "Creating student 4, class 1, post show activity badge!"
+c1s4_post_show_badge = Badge.create({
+                        status: 1,
+                        activity:post_show,
+                        user: class1_student4
+                      })
+puts "Creating student 4, class 1, general theater activity  badge!"
+c1s4_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student4
+                      })
 puts "Creating student 4, class 1, activity 1 badge!"
 c1s4_badge1 = Badge.create({
                         status: 4,
@@ -1898,7 +1973,24 @@ class1_student5 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 5, class 1, pre show activity  badge!"
+c1s5_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student5
+                      })
+puts "Creating student 5, class 1, post show activity badge!"
+c1s5_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class1_student5
+                      })
+puts "Creating student 5, class 1, general theater activity badge!"
+c1s5_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student5
+                      })
 puts "Creating student 5, class 1, activity 1 badge!"
 c1s5_badge1 = Badge.create({
                         status: 4,
@@ -2171,7 +2263,24 @@ class1_student6 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 6, class 1, pre show activity badge!"
+c1s6_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student6
+                      })
+puts "Creating student 6, class 1, post show activity badge!"
+c1s6_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class1_student6
+                      })
+puts "Creating student 6, class 1, general theater activity badge!"
+c1s6_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student6
+                      })
 puts "Creating student 6, class 1, activity 1 badge!"
 c1s6_badge1 = Badge.create({
                         status: 4,
@@ -2442,7 +2551,24 @@ class1_student7 = User.create({
                           teacher: false,
                           classroom: class1
                         })
-
+puts "Creating student 7, class 1, pre show activity badge!"
+c1s7_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student7
+                      })
+puts "Creating student 7, class 1, post show activity badge!"
+c1s7_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class1_student7
+                      })
+puts "Creating student 7, class 1, general theater activity badge!"
+c1s7_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student7
+                      })
 puts "Creating student 7, class 1, activity 1 badge!"
 c1s7_badge1 = Badge.create({
                         status: 4,
@@ -2714,6 +2840,24 @@ class1_student8 = User.create({
                           classroom: class1
                         })
 
+puts "Creating student 8, class 1, pre show activity badge!"
+c1s8_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class1_student8
+                      })
+puts "Creating student 8, class 1, post show activity badge!"
+c1s8_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class1_student8
+                      })
+puts "Creating student 8, class 1, general theater activity badge!"
+c1s8_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class1_student8
+                      })
 puts "Creating student 8, class 1, activity 1 badge!"
 c1s8_badge1 = Badge.create({
                         status: 1,
@@ -2794,7 +2938,24 @@ class2_student1 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 1, class 2, pre show activity badge!"
+c2s1_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student1
+                      })
+puts "Creating student 1, class 2, post show activity badge!"
+c2s1_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student1
+                      })
+puts "Creating student 1, class 2, general theater activity badge!"
+c2s1_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student1
+                      })
 puts "Creating student 1, class 2, activity 1 badge!"
 c2s1_badge1 = Badge.create({
                         status: 4,
@@ -3257,6 +3418,24 @@ class2_student2 = User.create({
                           classroom: class2
                         })
 
+puts "Creating student 2, class 2, pre show activity badge!"
+c2s2_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student2
+                      })
+puts "Creating student 2, class 2, post show activity badge!"
+c2s2_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student2
+                      })
+puts "Creating student 2, class 2, general theater activity badge!"
+c2s2_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student2
+                      })
 puts "Creating student 2, class 2, activity 1 badge!"
 c2s2_badge1 = Badge.create({
                         status: 4,
@@ -3584,7 +3763,24 @@ class2_student3 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 3, class 2, pre show activity badge!"
+c2s3_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student3
+                      })
+puts "Creating student 3, class 2, post show activity badge!"
+c2s3_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student3
+                      })
+puts "Creating student 3, class 2, general theater activity badge!"
+c2s3_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student3
+                      })
 puts "Creating student 3, class 2, activity 1 badge!"
 c2s3_badge1 = Badge.create({
                         status: 4,
@@ -3912,7 +4108,24 @@ class2_student4 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 4, class 2, pre show activity badge!"
+c2s4_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student4
+                      })
+puts "Creating student 4, class 2, post show activity badge!"
+c2s4_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student4
+                      })
+puts "Creating student 4, class 2, general theater activity badge!"
+c2s4_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student4
+                      })
 puts "Creating student 4, class 2, activity 1 badge!"
 c2s4_badge1 = Badge.create({
                         status: 4,
@@ -4183,7 +4396,24 @@ class2_student5 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 5, class 2, pre show activity badge!"
+c2s5_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student5
+                      })
+puts "Creating student 5, class 2, post show activity badge!"
+c2s5_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student5
+                      })
+puts "Creating student 5, class 2, general theater activity badge!"
+c2s5_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student5
+                      })
 puts "Creating student 5, class 2, activity 1 badge!"
 c2s5_badge1 = Badge.create({
                         status: 4,
@@ -4456,7 +4686,24 @@ class2_student6 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 6, class 2, pre show activity badge!"
+c2s6_pre_show_badge = Badge.create({
+                        status:1,
+                        activity: pre_show,
+                        user: class2_student6
+                      })
+puts "Creating student 6, class 2, post show activity badge!"
+c2s6_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student6
+                      })
+puts "Creating student 6, class 2, general theater activity badge!"
+c2s6_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student6
+                      })
 puts "Creating student 6, class 2, activity 1 badge!"
 c2s6_badge1 = Badge.create({
                         status: 4,
@@ -4727,7 +4974,24 @@ class2_student7 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 7, class 2, pre show activity badge!"
+c2s7_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student7
+                      })
+puts "Creating student 7, class 2, post show activity badge!"
+c2s7_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student7
+                      })
+puts "Creating student 7, class 2, general theater activity badge!"
+c2s7_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student7
+                      })
 puts "Creating student 7, class 2, activity 1 badge!"
 c2s7_badge1 = Badge.create({
                         status: 4,
@@ -4998,7 +5262,24 @@ class2_student8 = User.create({
                           teacher: false,
                           classroom: class2
                         })
-
+puts "Creating student 8, class 2, pre show activity badge!"
+c2s8_pre_show_badge = Badge.create({
+                        status: 1,
+                        activity: pre_show,
+                        user: class2_student8
+                      })
+puts "Creating student 8, class 2, post show activity badge!"
+c2s8_post_show_badge = Badge.create({
+                        status: 1,
+                        activity: post_show,
+                        user: class2_student8
+                      })
+puts "Creating student 8, class 2, general theater activity badge!"
+c2s8_general_theater_badge = Badge.create({
+                        status: 1,
+                        activity: general_theater,
+                        user: class2_student8
+                      })
 puts "Creating student 8, class 2, activity 1 badge!"
 c2s8_badge1 = Badge.create({
                         status: 1,
