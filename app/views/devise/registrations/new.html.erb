@@ -23,7 +23,11 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.select :classroom_id,
+    <%= f.input :access_code,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "access_code" }%>
+    <%#= f.select :classroom_id,
                  options_from_collection_for_select(Classroom.all, "id", "name"),
                  required: true,
                  input_html: { autocomplete: "classroom" }%>
