@@ -19,7 +19,6 @@
       <div class="activity">
         <h3><%= activity.activity_type %>:</h3>
         <p><%= link_to activity.title, activity_path(activity) %></p>
-        <p>Level: <%= activity.level %></p>
       </div>
     <% end %>
 
@@ -27,7 +26,6 @@
       <div class="activity">
         <h3><%= activity.activity_type %>:</h3>
         <p>activity locked</p>
-        <p>Level: <%= activity.level %></p>
       </div>
     <% end %>
   </div>
