@@ -331,18 +331,19 @@ puts "Creating classroom 1!"
 class1 = Classroom.create({ name: "Class 1", date: DateTime.new(2023, 2, 21, 19, 30) })
 
 puts "Creating teacher, class 1!"
-teacher1 = User.create({
+teacher1 = User.create!({
                           first_name: "John",
                           last_name: "Teacherman",
                           user_name: "johnteach",
                           email: "a@a.a",
                           password: "aaa111",
                           teacher: true,
-                          classroom: class1
+                          classroom: class1,
+                          access_code: "placeholderTC"
                         })
 
 puts "Creating student 1, class 1!"
-class1_student1 = User.create({
+class1_student1 = User.create!({
                           first_name: "Jim",
                           last_name: "Halpert",
                           user_name: "jimhalpert",
@@ -2623,7 +2624,8 @@ teacher2 = User.create({
                           email: "s@s.s",
                           password: "aaa111",
                           teacher: true,
-                          classroom: class2
+                          classroom: class2,
+                          access_code: "placeholderTC"
                         })
 
 puts "Creating student 1, class 2!"

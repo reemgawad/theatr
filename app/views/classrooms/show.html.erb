@@ -9,6 +9,7 @@
     <div class="blurb">
       <p><strong>Welcome to your classroom!</strong></p>
       <p>The showing is on <%= @classroom.date %></p>
+      <p>This classroom's access code is: <strong><%= @classroom.access_code %></strong> - Share it with your students!</p>
       <p>Have a look at your students' progress:</p>
     </div>
     <% @students.each do |student| %>

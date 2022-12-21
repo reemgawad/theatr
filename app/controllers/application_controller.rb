@@ -33,15 +33,12 @@ class ApplicationController < ActionController::Base
       #   Badge.create(user: current_user, activity: activity, status: 'unavailable')
       # end
     end
-
   end
 
   protected
 
-
-
   def configure_devise_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:classroom_id, :first_name, :last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:classroom_id, :first_name, :last_name, :access_code])
     # devise_parameter_sanitizer.permit(:account_update, keys: [:username, { tags: [] }, :age, :description, photos: []])
   end
 end
