@@ -29,6 +29,78 @@ Classroom.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
 
+puts "Creating General Theater activity"
+
+general_theater = Activity.create({
+  title: "General Theater",
+  activity_type: "Quiz",
+  question_amount: 10
+  })
+
+puts "Creating General Theater questions"
+
+gen_theater_ques1 = ActivityQuestion.create({
+                                          question_text: "This type of theatre was developed after the abolition of the existing theaters during the French Revolution.",
+                                          response_text: "Melodrama",
+                                          activity: general_theater,
+                                          choices: ["Melodrama","Absurdist","Musical Theatre","Realism"]
+                                        })
+gen_theater_ques2 = ActivityQuestion.create({
+                                          question_text: "The playwright of Tartuffe",
+                                          response_text: "Moliere",
+                                          activity: general_theater,
+                                          choices: ["Bejart","Shakespeare","Milton","Moliere"]
+                                        })
+gen_theater_ques3 = ActivityQuestion.create({
+                                          question_text: "This type of theatre emerged from Europe as a reaction to modernist theatre in the
+                                          middle of the twentieth century",
+                                          response_text: "Postmodern theatre",
+                                          activity: general_theater,
+                                          choices: ["The Meisner Technique","Postmodern theatre","The Stanislavski Method","Elizabethan Theatre"]
+                                        })
+gen_theater_ques4 = ActivityQuestion.create({
+                                          question_text: "She was English an playwright, poet, prose writer and translator from the Restoration Era.",
+                                          response_text: "Aphra Behn",
+                                          activity: general_theater,
+                                          choices: ["Sarah Bernhardt","Aphra Behn","Ada Lovelace","Jane Fonda"]
+                                        })
+gen_theater_ques5 = ActivityQuestion.create({
+                                          question_text: "African American playwright who wrote ten plays known as the Century Cycle:",
+                                          response_text: "August Wilson",
+                                          activity: general_theater,
+                                          choices: ["Lionel Richie","Lawrence Fishburn","August Wilson","Benny Goodman"]
+                                        })
+gen_theater_ques6 = ActivityQuestion.create({
+                                          question_text: "This person’s job is to call the cues of a theatre performance.",
+                                          response_text: "General Manager",
+                                          activity: general_theater,
+                                          choices: ["Technical Director","Front Of House","General Manager","Stage Manager"]
+                                        })
+gen_theater_ques7 = ActivityQuestion.create({
+                                          question_text: "The term describing how equipment on stage is suspended and/or moved.",
+                                          response_text: "Stage Rigging",
+                                          activity: general_theater,
+                                          choices: ["Stage Rigging","Stage Propping","Stage Prepping","Stage Croping"]
+                                        })
+gen_theater_ques8 = ActivityQuestion.create({
+                                          question_text: "A person who learns another's role in order to be able to act as a replacement at short notice.",
+                                          response_text: "Understudy",
+                                          activity: general_theater,
+                                          choices: ["First Responder","Second Lead","Understudy","Study Guide"]
+                                        })
+gen_theater_ques9 = ActivityQuestion.create({
+                                          question_text: "This person manages all aspects of a theatre production.",
+                                          response_text: "Producer",
+                                          activity: general_theater,
+                                          choices: ["Director","Producer","Stage Manager","Swing"]
+                                        })
+gen_theater_ques10 = ActivityQuestion.create({
+                                          question_text: "To choose actors to play particular parts in a play.",
+                                          response_text: "cast",
+                                          activity: general_theater,
+                                          choices: ["wrap","draw","prop","cast"]
+                                        })
+
 puts "Creating activity 1!"
 activity1 = Activity.create({
                               title: "Quiz 1",
