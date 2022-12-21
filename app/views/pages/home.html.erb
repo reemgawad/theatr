@@ -19,12 +19,18 @@
   </div>
 
   <div class="home-box">
-    <p>This is how you use the guide:</p>
+    <p>How to use the app:</p>
     <ul>
-      <li>Blah</li>
-      <li>Blah</li>
-      <li>Blah</li>
-      <li>Blah</li>
+      <% if user_signed_in? %>
+        <li>Click on your icon to see the navigation menu</li>
+        <li>Read up on the show using the 'Show Information' button below</li>
+        <li>Access your activities using the 'Your Activities' button below or using the navigation menu</li>
+        <li>Complete an activity to earn a badge and view your teacher's comments when you're done!</li>
+      <% else %>
+        <li>If you are a new user, make sure you have your access code handy</li>
+        <li>Sign up using the button below and enter your access code</li>
+        <li>After creating your account, you will be able to view your classroom and activities!</li>
+      <% end %>
     </ul>
   </div>
 
