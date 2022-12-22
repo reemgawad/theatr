@@ -1,0 +1,14 @@
+<div>
+  <h1><%= @classroom.name %></h1>
+</div>
+
+<div>
+  <% @activities.each do |e| %>
+    <h2><%= e.title %></h2>
+    <% e.badges.each do |b|%>
+    <% if b.user.classroom == @classroom %>
+      <p><%= b.status %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

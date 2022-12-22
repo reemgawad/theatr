@@ -9,4 +9,8 @@ class ClassroomPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def settings?
+    true
+  end
 end

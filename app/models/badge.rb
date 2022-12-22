@@ -1,6 +1,7 @@
 class Badge < ApplicationRecord
   belongs_to :user
   belongs_to :activity
+  has_one :classroom, through: :user
 
   has_and_belongs_to_many :classroom, through: :user
 

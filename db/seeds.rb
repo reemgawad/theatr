@@ -496,9 +496,6 @@ admin1 = User.create({
                           admin: true
                         })
 
-puts "Creating classroom 1!"
-class1 = Classroom.create({ name: "Class 1", date: DateTime.new(2023, 2, 21, 19, 30) })
-
 puts "Creating teacher, class 1!"
 teacher1 = User.create!({
                           first_name: "John",
@@ -507,8 +504,7 @@ teacher1 = User.create!({
                           email: "a@a.a",
                           password: "aaa111",
                           teacher: true,
-                          classroom: class1,
-                          # access_code: "placeholderTC"
+                          access_code: "placeholderTC"
                         })
 
 puts "Creating student 1, class 1!"
@@ -519,7 +515,8 @@ class1_student1 = User.create!({
                           email: "c@c.c",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 1, class 1, pre show activity badge!"
 c1s1_pre_show_badge = Badge.create({
@@ -998,7 +995,8 @@ class1_student2 = User.create({
                           email: "d@d.d",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 2, class 1, pre showactivity  badge!"
 c1s2_pre_show_badge = Badge.create({
@@ -1024,13 +1022,6 @@ c1s2_badge1 = Badge.create({
                         activity: activity1,
                         user: class1_student2
                       })
-puts "Creating student 2, class 1, activity 1 badge!"
-c1s2_badge1 = Badge.create({
-                        status: 4,
-                        activity: activity1,
-                        user: class1_student2
-                      })
-
 puts "Creating student 2, class 1, activity 1 answers!"
 c1s2a1r1 = UserResponse.create({
                                   user: class1_student2,
@@ -1349,7 +1340,8 @@ class1_student3 = User.create({
                           email: "e@e.e",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 3, class 1, pre show activity badge!"
 c1s3_pre_show_badge = Badge.create({
@@ -1695,7 +1687,8 @@ class1_student4 = User.create({
                           email: "f@f.f",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 4, class 1, pre show activity badge!"
 c1s4_pre_show_badge = Badge.create({
@@ -1983,7 +1976,8 @@ class1_student5 = User.create({
                           email: "g@g.g",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 5, class 1, pre show activity  badge!"
 c1s5_pre_show_badge = Badge.create({
@@ -2273,7 +2267,8 @@ class1_student6 = User.create({
                           email: "h@h.h",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 6, class 1, pre show activity badge!"
 c1s6_pre_show_badge = Badge.create({
@@ -2561,7 +2556,8 @@ class1_student7 = User.create({
                           email: "i@i.i",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 7, class 1, pre show activity badge!"
 c1s7_pre_show_badge = Badge.create({
@@ -2849,7 +2845,8 @@ class1_student8 = User.create({
                           email: "j@j.j",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class1
+                          classroom: teacher1.classroom,
+                          access_code: "class##{teacher1.classroom.id}"
                         })
 
 puts "Creating student 8, class 1, pre show activity badge!"
@@ -2926,9 +2923,6 @@ c1s8_badge8 = Badge.create({
                         user: class1_student8
                       })
 
-puts "Creating classroom 2!"
-class2 = Classroom.create({ name: "Class 2", date: DateTime.new(2023, 2, 22, 19, 30) })
-
 puts "Creating teacher, class 2!"
 teacher2 = User.create({
                           first_name: "Hugo",
@@ -2937,7 +2931,6 @@ teacher2 = User.create({
                           email: "s@s.s",
                           password: "aaa111",
                           teacher: true,
-                          classroom: class2,
                           access_code: "placeholderTC"
                         })
 
@@ -2949,7 +2942,8 @@ class2_student1 = User.create({
                           email: "r@r.r",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 1, class 2, pre show activity badge!"
 c2s1_pre_show_badge = Badge.create({
@@ -3428,7 +3422,8 @@ class2_student2 = User.create({
                           email: "k@k.k",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 
 puts "Creating student 2, class 2, pre show activity badge!"
@@ -3774,7 +3769,8 @@ class2_student3 = User.create({
                           email: "l@l.l",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 3, class 2, pre show activity badge!"
 c2s3_pre_show_badge = Badge.create({
@@ -4119,7 +4115,8 @@ class2_student4 = User.create({
                           email: "m@m.m",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 4, class 2, pre show activity badge!"
 c2s4_pre_show_badge = Badge.create({
@@ -4407,7 +4404,8 @@ class2_student5 = User.create({
                           email: "n@n.n",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 5, class 2, pre show activity badge!"
 c2s5_pre_show_badge = Badge.create({
@@ -4697,7 +4695,8 @@ class2_student6 = User.create({
                           email: "o@o.o",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 6, class 2, pre show activity badge!"
 c2s6_pre_show_badge = Badge.create({
@@ -4985,7 +4984,8 @@ class2_student7 = User.create({
                           email: "p@p.",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 7, class 2, pre show activity badge!"
 c2s7_pre_show_badge = Badge.create({
@@ -5273,7 +5273,8 @@ class2_student8 = User.create({
                           email: "q@q.q",
                           password: "aaa111",
                           teacher: false,
-                          classroom: class2
+                          classroom: teacher2.classroom,
+                          access_code: "class##{teacher2.classroom.id}"
                         })
 puts "Creating student 8, class 2, pre show activity badge!"
 c2s8_pre_show_badge = Badge.create({
