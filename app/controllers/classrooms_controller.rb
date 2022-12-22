@@ -11,7 +11,13 @@ class ClassroomsController < ApplicationController
   def settings
     @classroom = Classroom.find(params[:id])
     @activities = Activity.all
-    @badges = Badges.where(activity: params[:activity_id], classroom: @classroom)
+    @students = User.where(classroom: @classroom, teacher: false)
+    @badges = []
+    @students.each do |e|
+      e.badges.each do |b|
+        @badges << b
+      end
+    end
     authorize @user, policy_class: ClassroomPolicy
     raise
   end
