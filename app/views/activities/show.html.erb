@@ -1,15 +1,18 @@
-<h1><%= @activity.title %></h1>
+<div class="container">
+  <h1><%= @activity.title %></h1>
 
-<% @activity.activity_questions.each do |question| %>
-  <p><%= question.question_text %></p>
-<% end %>
+  <%# @activity.activity_questions.each do |question| %>
+    <p><%#= question.question_text %></p>
+  <%# end %>
 
-<%# Only show this link to students %>
-<%# && Only show this link if the badge is not unavailable %>
-<% if !@activity.badges.find_by(user: current_user).unavailable?  %>
-  <%= link_to "Start this activity", results_path([current_user, @activity]) unless current_user.teacher %>
-<% else %>
-  <h3>You can't complete this activity yet!</h3>
-<% end %>
+  <h2><%= @activity.description %></h2>
+  <%# Only show this link to students %>
+  <%# && Only show this link if the badge is not unavailable %>
+  <% if !@activity.badges.find_by(user: current_user).unavailable?  %>
+    <%= link_to "Start this activity", results_path([current_user, @activity]), class: "btn btn-primary mb-1", style: "min-width: 200px;" unless current_user.teacher %>
+  <% else %>
+    <h3>You can't complete this activity yet!</h3>
+  <% end %>
 
-<%= link_to "Back to activities", activities_path %>
+  <%= link_to "Back to activities", activities_path, class: "btn btn-primary mb-1", style: "min-width: 200px;" %>
+</div>
