@@ -11,9 +11,9 @@ class ClassroomsController < ApplicationController
   def settings
     @classroom = Classroom.find(params[:id])
     @activities = Activity.all
-    @badges = Badge.joins(:user).where(classroom: @classroom)
+    @badges = Badges.where(activity: params[:activity_id], classroom: @classroom)
     authorize @user, policy_class: ClassroomPolicy
-    # raise
+    raise
   end
 
   def set_color
@@ -24,5 +24,18 @@ class ClassroomsController < ApplicationController
       marked: 'purple',
       completed: 'green'
     }
+  end
+
+  private
+
+  def change_availablity(badges)
+    badges.each do |e|
+      if e.status > 0
+        e.status = 0
+      else
+        e.status = 1
+      end
+      e.save
+    end
   end
 end
