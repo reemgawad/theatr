@@ -19,7 +19,7 @@ class ClassroomsController < ApplicationController
       end
     end
     authorize @user, policy_class: ClassroomPolicy
-    raise
+    # raise
   end
 
   def set_color
@@ -34,14 +34,21 @@ class ClassroomsController < ApplicationController
 
   private
 
-  def change_availablity(badges)
-    badges.each do |e|
-      if e.status > 0
-        e.status = 0
-      else
-        e.status = 1
-      end
-      e.save
-    end
-  end
+  # def toggle_availability
+  #   raise
+  #   @badges = []
+  #   @students.each do |e|
+  #     e.badges.each do |b|
+  #       @badges << b
+  #     end
+  #   end
+  #   badges.each do |e|
+  #     if e.status > 0
+  #       e.status = 0
+  #     else
+  #       e.status = 1
+  #     end
+  #     e.save
+  #   end
+  # end
 end

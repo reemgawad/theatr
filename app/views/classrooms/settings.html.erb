@@ -4,6 +4,11 @@
 
 <div>
   <% @activities.each do |e| %>
-  <p><%= e.title %></p>
+    <h2><%= e.title %></h2>
+    <% e.badges.each do |b|%>
+    <% if b.user.classroom == @classroom %>
+      <p><%= b.status %></p>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

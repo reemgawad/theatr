@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   resources :classrooms, only: [ :show ]
 
   get "/classrooms/:id/settings", to: "classrooms#settings", as: :settings
+
+  # get "/classrooms/:classroom_id/activities/:id/toggle_availability", to: "classrooms#toggle_availability", as: :toggle_availability
 end
