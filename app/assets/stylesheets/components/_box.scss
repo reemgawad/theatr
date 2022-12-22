@@ -13,3 +13,23 @@
   padding: 16px;
   overflow-x: scroll;
 }
+
+.photo-box img {
+  max-height: 350px;
+  max-width: 350px;
+
+  object-fit: cover;
+}
+
+.photo-box-actor {
+  background-color: rgb(230,230,230);
+  padding: 16px;
+  overflow-x: scroll;
+}
+
+.photo-box-actor img {
+  max-height: 250px;
+  max-width: 250px;
+
+  object-fit: cover;
+}
