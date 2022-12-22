@@ -6,7 +6,7 @@
   <% @activities.each do |e| %>
     <h2><%= e.title %></h2>
     <form action="/activities/<%= e.id %>/toggle_availability">
-      <input type="submit">
+      <input type="submit" value="Choose This Activity" class="btn btn-primary">
     </form>
     <% e.badges.each do |b|%>
     <% if b.user.classroom == @classroom %>

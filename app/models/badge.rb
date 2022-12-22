@@ -1,4 +1,5 @@
 class Badge < ApplicationRecord
+  validates :user, uniqueness: { scope: :activity }
   belongs_to :user
   belongs_to :activity
   has_one :classroom, through: :user

@@ -45,7 +45,6 @@ class ClassroomsController < ApplicationController
       end
       badge.save
     end
-    raise
   end
 
   private
