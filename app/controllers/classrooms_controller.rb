@@ -1,7 +1,7 @@
 class ClassroomsController < ApplicationController
   def show
     @user = current_user
-    @classroom = Classroom.find(params[:id])
+    @classroom = Classroom.find(@user.classroom_id)
     @teacher = User.find_by(classroom: @classroom, teacher: true)
     @students = User.where(classroom: @classroom, teacher: false)
     authorize @user, policy_class: ClassroomPolicy

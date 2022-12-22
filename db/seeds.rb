@@ -508,7 +508,7 @@ teacher1 = User.create!({
                           password: "aaa111",
                           teacher: true,
                           classroom: class1,
-                          access_code: "placeholderTC"
+                          # access_code: "placeholderTC"
                         })
 
 puts "Creating student 1, class 1!"
