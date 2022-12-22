@@ -34,7 +34,8 @@ puts "Creating General Theater activity!"
 general_theater = Activity.create({
   title: "General Theater",
   activity_type: "Quiz",
-  question_amount: 10
+  question_amount: 10,
+  description: "Testing Testing!"
   })
 
 puts "Creating General Theater questions!"
@@ -104,9 +105,10 @@ gen_theater_ques10 = ActivityQuestion.create({
 
 puts "Creating Post Show Activity!"
 post_show = Activity.create({
-                            title: "Post Show",
-                            activity_type: "quiz",
-                            question_amount: 10
+                              title: "Post Show",
+                              activity_type: "quiz",
+                              question_amount: 10,
+                              description: "Testing Testing!"
                             })
 
 puts "creating post show activity questions!"
@@ -176,7 +178,8 @@ puts "Creating Pre Show Activity!"
 pre_show = Activity.create({
                             title: "Pre Show",
                             activity_type: "Review",
-                            question_amount: 1
+                            question_amount: 1,
+                            description: "Testing Testing!"
                           })
 
 puts "Creating pre show activity questions!"
@@ -192,7 +195,8 @@ puts "Creating activity 1!"
 activity1 = Activity.create({
                               title: "Quiz 1",
                               activity_type: "Quiz",
-                              question_amount: 8
+                              question_amount: 8,
+                              description: "Testing Testing!"
                             })
 
 puts "Creating activity 1 questions!"
@@ -249,7 +253,8 @@ puts "Creating activity 2!"
 activity2 = Activity.create({
                               title: "Quiz 2",
                               activity_type: "Quiz",
-                              question_amount: 8
+                              question_amount: 8,
+                              description: "Testing Testing!"
                             })
 
 puts "Creating activity 2 questions!"
@@ -306,7 +311,8 @@ puts "Creating activity 3!"
 activity3 = Activity.create({
                               title: "Match 1",
                               activity_type: "Match",
-                              question_amount: 4
+                              question_amount: 4,
+                              description: "Testing Testing!"
                             })
 
 puts "Createing activity 3 questions!"
@@ -339,7 +345,8 @@ puts "Creating activity 4!"
 activity4 = Activity.create({
                               title: "Art 1",
                               activity_type: "Art",
-                              question_amount: 1
+                              question_amount: 1,
+                              description: "Testing Testing!"
                             })
 
 puts "Creating activity 4 question!"
@@ -354,7 +361,8 @@ puts "Creating activity 5!"
 activity5 = Activity.create({
                               title: "Quiz 3",
                               activity_type: "Quiz",
-                              question_amount: 8
+                              question_amount: 8,
+                              description: "Testing Testing!"
                             })
 
 puts "Creating activity 5 questions!"
@@ -411,7 +419,8 @@ puts "Creating activity 6!"
 activity6 = Activity.create({
                               title: "Match 2",
                               activity_type: "Match",
-                              question_amount: 4
+                              question_amount: 4,
+                              description: "Testing Testing!"
                             })
 
 puts "Createing activity 6 questions!"
@@ -444,7 +453,8 @@ puts "Creating activity 7!"
 activity7 = Activity.create({
                               title: "Art 2",
                               activity_type: "Art",
-                              question_amount: 1
+                              question_amount: 1,
+                              description: "Testing Testing!"
                             })
 
 puts "Creating activity 7 question!"
@@ -459,7 +469,8 @@ puts "Creating activity 8!"
 activity8 = Activity.create({
                               title: "Show Review",
                               activity_type: "Review",
-                              question_amount: 1
+                              question_amount: 1,
+                              description: "Testing Testing!"
                             })
 
 puts "Creating activity 8 question!"
