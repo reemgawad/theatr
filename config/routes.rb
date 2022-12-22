@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   end
 
   resources :classrooms, only: [ :show ]
+
+  get "/classrooms/:id/settings", to: "classrooms#settings", as: :settings
 end

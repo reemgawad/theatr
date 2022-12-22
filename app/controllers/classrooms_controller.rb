@@ -8,6 +8,14 @@ class ClassroomsController < ApplicationController
     set_color
   end
 
+  def settings
+    @classroom = Classroom.find(params[:id])
+    @activities = Activity.all
+    @badges = Badge.joins(:user).where(classroom: @classroom)
+    authorize @user, policy_class: ClassroomPolicy
+    # raise
+  end
+
   def set_color
     @color = {
       unavailable: 'red',
