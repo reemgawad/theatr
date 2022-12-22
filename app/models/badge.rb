@@ -2,6 +2,8 @@ class Badge < ApplicationRecord
   belongs_to :user
   belongs_to :activity
 
+  has_and_belongs_to_many :classroom, through: :user
+
   enum status: {
     unavailable: 0,
     available: 1,
