@@ -105,10 +105,10 @@ gen_theater_ques10 = ActivityQuestion.create({
 
 puts "Creating Post Show Activity!"
 post_show = Activity.create({
-                              title: "Post Show",
-                              activity_type: "quiz",
+                              title: "Post Show: Mizushōbai: At a Glance",
+                              activity_type: "Quiz",
                               question_amount: 10,
-                              description: "Testing Testing!"
+                              description: "What ideas, concepts and facts can you remember from Julie Tamiko Manning’s play, Mizushōbai? Let’s find out with this little post-show quiz!"
                             })
 
 puts "creating post show activity questions!"
@@ -179,7 +179,7 @@ pre_show = Activity.create({
                             title: "Pre Show",
                             activity_type: "Review",
                             question_amount: 1,
-                            description: "Testing Testing!"
+                            description: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).\nResearch the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words."
                           })
 
 puts "Creating pre show activity questions!"
