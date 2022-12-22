@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_20_194551) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_22_175037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,10 +20,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "activity_type"
+    t.text "description"
   end
 
   create_table "activity_questions", force: :cascade do |t|
-    t.string "question_text"
+    t.text "question_text"
     t.string "response_text"
     t.bigint "activity_id", null: false
     t.datetime "created_at", null: false
@@ -51,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194551) do
   end
 
   create_table "teacher_comments", force: :cascade do |t|
-    t.string "text"
+    t.text "text"
     t.bigint "teacher_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_194551) do
   create_table "user_responses", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "activity_question_id", null: false
-    t.string "text"
+    t.text "text"
     t.string "picture"
     t.boolean "correct"
     t.datetime "created_at", null: false
