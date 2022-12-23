@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   def generate_classroom
     if self.teacher == true
-      classroom = Classroom.create!(date: DateTime.new(2022, 12, 14, 5, 30))
+      classroom = Classroom.create!(date: DateTime.new(2023, 2, 21, 11, 00))
       classroom.access_code = "class##{classroom.id}"
       classroom.save!
       self.classroom = classroom
