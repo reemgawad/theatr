@@ -21,7 +21,6 @@ class ClassroomsController < ApplicationController
     authorize @user, policy_class: ClassroomPolicy
   end
 
-
   def toggle_availability
     @classroom = Classroom.where(id: current_user.classroom.id)
     @activity = Activity.find(params[:id])
@@ -52,5 +51,4 @@ class ClassroomsController < ApplicationController
       completed: 'green'
     }
   end
-
 end
