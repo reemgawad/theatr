@@ -10,7 +10,7 @@
       <p><strong>Welcome to your classroom!</strong></p>
       <p>The showing is on <%= @classroom.date %></p>
       <p>This classroom's access code is: <strong><%= @classroom.access_code %></strong> - Share it with your students!</p>
-      <p><%= link_to "Your classroom settings", settings_path(@classroom) %></p>
+      <p><%= link_to "Your classroom settings", settings_path(@classroom), class: "btn btn-primary" %></p>
       <p>Have a look at your students' progress:</p>
     </div>
     <% @students.each do |student| %>
