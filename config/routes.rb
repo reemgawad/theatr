@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # post "/user_responses/:id/teacher_comments", to: "teacher_comments#create", as:
 
   get "/badges/:id/completed", to: "badges#completed", as: :completed
+  get "/badges/:id/marked", to: "badges#marked", as: :marked
 
   get "/dashboard", to: "pages#dashboard", as: :dashboard
 
