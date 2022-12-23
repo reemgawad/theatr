@@ -38,7 +38,7 @@ class ClassroomsController < ApplicationController
     end
 
     @badges.each do |badge|
-      badge.status = "available"
+      badge.status = "available" if status == "unavailable"
       badge.save
     end
   end
