@@ -30,7 +30,11 @@
           <% end %>
         </div>
         <div>
-          <%= "#{((completed_badges.length / (student.badges.length.to_f)) * 100).to_i}%" %>
+        <% if !completed_badges.empty? %>
+          <%= "#{((completed_badges.length / student.badges.length.to_f) * 100).to_i}%" %>
+        <% else %>
+          <p>0%</p>
+        <% end %>
         </div>
       </div>
     <% end %>
