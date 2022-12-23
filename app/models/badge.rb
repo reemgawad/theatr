@@ -4,10 +4,9 @@ class Badge < ApplicationRecord
   belongs_to :activity
 
   enum status: {
-    unavailable: 0,
-    available: 1,
-    started: 2,
-    marked: 3,
-    completed: 4
+    available: 0,
+    started: 1,
+    marked: 2,
+    completed: 3
   }
 end
