@@ -482,7 +482,7 @@ act8_question1 = ActivityQuestion.create({
                                         })
 
 puts "Crearting Admin Classroom"
-class0 = Classroom.create({name: "Class 0", date: DateTime.new(2022, 12, 14, 5, 30)})
+class0 = Classroom.create({name: "Class 0", date: DateTime.new(2023, 12, 14, 5, 30)})
 
 puts "Creating Admin 1"
 admin1 = User.create({
