@@ -82,7 +82,6 @@ class ActivitiesController < ApplicationController
   #   end
   # end
 
-
   def update_badge_status
     # If activity_type == Review
     # Look at the badges associated
