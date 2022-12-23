@@ -2,13 +2,13 @@
   <% if current_user.teacher == false %>
     <div class="blurb">
       <p>Your teacher is: <%= "#{@teacher.first_name} #{@teacher.last_name}" %></p>
-      <p>The showing is on <%= @classroom.date %></p>
-      <p>Have a peek at what badges your classmates have!</p>
+      <p>The showing is on <%= @classroom.date.strftime("%A, %B %d %Y at %H%M %Z") %></p>
+      <%# <p>Have a peek at what badges your classmates have!</p> %>
     </div>
   <% else %>
     <div class="blurb">
       <p><strong>Welcome to your classroom!</strong></p>
-      <p>The showing is on <%= @classroom.date %></p>
+      <p>The showing is on <%= @classroom.date.strftime("%A, %B %d %Y at %H%M %Z") %></p>
       <p>This classroom's access code is: <strong><%= @classroom.access_code %></strong> - Share it with your students!</p>
       <p><%= link_to "Your classroom settings", settings_path(@classroom), class: "btn btn-primary" %></p>
       <p>Have a look at your students' progress:</p>
@@ -19,12 +19,14 @@
         <div class="d-flex justify-content-between align-items-center">
           <% completed_badges = [] %>
           <% student.badges.each do |b| %>
-            <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
-              <p><%= b.activity.title %></p>
-              <p>Type: <%= b.activity.activity_type %></p>
-              <%= link_to b.status, results_path(student, b.activity), class: "badge", style: "color:#{@color[b.status.to_sym]}" %>
-              <% completed_badges << b if b.status == "completed" %>
-            </div>
+            <% if @classroom.activities.include?(b.activity.title) %>
+              <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
+                <p><%= b.activity.title %></p>
+                <p>Type: <%= b.activity.activity_type %></p>
+                <%= link_to b.status, results_path(student, b.activity), class: "badge", style: "color:#{@color[b.status.to_sym]}" %>
+                <% completed_badges << b if b.status == "completed" %>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <div>

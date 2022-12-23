@@ -11,32 +11,53 @@ class ClassroomsController < ApplicationController
   def settings
     @classroom = Classroom.find(params[:id])
     @activities = Activity.all
-    @students = User.where(classroom: @classroom, teacher: false)
-    @badges = []
-    @students.each do |e|
-      e.badges.each do |b|
-        @badges << b
-      end
-    end
     authorize @user, policy_class: ClassroomPolicy
   end
 
-
-  def toggle_availability
-    @classroom = Classroom.where(id: current_user.classroom.id)
+  def add_activity
+    @classroom = current_user.classroom
     @activity = Activity.find(params[:id])
     @students = User.where(classroom: @classroom)
-
     @badges = []
 
+    @classroom.activities << @activity.title
+    @classroom.save
+
+    # get all the badges for the student in the classroom
     @students.each do |student|
       student.badges.each do |badge|
         @badges << badge if badge.activity == @activity
       end
     end
 
+    # make all active value to true
     @badges.each do |badge|
-      badge.status = "available" if status == "unavailable"
+      badge.active = true
+      badge.save
+    end
+  end
+
+  def remove_activity
+    @classroom = current_user.classroom
+    @activity = Activity.find(params[:id])
+    @students = User.where(classroom: @classroom)
+    @badges = []
+
+    @classroom.activities.delete(@activity.title)
+    @classroom.save
+
+    # get all the badges for the student in the classroom
+    @students.each do |student|
+      student.badges.each do |badge|
+        if badge.activity == @activity
+          @badges << badge
+        end
+      end
+    end
+
+    # make the active vaue to false
+    @badges.each do |badge|
+      badge.active = false
       badge.save
     end
   end
@@ -45,12 +66,10 @@ class ClassroomsController < ApplicationController
 
   def set_color
     @color = {
-      unavailable: 'red',
       available: 'blue',
       started: 'orange',
       marked: 'purple',
       completed: 'green'
     }
   end
-
 end

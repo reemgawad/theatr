@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
-  after_action :create_badges, only: :create
   include Pundit::Authorization
 
   # Pundit: allow-list approach
@@ -19,20 +18,6 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
-  end
-
-  def create_badges
-    # find all activities
-    @activities = Activity.all
-
-    #  for all activity create a badge for the user and this activity
-    @activities.each do |activity|
-      # if activity.level == '1'
-      badge = Badge.new(user: current_user, activity: activity, status: 'available') if current_user.teacher == false
-      # else
-      #   Badge.create(user: current_user, activity: activity, status: 'unavailable')
-      # end
-    end
   end
 
   protected

@@ -1,11 +1,13 @@
 .grey-box {
   background-color: rgb(230,230,230);
   padding: 24px;
+  border-radius: $border-radius;
 }
 
 .grey-dark {
   background-color: rgb(200,200,200);
   padding: 16px;
+  border-radius: $border-radius;
 }
 
 .photo-box {

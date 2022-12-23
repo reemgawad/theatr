@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
 
     @badges = Badge.where("user_id = ? and (status = ? or status = ?)", @user, 4, 2)
     authorize @user, policy_class: ProfilePolicy
-
   end
 
   def toggle
