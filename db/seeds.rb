@@ -512,7 +512,7 @@ class1_student1 = User.create!({
                           first_name: "Jim",
                           last_name: "Halpert",
                           user_name: "jimhalpert",
-                          email: "c@c.c",
+                          email: "b@b.b",
                           password: "aaa111",
                           teacher: false,
                           classroom: teacher1.classroom,
@@ -522,19 +522,22 @@ puts "Creating student 1, class 1, pre show activity badge!"
 c1s1_pre_show_badge = Badge.create({
                                     status: 0,
                                     activity: pre_show,
-                                    user: class1_student1
+                                    user: class1_student1,
+                                    active: true
                                   })
 puts "Creating student 1, class 1, post show activity badge!"
 c1s1_post_show_badge = Badge.create({
                                       status: 0,
                                       activity: post_show,
-                                      user: class1_student1
+                                      user: class1_student1,
+                                      active: true
                                     })
 puts "Creating student 1, class 1, general theater 1 badge!"
 c1s1_general_theater_badge = Badge.create({
                                             status: 0,
                                             activity: general_theater,
-                                            user: class1_student1
+                                            user: class1_student1,
+                                            active: true
                                           })
 # puts "Creating student 1, class 1, activity 1 badge!"
 # c1s1_badge1 = Badge.create({
@@ -992,7 +995,7 @@ class1_student2 = User.create({
                           first_name: "Dwight",
                           last_name: "Schrute",
                           user_name: "beetsbeetsbeets",
-                          email: "d@d.d",
+                          email: "c@c.c",
                           password: "aaa111",
                           teacher: false,
                           classroom: teacher1.classroom,
@@ -1002,19 +1005,22 @@ puts "Creating student 2, class 1, pre showactivity  badge!"
 c1s2_pre_show_badge = Badge.create({
                                     status: 0,
                                     activity: pre_show,
-                                    user: class1_student2
+                                    user: class1_student2,
+                                    active: true
                                   })
 puts "Creating student 2, class 1, post show activity badge!"
 c1s2_post_show_badge = Badge.create({
                                       status: 0,
                                       activity: post_show,
-                                      user: class1_student2
+                                      user: class1_student2,
+                                      active: true
                                     })
 puts "Creating student 2, class 1, general theater activity badge!"
 c1s2_general_theater_badge = Badge.create({
                                             status: 0,
                                             activity: general_theater,
-                                            user: class1_student2
+                                            user: class1_student2,
+                                            active: true
                                           })
 # puts "Creating student 2, class 1, activity 1 badge!"
 # c1s2_badge1 = Badge.create({
@@ -1337,7 +1343,7 @@ class1_student3 = User.create({
                           first_name: "Jake",
                           last_name: "Peralta",
                           user_name: "jakemcclane",
-                          email: "e@e.e",
+                          email: "d@d.d",
                           password: "aaa111",
                           teacher: false,
                           classroom: teacher1.classroom,
@@ -1347,19 +1353,22 @@ puts "Creating student 3, class 1, pre show activity badge!"
 c1s3_pre_show_badge = Badge.create({
                             status: 0,
                             activity: pre_show,
-                            user: class1_student3
+                            user: class1_student3,
+                            active: true
                           })
 puts "Creating student 3, class 1, post show activity badge!"
 c1s3_post_show_badge = Badge.create({
                             status: 0,
                             activity: post_show,
-                            user: class1_student3
+                            user: class1_student3,
+                            active: true
                           })
 puts "Creating student 3, class 1, general theater activity badge!"
 c1s3_general_theater_badge = Badge.create({
                             status: 0,
                             activity: general_theater,
-                            user: class1_student3
+                            user: class1_student3,
+                            active: true
                           })
 # puts "Creating student 3, class 1, activity 1 badge!"
 # c1s3_badge1 = Badge.create({
