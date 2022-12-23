@@ -44,10 +44,12 @@ class User < ApplicationRecord
     #  for all activity create a badge for the user and this activity
     @activities.each do |activity|
       # if activity.level == '1'
-      @badge = Badge.new(user: self, activity: activity, status: 'available') if self.teacher == false
-      @badge.active = true if @classroom.activities.include?(activity.title)
+      if @classroom
+        @badge = Badge.new(user: self, activity: activity, status: 'available') if self.teacher == false
+        @badge.active = true if @classroom.activities.include?(activity.title)
 
-      @badge.save
+        @badge.save
+      end
       # else
       #   Badge.create(user: current_user, activity: activity, status: 'unavailable')
       # end
