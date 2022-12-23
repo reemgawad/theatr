@@ -779,16 +779,16 @@ puts "Creating Admin Classroom"
 class0 = Classroom.create({name: "Class 0", date: DateTime.new(2022, 12, 14, 5, 30)})
 
 puts "Creating Admin 1"
-admin1 = User.create({
-                          first_name: "Ann",
-                          last_name: "Perkins",
-                          user_name: "fixthepit",
-                          email: "a@admin.com",
-                          password: "aaa111",
-                          teacher: true,
-                          classroom: class0,
-                          admin: true
-                        })
+# admin1 = User.create({
+#                           first_name: "Ann",
+#                           last_name: "Perkins",
+#                           user_name: "fixthepit",
+#                           email: "a@admin.com",
+#                           password: "aaa111",
+#                           teacher: true,
+#                           classroom: class0,
+#                           admin: true
+#                         })
 
 puts "Creating teacher, class 1!"
 teacher1 = User.create!({
