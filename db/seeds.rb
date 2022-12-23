@@ -35,7 +35,7 @@ general_theater = Activity.create({
   title: "General Theater",
   activity_type: "Quiz",
   question_amount: 10,
-  description: "Testing Testing!"
+  description: "Know your theatre? Test your knowledge with these general questions!"
   })
 
 puts "Creating General Theater questions!"
