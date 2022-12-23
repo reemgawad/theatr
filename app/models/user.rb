@@ -13,6 +13,7 @@ class User < ApplicationRecord
   # validates :access_code, presence: true # RG: had to comment this out to run the seed
 
   before_validation :validate_access_code
+  after_create :create_badges
 
   def validate_access_code
     if access_code == "placeholderTC"
@@ -32,6 +33,26 @@ class User < ApplicationRecord
       classroom.access_code = "class##{classroom.id}"
       classroom.save!
       self.classroom = classroom
+    end
+  end
+
+  def create_badges
+    # find all activities
+    @activities = Activity.all
+    @classroom = Classroom.find_by(access_code: self.access_code)
+
+    #  for all activity create a badge for the user and this activity
+    @activities.each do |activity|
+      # if activity.level == '1'
+      if @classroom
+        @badge = Badge.new(user: self, activity: activity, status: 'available') if self.teacher == false
+        @badge.active = true if @classroom.activities.include?(activity.title)
+
+        @badge.save
+      end
+      # else
+      #   Badge.create(user: current_user, activity: activity, status: 'unavailable')
+      # end
     end
   end
 end
