@@ -177,7 +177,7 @@ post_show_question10 = ActivityQuestion.create({
 puts "Creating Pre Show Activity!"
 pre_show = Activity.create({
                             title: "Pre Show",
-                            activity_type: "Review",
+                            activity_type: "Essay",
                             question_amount: 1,
                             description: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).\nResearch the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words."
                           })
