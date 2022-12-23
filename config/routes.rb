@@ -29,5 +29,5 @@ Rails.application.routes.draw do
 
   get "/classrooms/:id/settings", to: "classrooms#settings", as: :settings
 
-  # get "/classrooms/:classroom_id/activities/:id/toggle_availability", to: "classrooms#toggle_availability", as: :toggle_availability
+  get "/activities/:id/toggle_availability", to: "classrooms#toggle_availability", as: :toggle_availability
 end

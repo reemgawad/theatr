@@ -19,8 +19,31 @@ class ClassroomsController < ApplicationController
       end
     end
     authorize @user, policy_class: ClassroomPolicy
-    # raise
   end
+
+
+  def toggle_availability
+    @classroom = Classroom.where(id: current_user.classroom.id)
+    @activity = Activity.find(params[:id])
+    @students = User.where(classroom: @classroom)
+
+    @badges = []
+
+    @students.each do |student|
+      student.badges.each do |badge|
+        if badge.activity == @activity
+          @badges << badge
+        end
+      end
+    end
+
+    @badges.each do |badge|
+      badge.status = "available" if status == "unavailable"
+      badge.save
+    end
+  end
+
+  private
 
   def set_color
     @color = {
@@ -32,23 +55,4 @@ class ClassroomsController < ApplicationController
     }
   end
 
-  private
-
-  # def toggle_availability
-  #   raise
-  #   @badges = []
-  #   @students.each do |e|
-  #     e.badges.each do |b|
-  #       @badges << b
-  #     end
-  #   end
-  #   badges.each do |e|
-  #     if e.status > 0
-  #       e.status = 0
-  #     else
-  #       e.status = 1
-  #     end
-  #     e.save
-  #   end
-  # end
 end

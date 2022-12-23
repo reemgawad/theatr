@@ -15,20 +15,16 @@
   </div>
 
   <div class="activity-grid">
-    <% @activities.each do |activity| %>
-      <div class="activity">
-        <h3><%= activity.activity_type %>:</h3>
-        <p><%= link_to activity.title, activity_path(activity) %></p>
-      </div>
+    <% @badges.each do |badge| %>
+      <% if badge.status == "available" %>
+        <div class="activity">
+          <h3><%= badge.activity.activity_type %></h3>
+          <p><%= link_to badge.activity.title, activity_path(badge.activity) %></p>
+        </div>
+      <% end %>
     <% end %>
+  </div>
 
-
-    <% @locked_activities&.each do |activity| %>
-      <div class="activity">
-        <h3><%= activity.activity_type %>:</h3>
-        <p>activity locked</p>
-      </div>
-    <% end %>
 
     <%# @unlocked_activities&.each do |activity| %>
       <%# <div class="activity"> %>
@@ -45,8 +41,6 @@
         <%# <p>Level: activity.level </p> %>
       <%# </div> %>
     <%# end %>
-
-  </div>
 
 
 
