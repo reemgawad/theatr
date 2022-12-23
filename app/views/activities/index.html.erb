@@ -15,13 +15,12 @@
   </div>
 
   <div class="activity-grid">
-    <% @badges.each do |badge| %>
-      <% if badge.status == "available" %>
+    <% @activities.each do |activity| %>
+        <% act = Activity.find_by(title: activity) %>
         <div class="activity">
-          <h3><%= badge.activity.activity_type %></h3>
-          <p><%= link_to badge.activity.title, activity_path(badge.activity) %></p>
+          <h3><%= act.activity_type %></h3>
+          <p><%= link_to act.title, activity_path(act) %></p>
         </div>
-      <% end %>
     <% end %>
   </div>
 
