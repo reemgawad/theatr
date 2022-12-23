@@ -54,7 +54,7 @@
   <% end %>
 
   <% if current_user.teacher? && @badge.status != "completed" %>
-    <form action="/badges/<%= @badge.id %>/completed">
+    <form class="text-center" action="/badges/<%= @badge.id %>/completed">
       <input type="submit" value="Mark As Completed" class="btn btn-primary">
     </form>
   <% end %>
