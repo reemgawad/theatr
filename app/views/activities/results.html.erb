@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
-  <% if current_user.teacher || !@activity.badges.find_by(user: current_user).unavailable? %>
+  <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
     <div>
       <%# get all activities questions %>
       <% @activity_questions.each_with_index do |question, i| %>
@@ -53,5 +53,9 @@
     </form>
   <% end %>
   <br>
-  <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <% if current_user.teacher? %>
+    <p class="text-center"><%= link_to "Back to classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+  <% else %>
+    <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <% end %>
 </div>
