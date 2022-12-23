@@ -10,12 +10,13 @@ class ActivitiesController < ApplicationController
   end
 
   def index
-    @badges = Badge.where(user: current_user)
+    @classroom = current_user.classroom
+
     @activities = policy_scope(Activity)
     if params[:query].present?
       @activities = Activity.search_by_title_and_type(params[:query])
     else
-      @activities = Activity.all
+      @activities = @classroom.activities
     end
 
   end
