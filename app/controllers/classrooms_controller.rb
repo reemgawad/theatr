@@ -14,7 +14,6 @@ class ClassroomsController < ApplicationController
     authorize @user, policy_class: ClassroomPolicy
   end
 
-
   def add_activity
     @classroom = current_user.classroom
     @activity = Activity.find(params[:id])
@@ -36,7 +35,6 @@ class ClassroomsController < ApplicationController
       badge.active = true
       badge.save
     end
-
   end
 
   def remove_activity
@@ -74,5 +72,4 @@ class ClassroomsController < ApplicationController
       completed: 'green'
     }
   end
-
 end
