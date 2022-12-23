@@ -27,9 +27,7 @@ class ClassroomsController < ApplicationController
     # get all the badges for the student in the classroom
     @students.each do |student|
       student.badges.each do |badge|
-        if badge.activity == @activity
-          @badges << badge
-        end
+        @badges << badge if badge.activity == @activity
       end
     end
 
