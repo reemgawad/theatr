@@ -31,9 +31,7 @@ class ClassroomsController < ApplicationController
 
     @students.each do |student|
       student.badges.each do |badge|
-        if badge.activity == @activity
-          @badges << badge
-        end
+        @badges << badge if badge.activity == @activity
       end
     end
 
