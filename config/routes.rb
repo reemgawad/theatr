@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :activities, only: [ :show, :index ]
-
+#
   resources :user_responses do
     resources :teacher_comments, only: [ :create ]
   end

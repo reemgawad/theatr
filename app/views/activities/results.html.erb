@@ -4,12 +4,16 @@
     <div>
       <%# get all activities questions %>
       <% @activity_questions.each_with_index do |question, i| %>
-        <div class="question">
+        <div class="question"
+          data-controller="edit-ajax"
+          data-edit-ajax-activity-id-value="<%= question.id %>"
+          data-edit-ajax-user-id-value="<%= current_user.id %>"
+        >
           <h4><%= i + 1 %>. <%= question.question_text %></h4>
           <%# Submit a response to each question ONLY if no response is already present %>
           <%# to prevent multiple responses to 1 question %>
           <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
-            <%= simple_form_for([question, @user_response]) do |f| %>
+            <%= simple_form_for([question, @user_response], data: {edit_ajax_target: "form"}) do |f| %>
               <%# If it's a review, the input field is a text field %>
               <% if question.activity.activity_type == "Review" %>
                 <%= f.input :text, as: :text, label: false %>
@@ -19,7 +23,7 @@
                 <%= f.input :text, label: false, placeholder: "Write your answer..." %>
               <% end %>
               <%= f.hidden_field :activity_question_id, value: question.id %>
-              <%= f.submit "Save Answer", class: "btn btn-primary" %>
+              <%= f.submit "Save Answer", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
             <% end %>
           <% end %>
 
