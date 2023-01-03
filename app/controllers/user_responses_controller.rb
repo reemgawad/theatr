@@ -1,5 +1,6 @@
 class UserResponsesController < ApplicationController
   before_action :set_activity, only: [:create, :update]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
     @user_response = UserResponse.new(user_response_params)

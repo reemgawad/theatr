@@ -21,8 +21,10 @@ export default class extends Controller {
 
   preventRefresh(event) {
     event.preventDefault();
+    let url = "/user_responses"
+    let answer = (this.formTarget.querySelector('input[name="user_response[text]"]:checked').value);
 
-    let answer = (document.querySelector('input[name="user_response[text]"]:checked').value);
+    console.log(answer)
 
     console.log(this.userIdValue)
 
