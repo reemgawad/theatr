@@ -6,6 +6,7 @@
       <% @activity_questions.each_with_index do |question, i| %>
         <div class="question"
           data-controller="edit-ajax"
+          data-edit-ajax-target="question"
           data-edit-ajax-activity-id-value="<%= question.id %>"
           data-edit-ajax-user-id-value="<%= current_user.id %>"
         >
