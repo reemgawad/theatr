@@ -27,7 +27,7 @@
           <% question.user_responses.where(user: @profile).each do |response| %>
             <%= render 'activities/user_responses_info', question: question, response: response %>
 
-            <% if current_user.teacher? %>
+            <% if current_user.teacher? && response.teacher_comments.empty? %>
               <%= simple_form_for([response, @teacher_comment]) do |f| %>
                 <%= f.input :text, label: false, placeholder: "Leave a comment..." %>
                 <%= f.hidden_field :user_response_id, value: response.id %>
