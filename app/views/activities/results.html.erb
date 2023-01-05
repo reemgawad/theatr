@@ -3,7 +3,6 @@
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
     <div>
       <%# get all activities questions %>
-
       <% @activity_questions.each_with_index do |question, i| %>
 
         <div class="question"
@@ -26,7 +25,7 @@
                 <%= f.input :text, label: false, placeholder: "Write your answer..." %>
               <% end %>
               <%= f.hidden_field :activity_question_id, value: question.id %>
-              <%# <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %> %>
+              <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
             <% end %>
           <% end %>
 

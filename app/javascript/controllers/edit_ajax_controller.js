@@ -22,27 +22,22 @@ export default class extends Controller {
   preventRefresh(event) {
     event.preventDefault();
 
-    document.querySelectorAll("form").forEach(this.submit());
+    let answer = (this.formTarget.querySelector('input[name="user_response[text]"]:checked').value);
 
-    // let answer = (this.formTarget.querySelector('input[name="user_response[text]"]:checked').value);
+    fetch(this.formTarget.action, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"text": answer, "activity_question_id": this.activityIdValue})
+    })
 
-    // fetch(this.formTarget.action, {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({"text": answer, "activity_question_id": this.activityIdValue})
-    // })
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
+    this.formTarget.classList.add("d-none")
 
-
-    // this.formTarget.classList.add("d-none")
-
-    // this.questionTarget.innerHTML +=
-    // `
-    //   <p>${answer}</p>
-    //   <input type="button" value="Edit" class="btn btn-primary" data-action="click->edit-ajax#revealForm">
-    // `
+    this.questionTarget.innerHTML +=
+    `
+      <p>${answer}</p>
+      <input type="button" value="Edit" class="btn btn-primary" data-action="click->edit-ajax#revealForm">
+    `
   }
 }
