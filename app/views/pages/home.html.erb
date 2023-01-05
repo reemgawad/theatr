@@ -42,8 +42,14 @@
     </div>
   </div>
 <% else %>
-  <div class="banner">
-    <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
-    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+  <div class="banner d-flex flex-column align-items-center justify-content-center">
+    <%# <div class=""> %>
+      <h1 class="m-3">Interactive Theatre Companion</h1>
+      <p class="m-3">Welcome, you're in the right place. </p>
+      <div style="width: 40vw;" class="m-5 d-flex justify-content-evenly">
+        <%= link_to "Login", new_user_session_path, class: "btn btn-secondary" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-secondary" %>
+      </div>
+    <%# </div> %>
   </div>
 <% end %>
