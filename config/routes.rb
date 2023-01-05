@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   get "/profiles/:user_id/activities/:id/results", to: "activities#results", as: :results
   resources :profiles, only: [ :show ]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :activities, only: [ :show, :index ]
 
