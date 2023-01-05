@@ -16,7 +16,6 @@ class TeacherCommentsController < ApplicationController
 
   def update
     @teacher_comment = TeacherComment.find(params[:id])
-    @user = @teacher_comment.user
     @teacher_comment.update(teacher_comment_params)
     if @teacher_comment.save!
       redirect_to results_path(@user, @activity)

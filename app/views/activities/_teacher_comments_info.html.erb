@@ -1,17 +1,20 @@
 <div data-controller="edit-ajax">
-  <div data-edit-ajax-target="commentInfo">
     <%# find the teacher comment for this user_response %>
     <% TeacherComment.where(user_response: response).each do |comment| %>
-      <p class="align-self-end"><%= comment.text %> - <em><%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %></em> </p>
-      <%= link_to "Edit", "#", class: "btn btn-primary", data: {action: "click->edit-ajax#revealCommentForm"} %>
-    <% end %>
-  </div>
+      <div data-edit-ajax-target="commentInfo">
+        <p class="align-self-end"><%= comment.text %> - <em><%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %></em> </p>
+        <% if comment.teacher == current_user %>
+          <%= link_to "Edit", "#", class: "btn btn-primary", data: {action: "click->edit-ajax#revealCommentForm"} %>
+        <% end %>
+      </div>
 
-  <% if current_user.teacher? %>
-    <%= simple_form_for([response, teacher_comment], html: {class: "d-none", data: {edit_ajax_target: "commentEdit"} }) do |f| %>
-      <%= f.input :text, label: false, placeholder: "Leave a comment..." %>
-      <%= f.hidden_field :user_response_id, value: response.id %>
-      <%= f.submit "Save Comment", class: "btn btn-primary" %>
+      <% if current_user.teacher? %>
+        <%= simple_form_for([response, comment], html: {class: "d-none", data: {edit_ajax_target: "commentEdit"} }) do |f| %>
+          <%= f.input :text, label: false, placeholder: "Leave a comment..." %>
+          <%= f.hidden_field :user_response_id, value: response.id %>
+          <%= f.submit "Save Comment", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+
     <% end %>
-  <% end %>
 </div>
