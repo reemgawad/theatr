@@ -25,6 +25,13 @@ class TeacherCommentsController < ApplicationController
     authorize @teacher_comment
   end
 
+  def destroy
+    @teacher_comment = TeacherComment.find(params[:id])
+    @teacher_comment.destroy
+    authorize @teacher_comment
+    redirect_to results_path(@teacher_comment.user_response.user, @teacher_comment.user_response.activity_question.activity)
+  end
+
   private
 
   def teacher_comment_params

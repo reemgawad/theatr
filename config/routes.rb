@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :teacher_comments, only: [ :create, :update ]
   end
 
+  resources :teacher_comments, only: [ :destroy ]
+
   resources :activity_questions do
     resources :user_responses, only: [ :create, :update ]
   end
