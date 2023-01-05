@@ -21,9 +21,7 @@
           <% student.badges.each do |b| %>
             <% if @classroom.activities.include?(b.activity.title) %>
               <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
-                <p><%= b.activity.title %></p>
-                <p>Type: <%= b.activity.activity_type %></p>
-                <%= link_to b.status, results_path(student, b.activity), class: "badge", style: "color:#{@color[b.status.to_sym]}" %>
+                <%= link_to b.activity.title, results_path(student, b.activity), class: "badge #{b.status.to_sym}-color" %>
                 <% completed_badges << b if b.status == "completed" %>
               </div>
             <% end %>
@@ -31,7 +29,7 @@
         </div>
         <div>
         <% if !completed_badges.empty? %>
-          <%= "#{((completed_badges.length / student.badges.length.to_f) * 100).to_i}%" %>
+          <p class="student-name" ><%= "#{((completed_badges.length / student.badges.length.to_f) * 100).to_i}%" %></p>
         <% else %>
           <p>0%</p>
         <% end %>

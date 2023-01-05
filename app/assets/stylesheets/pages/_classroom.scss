@@ -1,13 +1,15 @@
 .student-row {
   display: flex;
   align-items: center;
-  height: 15vh;
+  height: 20vh;
   border-radius: $border-radius-lg;
   border: solid 1px $gray;
   padding: 16px;
   margin: 24px 0;
   overflow-x: scroll;
   box-shadow: 3px 2px 8px rgb(221, 221, 221);
+  text-align: center;
+  overflow: hidden;
 
   p {
     margin: 0 8px;
@@ -15,6 +17,9 @@
   }
 
   .student-name {
+    width: 15vh;
+    color:black;
     text-decoration: none;
+    font-weight: bold;
   }
 }
