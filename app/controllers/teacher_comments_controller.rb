@@ -1,5 +1,5 @@
 class TeacherCommentsController < ApplicationController
-  before_action :set_user, only: [ :create ]
+  before_action :set_user, only: [ :create, :update ]
 
   def create
     @teacher_comment = TeacherComment.new(teacher_comment_params)
@@ -12,6 +12,18 @@ class TeacherCommentsController < ApplicationController
     else
       render 'activities/results', status: :unprocessable_entity
     end
+  end
+
+  def update
+    @teacher_comment = TeacherComment.find(params[:id])
+    @user = @teacher_comment.user
+    @teacher_comment.update(teacher_comment_params)
+    if @teacher_comment.save!
+      redirect_to results_path(@user, @activity)
+    else
+      render 'activities/results', status: :unprocessable_entity
+    end
+    authorize @teacher_comment
   end
 
   private

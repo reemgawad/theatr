@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :activities, only: [ :show, :index ]
 
   resources :user_responses do
-    resources :teacher_comments, only: [ :create ]
+    resources :teacher_comments, only: [ :create, :update ]
   end
 
   resources :activity_questions do
