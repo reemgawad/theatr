@@ -7,7 +7,7 @@ class ClassroomPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    true if @user.teacher
   end
 
   def settings?

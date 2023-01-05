@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $blue;
+  background: #252525;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -19,5 +19,12 @@
 }
 
 .navbar-brand {
-  color: $white
+  color: $white;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.nav-item, .dropdown-item {
+  font-size: large;
+  font-weight: bold;
 }

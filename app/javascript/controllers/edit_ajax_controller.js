@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="edit-ajax"
 export default class extends Controller {
+
   static targets = ["responseInfo", "responseEdit", "form", "question"]
   static values = {
     activityId: Number,
@@ -39,5 +40,11 @@ export default class extends Controller {
       <p>${answer}</p>
       <input type="button" value="Edit" class="btn btn-primary" data-action="click->edit-ajax#revealForm">
     `
+  }
+  revealCommentForm(event) {
+    event.preventDefault();
+    this.commentInfoTarget.classList.add("d-none");
+    this.commentEditTarget.classList.remove("d-none");
+
   }
 }

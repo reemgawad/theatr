@@ -14,13 +14,14 @@ Rails.application.routes.draw do
 
   get "/profiles/:user_id/activities/:id/results", to: "activities#results", as: :results
   resources :profiles, only: [ :show ]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :activities, only: [ :show, :index ]
 #
   resources :user_responses do
-    resources :teacher_comments, only: [ :create ]
+    resources :teacher_comments, only: [ :create, :update ]
   end
+
+  resources :teacher_comments, only: [ :destroy ]
 
   resources :activity_questions do
     resources :user_responses, only: [ :create, :update ]

@@ -1,7 +1,17 @@
 .btn-primary {
   color: white;
+  font-weight: bold;
 
   &:hover {
     color: white
+  }
+}
+
+.btn-secondary {
+  color: gray;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+
+  &:hover {
+    color: $gray
   }
 }

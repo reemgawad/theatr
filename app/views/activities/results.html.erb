@@ -33,7 +33,7 @@
           <% question.user_responses.where(user: @profile).each do |response| %>
             <%= render 'activities/user_responses_info', question: question, response: response %>
 
-            <% if current_user.teacher? %>
+            <% if current_user.teacher? && response.teacher_comments.empty? %>
               <%= simple_form_for([response, @teacher_comment]) do |f| %>
                 <%= f.input :text, label: false, placeholder: "Leave a comment..." %>
                 <%= f.hidden_field :user_response_id, value: response.id %>
@@ -41,10 +41,7 @@
               <% end %>
             <% end %>
 
-            <%# find the teacher comment for this user_response %>
-            <% TeacherComment.where(user_response: response).each do |comment| %>
-              <p class="align-self-end"><%= comment.text %> - <em><%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %></em> </p>
-            <% end %>
+            <%= render 'activities/teacher_comments_info', response: response %>
           <% end %>
         </div>
       <% end %>
