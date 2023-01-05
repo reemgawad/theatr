@@ -17,11 +17,11 @@
 
   <div class="d-flex justify-content-evenly flex-wrap">
     <% @activities.each do |activity| %>
-        <% act = Activity.find_by(title: activity) %>
-        <div class="activity">
-          <h3><%= act.activity_type %></h3>
-          <p><%= link_to act.title, activity_path(act) %></p>
-        </div>
+      <% act = Activity.find_by(title: activity) %>
+      <div class="activity">
+        <h3><%= act.activity_type %></h3>
+        <p><%= link_to act.title, activity_path(act) %></p>
+      </div>
     <% end %>
   </div>
 

@@ -35,10 +35,7 @@
               <% end %>
             <% end %>
 
-            <%# find the teacher comment for this user_response %>
-            <% TeacherComment.where(user_response: response).each do |comment| %>
-              <p class="align-self-end"><%= comment.text %> - <em><%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %></em> </p>
-            <% end %>
+            <%= render 'activities/teacher_comments_info', response: response %>
           <% end %>
         </div>
       <% end %>
