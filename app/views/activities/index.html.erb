@@ -3,16 +3,16 @@
 
   <div class="blurb">
     <%= link_to "Activity Settings", settings_path(@classroom), class: "btn btn-primary" if current_user.teacher? %>
-    <p>Have a look at all the activities you can do!</p>
-    <p>Or search for an activity below:</p>
-    <%= form_with url: activities_path, method: :get, class: "d-flex w-50 my-2 mx-auto" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find an activity"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
+    <%= "Have a look at all the activities you can do!" unless current_user.teacher? %>
+    <%# <p>Or search for an activity below:</p> %>
+    <%# <%= form_with url: activities_path, method: :get, class: "d-flex w-50 my-2 mx-auto" do %>
+      <%# <%= text_field_tag :query, %>
+        <%# params[:query], %>
+        <%# class: "form-control", %>
+        <%# placeholder: "Find an activity" %>
+      <%# %>
+      <%# <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%# <% end %>
   </div>
 
   <div class="d-flex justify-content-evenly flex-wrap">
