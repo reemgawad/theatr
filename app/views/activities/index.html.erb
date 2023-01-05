@@ -2,6 +2,7 @@
   <h1 class="text-center mt-3">Activities</h1>
 
   <div class="blurb">
+    <%= link_to "Activity Settings", settings_path(@classroom), class: "btn btn-primary" if current_user.teacher? %>
     <p>Have a look at all the activities you can do!</p>
     <p>Or search for an activity below:</p>
     <%= form_with url: activities_path, method: :get, class: "d-flex w-50 my-2 mx-auto" do %>
@@ -14,7 +15,7 @@
     <% end %>
   </div>
 
-  <div class="activity-grid">
+  <div class="d-flex justify-content-evenly flex-wrap">
     <% @activities.each do |activity| %>
         <% act = Activity.find_by(title: activity) %>
         <div class="activity">
@@ -42,6 +43,7 @@
     <%# end %>
 
 
-
-  <%= link_to "Back to homepage", root_path, class: "btn btn-primary" %>
+  <div class="d-flex justify-content-evenly flex-wrap">
+    <%= link_to "Back to homepage", root_path, class: "btn btn-primary" %>
+  </div>
 </div>
