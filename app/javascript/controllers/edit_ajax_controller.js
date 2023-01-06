@@ -2,9 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="edit-ajax"
 export default class extends Controller {
-  static targets = ["responseInfo", "responseEdit", "commentInfo", "commentEdit"]
+
+  static targets = ["responseInfo", "responseEdit", "form", "question"]
+  static values = {
+    activityId: Number,
+    userId: Number
+  }
 
   connect() {
+
   }
 
   revealForm(event) {
@@ -14,9 +20,31 @@ export default class extends Controller {
     this.responseEditTarget.classList.remove("d-none");
   }
 
+  preventRefresh(event) {
+    event.preventDefault();
+
+    let answer = (this.formTarget.querySelector('input[name="user_response[text]"]:checked').value);
+
+    fetch(this.formTarget.action, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"text": answer, "activity_question_id": this.activityIdValue})
+    })
+
+    this.formTarget.classList.add("d-none")
+
+    this.questionTarget.innerHTML +=
+    `
+      <p>${answer}</p>
+      <input type="button" value="Edit" class="btn btn-primary" data-action="click->edit-ajax#revealForm">
+    `
+  }
   revealCommentForm(event) {
     event.preventDefault();
     this.commentInfoTarget.classList.add("d-none");
     this.commentEditTarget.classList.remove("d-none");
+
   }
 }
