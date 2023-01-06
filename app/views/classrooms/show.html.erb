@@ -22,7 +22,7 @@
             <% if @classroom.activities.include?(b.activity.title) %>
               <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
                 <p><%= b.activity.title %></p>
-                <p>Type: <%= b.activity.activity_type %></p>
+                <p>Type: <%= b.activity.activity_type.name %></p>
                 <%= link_to b.status, results_path(student, b.activity), class: "badge", style: "color:#{@color[b.status.to_sym]}" %>
                 <% completed_badges << b if b.status == "completed" %>
               </div>

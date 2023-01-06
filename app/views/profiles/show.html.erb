@@ -15,8 +15,10 @@
   <hr>
   <% @badges.each do |badge| %>
     <div class="profile-box">
-      <p> <%= @user.first_name %> <%= badge.status == "completed" ? "Completed this activity" : "Started this activity" %></p>
-      <p><%= badge.updated_at.strftime("%a %b %e at %l:%M %p") %></p>
+    <p>Type:<%= badge.activity.activity_type.name %> <%= badge.activity.phase.name %></p>
+    <p><%= badge.activity.title %></p>
+      <p>You have <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
+      <p><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></p>
       <% if current_user.teacher? || current_user == @user%>
         <%= link_to 'See More', results_path(@user, badge.activity), class: "btn btn-primary" %>
       <% end %>

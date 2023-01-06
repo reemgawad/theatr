@@ -28,14 +28,26 @@ User.destroy_all
 Classroom.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
+Phase.destroy_all
+ActivityType.destroy_all
+
+puts "Creating Phases!"
+phase1 = Phase.create({ name: "Pre-Show" })
+phase2 = Phase.create({ name: "General" })
+phase3 = Phase.create({ name: "Post-Show" })
+
+puts "Creating Activity Types!"
+type1 = ActivityType.create({ name: "Quiz" })
+type2 = ActivityType.create({ name: "Essay" })
+type3 = ActivityType.create({ name: "Review" })
 
 puts "Creating General Theater activity!"
-
 general_theater = Activity.create({
   title: "General Theater",
-  activity_type: "Quiz",
   question_amount: 10,
-  description: "Know your theatre? Test your knowledge with these general questions!"
+  description: "Know your theatre? Test your knowledge with these general questions!",
+  activity_type: type1,
+  phase: phase2
   })
 
 puts "Creating General Theater questions!"
@@ -106,9 +118,10 @@ gen_theater_ques10 = ActivityQuestion.create({
 puts "Creating Post Show Activity!"
 post_show = Activity.create({
                               title: "Post Show: Mizushōbai: At a Glance",
-                              activity_type: "Quiz",
                               question_amount: 10,
-                              description: "What ideas, concepts and facts can you remember from Julie Tamiko Manning’s play, Mizushōbai? Let’s find out with this little post-show quiz!"
+                              description: "What ideas, concepts and facts can you remember from Julie Tamiko Manning’s play, Mizushōbai? Let’s find out with this little post-show quiz!",
+                              activity_type: type1,
+                              phase: phase3
                             })
 
 puts "creating post show activity questions!"
@@ -177,9 +190,10 @@ post_show_question10 = ActivityQuestion.create({
 puts "Creating Pre Show Activity!"
 pre_show = Activity.create({
                             title: "Pre Show",
-                            activity_type: "Essay",
                             question_amount: 1,
-                            description: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).\nResearch the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words."
+                            description: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).\nResearch the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words.",
+                            activity_type: type2,
+                            phase: phase1
                           })
 
 puts "Creating pre show activity questions!"

@@ -13,12 +13,13 @@ class ActivitiesController < ApplicationController
     @classroom = current_user.classroom
 
     @activities = policy_scope(Activity)
-    if params[:query].present?
-      @activities = Activity.search_by_title_and_type(params[:query])
-    else
-      @activities = @classroom.activities
-    end
-
+    @activities = @classroom.activities
+    # if params[:query].present?
+    #   @activities = Activity.search_by_title_and_type(params[:query])
+    # else
+    # end
+    @phases = Phase.all
+    @types = ActivityType.all
   end
 
   def results
@@ -89,7 +90,7 @@ class ActivitiesController < ApplicationController
     # for each badge, check if today is >= user.classroom.date
     # if yes, change the badge's status to available
     @activity = Activity.find(params[:id])
-    if @activity.activity_type == "Review"
+    if @activity.phase.name == "Post-Show"
       @activity.badges.each do |badge|
         if Date.today >= badge.user.classroom.date
           badge.available!
