@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["responseInfo", "responseEdit", "commentInfo", "commentEdit"]
 
   connect() {
+    console.log("hello world")
   }
 
   revealForm(event) {
