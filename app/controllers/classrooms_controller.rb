@@ -1,4 +1,6 @@
 class ClassroomsController < ApplicationController
+  after_action :verify_authorized, except: [:add_activity, :remove_activity]
+
   def show
     @user = current_user
     @classroom = Classroom.find(@user.classroom_id)
@@ -35,6 +37,7 @@ class ClassroomsController < ApplicationController
       badge.active = true
       badge.save
     end
+
   end
 
   def remove_activity

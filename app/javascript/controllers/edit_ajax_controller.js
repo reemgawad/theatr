@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   connect() {
-
   }
 
   revealForm(event) {
