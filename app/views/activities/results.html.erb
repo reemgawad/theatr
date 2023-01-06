@@ -4,12 +4,18 @@
     <div>
       <%# get all activities questions %>
       <% @activity_questions.each_with_index do |question, i| %>
-        <div class="question">
+
+        <div class="question"
+          data-controller="edit-ajax"
+          data-edit-ajax-target="question"
+          data-edit-ajax-activity-id-value="<%= question.id %>"
+          data-edit-ajax-user-id-value="<%= current_user.id %>"
+        >
           <h4><%= i + 1 %>. <%= question.question_text %></h4>
           <%# Submit a response to each question ONLY if no response is already present %>
           <%# to prevent multiple responses to 1 question %>
           <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
-            <%= simple_form_for([question, @user_response]) do |f| %>
+            <%= simple_form_for([question, @user_response], data: {edit_ajax_target: "form"}) do |f| %>
               <%# If it's a review, the input field is a text field %>
               <% if question.activity.activity_type == "Review" %>
                 <%= f.input :text, as: :text, label: false %>
@@ -19,7 +25,7 @@
                 <%= f.input :text, label: false, placeholder: "Write your answer..." %>
               <% end %>
               <%= f.hidden_field :activity_question_id, value: question.id %>
-              <%= f.submit "Save Answer", class: "btn btn-primary" %>
+              <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
             <% end %>
           <% end %>
 
@@ -35,10 +41,7 @@
               <% end %>
             <% end %>
 
-            <%# find the teacher comment for this user_response %>
-            <% TeacherComment.where(user_response: response).each do |comment| %>
-              <p class="align-self-end"><%= comment.text %> - <em><%= "#{comment.teacher.first_name} #{comment.teacher.last_name}" %></em> </p>
-            <% end %>
+            <%= render 'activities/teacher_comments_info', response: response %>
           <% end %>
         </div>
       <% end %>
@@ -54,7 +57,7 @@
   <% end %>
 
   <% if current_user.teacher? && @badge.status != "completed" %>
-    <form class="text-center" action="/badges/<%= @badge.id %>/completed">
+    <form  data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
       <input type="submit" value="Mark As Completed" class="btn btn-primary">
     </form>
   <% end %>

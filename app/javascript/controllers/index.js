@@ -7,6 +7,9 @@ import { application } from "./application"
 import EditAjaxController from "./edit_ajax_controller"
 application.register("edit-ajax", EditAjaxController)
 
+import ClassroomActivityController from "./classroom_activity_controller"
+application.register("classroom-activity", ClassroomActivityController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

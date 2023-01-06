@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "Theatr", root_path, class: "navbar-brand" %>
+    <%= link_to "Interactive Theater Companion", root_path, class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,13 +9,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="nav-item">
             <%= link_to "Classroom", classroom_path(current_user.classroom), class: "nav-link" if current_user.teacher? %>
           </li>
           <li class="nav-item">
             <%= link_to "Performance", play_path, class: "nav-link" %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to "Activities", activities_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">

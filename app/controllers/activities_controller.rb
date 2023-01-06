@@ -30,6 +30,8 @@ class ActivitiesController < ApplicationController
     @teacher_comment = TeacherComment.new
     @user_response = UserResponse.new()
 
+
+
     # find the activity_questions
     @activity_questions = @activity.activity_questions
 
