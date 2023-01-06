@@ -11,7 +11,7 @@
           data-edit-ajax-activity-id-value="<%= question.id %>"
           data-edit-ajax-user-id-value="<%= current_user.id %>"
         >
-          <h4><%= i + 1 %>. <%= question.question_text %></h4>
+          <h4 class="mb-2"><%= i + 1 %>. <%= question.question_text %></h4>
           <%# Submit a response to each question ONLY if no response is already present %>
           <%# to prevent multiple responses to 1 question %>
           <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
@@ -32,6 +32,14 @@
           <%# get the response where the user is the @profile(params) %>
           <% question.user_responses.where(user: @profile).each do |response| %>
             <%= render 'activities/user_responses_info', question: question, response: response %>
+          <% if @badge.status == "marked" %>
+            <% if response.text == question.response_text %>
+              <p class="my-2">Correction: <span class="text-success">Good Answer</span></p>
+            <% else %>
+              <p class="my-2">Correction: <span class="text-danger">Wrong Answer</span></p>
+              <p>The correct answer is: <%= question.response_text %></p>
+            <% end %>
+          <% end %>
 
             <% if current_user.teacher? && response.teacher_comments.empty? %>
               <%= simple_form_for([response, @teacher_comment]) do |f| %>
@@ -43,6 +51,8 @@
 
             <%= render 'activities/teacher_comments_info', response: response %>
           <% end %>
+
+
         </div>
       <% end %>
     </div>
