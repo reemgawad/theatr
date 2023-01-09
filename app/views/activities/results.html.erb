@@ -31,9 +31,10 @@
           <% end %>
 
           <%# get the response where the user is the @profile(params) %>
+
           <% question.user_responses.where(user: @profile).each do |response| %>
             <%= render 'activities/user_responses_info', question: question, response: response %>
-          <% if @badge.status == "marked" %>
+          <% if @badge.status == "marked" || @badge.status == "completed" %>
             <% if response.text == question.response_text %>
               <p class="my-2">Correction: <span class="text-success">Correct Answer</span></p>
             <% else %>
