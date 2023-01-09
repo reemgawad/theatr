@@ -30,4 +30,5 @@
 .category-selector:checked + label {
   color: white !important;
   background-color: rgba(55, 130, 241, 0.7);
+  border: 2px solid $blue;
 }
