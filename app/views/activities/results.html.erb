@@ -12,6 +12,7 @@
           data-edit-ajax-user-id-value="<%= current_user.id %>"
         >
           <h4 class="mb-2"><%= i + 1 %>. <%= question.question_text %></h4>
+          <p class="my-2"><%= "The correct answer is: #{question.response_text}" if current_user.teacher %></p>
           <%# Submit a response to each question ONLY if no response is already present %>
           <%# to prevent multiple responses to 1 question %>
           <% if question.user_responses.where(user: @profile).empty? && !current_user.teacher? %>
@@ -34,10 +35,10 @@
             <%= render 'activities/user_responses_info', question: question, response: response %>
           <% if @badge.status == "marked" %>
             <% if response.text == question.response_text %>
-              <p class="my-2">Correction: <span class="text-success">Good Answer</span></p>
+              <p class="my-2">Correction: <span class="text-success">Correct Answer</span></p>
             <% else %>
               <p class="my-2">Correction: <span class="text-danger">Wrong Answer</span></p>
-              <p>The correct answer is: <%= question.response_text %></p>
+              <p><%= "The correct answer is: #{question.response_text}" unless current_user.teacher %>  </p>
             <% end %>
           <% end %>
 
