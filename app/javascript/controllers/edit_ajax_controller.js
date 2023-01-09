@@ -44,6 +44,5 @@ export default class extends Controller {
     event.preventDefault();
     this.commentInfoTarget.classList.add("d-none");
     this.commentEditTarget.classList.remove("d-none");
-
   }
 }

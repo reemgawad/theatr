@@ -4,4 +4,14 @@
   flex-direction: column;
   align-items: start;
   justify-content: center;
+
+  input {
+    border: none;
+    box-shadow: rgba(31, 127, 255, 0.3) 0px 1px;
+    border-radius: 0;
+
+    &:focus {
+      box-shadow: $blue 0px 1px;
+    }
+  }
 }

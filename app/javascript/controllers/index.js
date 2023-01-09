@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
-import EditAjaxController from "./edit_ajax_controller"
-application.register("edit-ajax", EditAjaxController)
-
 import ClassroomActivityController from "./classroom_activity_controller"
 application.register("classroom-activity", ClassroomActivityController)
+
+import EditAjaxController from "./edit_ajax_controller"
+application.register("edit-ajax", EditAjaxController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
@@ -16,5 +16,5 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import ScrollTo from 'stimulus-scroll-to'
-application.register("scroll-to", ScrollTo)
+import SignupController from "./signup_controller"
+application.register("signup", SignupController)
