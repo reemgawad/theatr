@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_23_151231) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_175316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,8 +19,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_151231) do
     t.integer "question_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "activity_type"
     t.text "description"
+    t.bigint "activity_type_id", null: false
+    t.bigint "phase_id", null: false
+    t.index ["activity_type_id"], name: "index_activities_on_activity_type_id"
+    t.index ["phase_id"], name: "index_activities_on_phase_id"
   end
 
   create_table "activity_questions", force: :cascade do |t|
@@ -31,6 +34,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_151231) do
     t.datetime "updated_at", null: false
     t.string "choices", default: [], array: true
     t.index ["activity_id"], name: "index_activity_questions_on_activity_id"
+  end
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "badges", force: :cascade do |t|
@@ -51,6 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_151231) do
     t.datetime "date"
     t.string "access_code"
     t.string "activities", default: [], array: true
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teacher_comments", force: :cascade do |t|
@@ -95,6 +110,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_23_151231) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "activity_types"
+  add_foreign_key "activities", "phases"
   add_foreign_key "activity_questions", "activities"
   add_foreign_key "badges", "activities"
   add_foreign_key "badges", "users"

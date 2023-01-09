@@ -1,6 +1,8 @@
 class Activity < ApplicationRecord
   has_many :activity_questions
   has_many :badges
+  belongs_to :activity_type
+  belongs_to :phase
   validates_length_of :activity_questions, maximum: :question_amount
 
   # include PgSearch::Model

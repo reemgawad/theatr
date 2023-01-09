@@ -28,14 +28,28 @@ User.destroy_all
 Classroom.destroy_all
 ActivityQuestion.destroy_all
 Activity.destroy_all
+Phase.destroy_all
+ActivityType.destroy_all
+
+puts "Creating Phases!"
+phase1 = Phase.create({ name: "Pre-Show" })
+phase2 = Phase.create({ name: "General" })
+phase3 = Phase.create({ name: "Post-Show" })
+
+puts "Creating Activity Types!"
+type1 = ActivityType.create({ name: "Quiz" })
+type2 = ActivityType.create({ name: "Essay" })
+type3 = ActivityType.create({ name: "Review" })
+type4 = ActivityType.create({ name: "Match" })
+type5 = ActivityType.create({ name: "Art" })
 
 puts "Creating General Theater activity!"
-
 general_theater = Activity.create({
   title: "General Theater",
-  activity_type: "Quiz",
   question_amount: 10,
-  description: "Know your theatre? Test your knowledge with these general questions!"
+  description: "Know your theatre? Test your knowledge with these general questions!",
+  activity_type: type1,
+  phase: phase2
   })
 
 puts "Creating General Theater questions!"
@@ -106,9 +120,10 @@ gen_theater_ques10 = ActivityQuestion.create({
 puts "Creating Post Show Activity!"
 post_show = Activity.create({
                               title: "Post Show: Mizushōbai: At a Glance",
-                              activity_type: "Quiz",
                               question_amount: 10,
-                              description: "What ideas, concepts and facts can you remember from Julie Tamiko Manning’s play, Mizushōbai? Let’s find out with this little post-show quiz!"
+                              description: "What ideas, concepts and facts can you remember from Julie Tamiko Manning’s play, Mizushōbai? Let’s find out with this little post-show quiz!",
+                              activity_type: type1,
+                              phase: phase3
                             })
 
 puts "creating post show activity questions!"
@@ -177,9 +192,10 @@ post_show_question10 = ActivityQuestion.create({
 puts "Creating Pre Show Activity!"
 pre_show = Activity.create({
                             title: "Pre Show",
-                            activity_type: "Essay",
                             question_amount: 1,
-                            description: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).\nResearch the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words."
+                            description: "In your own words, explain the title of the play MIZUSHOBAI (The Water Trade).\nResearch the title of the play, Mizushōbai, and explain in your own words its meaning. Include the possible etymology of the word, some historical context, and any modern uses. 500 words.",
+                            activity_type: type2,
+                            phase: phase1
                           })
 
 puts "Creating pre show activity questions!"
@@ -195,9 +211,10 @@ pre_show_question = ActivityQuestion.create({
 puts "Creating activity 1!"
 activity1 = Activity.create({
                               title: "Quiz 1",
-                              activity_type: "Quiz",
+                              activity_type: type1,
                               question_amount: 8,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase1
                             })
 
 puts "Creating activity 1 questions!"
@@ -253,9 +270,10 @@ act1_question8 = ActivityQuestion.create({
 puts "Creating activity 2!"
 activity2 = Activity.create({
                               title: "Quiz 2",
-                              activity_type: "Quiz",
+                              activity_type: type1,
                               question_amount: 8,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase2
                             })
 
 puts "Creating activity 2 questions!"
@@ -311,9 +329,10 @@ act2_question8 = ActivityQuestion.create({
 puts "Creating activity 3!"
 activity3 = Activity.create({
                               title: "Match 1",
-                              activity_type: "Match",
+                              activity_type: type4,
                               question_amount: 4,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase2
                             })
 
 puts "Createing activity 3 questions!"
@@ -345,9 +364,10 @@ act3_question4 = ActivityQuestion.create({
 puts "Creating activity 4!"
 activity4 = Activity.create({
                               title: "Art 1",
-                              activity_type: "Art",
+                              activity_type: type5,
                               question_amount: 1,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase2
                             })
 
 puts "Creating activity 4 question!"
@@ -361,9 +381,10 @@ act4_question1 = ActivityQuestion.create({
 puts "Creating activity 5!"
 activity5 = Activity.create({
                               title: "Quiz 3",
-                              activity_type: "Quiz",
+                              activity_type: type1,
                               question_amount: 8,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase2
                             })
 
 puts "Creating activity 5 questions!"
@@ -419,9 +440,10 @@ act5_question8 = ActivityQuestion.create({
 puts "Creating activity 6!"
 activity6 = Activity.create({
                               title: "Match 2",
-                              activity_type: "Match",
+                              activity_type: type4,
                               question_amount: 4,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase2
                             })
 
 puts "Createing activity 6 questions!"
@@ -453,9 +475,10 @@ act6_question4 = ActivityQuestion.create({
 puts "Creating activity 7!"
 activity7 = Activity.create({
                               title: "Art 2",
-                              activity_type: "Art",
+                              activity_type: type5,
                               question_amount: 1,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase3
                             })
 
 puts "Creating activity 7 question!"
@@ -469,9 +492,10 @@ act7_question1 = ActivityQuestion.create({
 puts "Creating activity 8!"
 activity8 = Activity.create({
                               title: "Show Review",
-                              activity_type: "Review",
+                              activity_type: type3,
                               question_amount: 1,
-                              description: "Testing Testing!"
+                              description: "Testing Testing!",
+                              phase: phase3
                             })
 
 puts "Creating activity 8 question!"
@@ -482,303 +506,10 @@ act8_question1 = ActivityQuestion.create({
                                           choices: []
                                         })
 
-puts "Crearting Admin Classroom"
-class0 = Classroom.create({name: "Class 0", date: DateTime.new(2023, 12, 14, 5, 30)})
+# puts "Creating Admin Classroom"
+# class0 = Classroom.create({name: "Class 0", date: DateTime.new(2022, 12, 14, 5, 30)})
 
-# puts "Creating activity 1!"
-# activity1 = Activity.create({
-#                               title: "Quiz 1",
-#                               activity_type: "Quiz",
-#                               question_amount: 8,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Creating activity 1 questions!"
-# act1_question1 = ActivityQuestion.create({
-#                                           question_text: "What is the lead's name?",
-#                                           response_text: "Marky Mark",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question2 = ActivityQuestion.create({
-#                                           question_text: "What is the villain's name?",
-#                                           response_text: "Evil Tom",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question3 = ActivityQuestion.create({
-#                                           question_text: "What is the love's name?",
-#                                           response_text: "Travissimo",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question4 = ActivityQuestion.create({
-#                                           question_text: "What is the setting?",
-#                                           response_text: "Los Angeles",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question5 = ActivityQuestion.create({
-#                                           question_text: "What year does it take place?",
-#                                           response_text: "2095",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question6 = ActivityQuestion.create({
-#                                           question_text: "Who framed Timmy the Turtle?",
-#                                           response_text: "Limo",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question7 = ActivityQuestion.create({
-#                                           question_text: "Who hates the children?",
-#                                           response_text: "The boss",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-# act1_question8 = ActivityQuestion.create({
-#                                           question_text: "Where did the characters end up?",
-#                                           response_text: "Barcelona",
-#                                           activity: activity1,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 2!"
-# activity2 = Activity.create({
-#                               title: "Quiz 2",
-#                               activity_type: "Quiz",
-#                               question_amount: 8,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Creating activity 2 questions!"
-# act2_question1 = ActivityQuestion.create({
-#                                           question_text: "Who played the lead?",
-#                                           response_text: "Harrison Ford",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question2 = ActivityQuestion.create({
-#                                           question_text: "Who played the villain?",
-#                                           response_text: "Brad Garrett",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question3 = ActivityQuestion.create({
-#                                           question_text: "Who played the love?",
-#                                           response_text: "Julie Lewis",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question4 = ActivityQuestion.create({
-#                                           question_text: "What country was the setting?",
-#                                           response_text: "USA",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question5 = ActivityQuestion.create({
-#                                           question_text: "What car does the lead drive?",
-#                                           response_text: "Ford Focus",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question6 = ActivityQuestion.create({
-#                                           question_text: "Who played Timmy the Turtle?",
-#                                           response_text: "Dana Carvey",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question7 = ActivityQuestion.create({
-#                                           question_text: "Who played The Boss?",
-#                                           response_text: "David Hayter",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-# act2_question8 = ActivityQuestion.create({
-#                                           question_text: "What color was the boat?",
-#                                           response_text: "Gun Metal Grey",
-#                                           activity: activity2,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 3!"
-# activity3 = Activity.create({
-#                               title: "Match 1",
-#                               activity_type: "Match",
-#                               question_amount: 4,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Createing activity 3 questions!"
-# act3_question1 = ActivityQuestion.create({
-#                                           question_text: "Match 1",
-#                                           response_text: "Match 2",
-#                                           activity: activity3,
-#                                           choices: []
-#                                         })
-# act3_question2 = ActivityQuestion.create({
-#                                           question_text: "Match 3",
-#                                           response_text: "Match 4",
-#                                           activity: activity3,
-#                                           choices: []
-#                                         })
-# act3_question3 = ActivityQuestion.create({
-#                                           question_text: "Match 5",
-#                                           response_text: "Match 6",
-#                                           activity: activity3,
-#                                           choices: []
-#                                         })
-# act3_question4 = ActivityQuestion.create({
-#                                           question_text: "Match 7",
-#                                           response_text: "Match 8",
-#                                           activity: activity3,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 4!"
-# activity4 = Activity.create({
-#                               title: "Art 1",
-#                               activity_type: "Art",
-#                               question_amount: 1,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Creating activity 4 question!"
-# act4_question1 = ActivityQuestion.create({
-#                                           question_text: "Draw the final showdown!",
-#                                           response_text: "Looks good!",
-#                                           activity: activity4,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 5!"
-# activity5 = Activity.create({
-#                               title: "Quiz 3",
-#                               activity_type: "Quiz",
-#                               question_amount: 8,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Creating activity 5 questions!"
-# act5_question1 = ActivityQuestion.create({
-#                                           question_text: "What theatre were we in?",
-#                                           response_text: "Tableau D'Hôte Theatre",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question2 = ActivityQuestion.create({
-#                                           question_text: "What city is the theatre in?",
-#                                           response_text: "Montreal",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question3 = ActivityQuestion.create({
-#                                           question_text: "How old is the theatre?",
-#                                           response_text: "136 years old",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question4 = ActivityQuestion.create({
-#                                           question_text: "Who founded the theatre?",
-#                                           response_text: "Thompson Theatreman",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question5 = ActivityQuestion.create({
-#                                           question_text: "How many different shows are put on each year?",
-#                                           response_text: "6, but 7 is also an acceptable answer",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question6 = ActivityQuestion.create({
-#                                           question_text: "How many different sets were used in the show?",
-#                                           response_text: "6",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question7 = ActivityQuestion.create({
-#                                           question_text: "What song played during the love scene?",
-#                                           response_text: "All The Small Things - blink-182",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-# act5_question8 = ActivityQuestion.create({
-#                                           question_text: "Who directed the play?",
-#                                           response_text: "Arnold Schwarzenegger",
-#                                           activity: activity5,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 6!"
-# activity6 = Activity.create({
-#                               title: "Match 2",
-#                               activity_type: "Match",
-#                               question_amount: 4,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Createing activity 6 questions!"
-# act6_question1 = ActivityQuestion.create({
-#                                           question_text: "Match 1",
-#                                           response_text: "Match 2",
-#                                           activity: activity6,
-#                                           choices: []
-#                                         })
-# act6_question2 = ActivityQuestion.create({
-#                                           question_text: "Match 3",
-#                                           response_text: "Match 4",
-#                                           activity: activity6,
-#                                           choices: []
-#                                         })
-# act6_question3 = ActivityQuestion.create({
-#                                           question_text: "Match 5",
-#                                           response_text: "Match 6",
-#                                           activity: activity6,
-#                                           choices: []
-#                                         })
-# act6_question4 = ActivityQuestion.create({
-#                                           question_text: "Match 7",
-#                                           response_text: "Match 8",
-#                                           activity: activity6,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 7!"
-# activity7 = Activity.create({
-#                               title: "Art 2",
-#                               activity_type: "Art",
-#                               question_amount: 1,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Creating activity 7 question!"
-# act7_question1 = ActivityQuestion.create({
-#                                           question_text: "Draw the death scene, in full graphic detail.",
-#                                           response_text: "Fantastic!",
-#                                           activity: activity7,
-#                                           choices: []
-#                                         })
-
-# puts "Creating activity 8!"
-# activity8 = Activity.create({
-#                               title: "Show Review",
-#                               activity_type: "Review",
-#                               question_amount: 1,
-#                               description: "Testing Testing!"
-#                             })
-
-# puts "Creating activity 8 question!"
-# act8_question1 = ActivityQuestion.create({
-#                                           question_text: "Please leave a review of the show.",
-#                                           response_text: "Thank you!",
-#                                           activity: activity8,
-#                                           choices: []
-#                                         })
-
-puts "Creating Admin Classroom"
-class0 = Classroom.create({name: "Class 0", date: DateTime.new(2022, 12, 14, 5, 30)})
-
-puts "Creating Admin 1"
+# puts "Creating Admin 1"
 # admin1 = User.create({
 #                           first_name: "Ann",
 #                           last_name: "Perkins",
@@ -813,26 +544,6 @@ class1_student1 = User.create!({
                           access_code: "class##{teacher1.classroom.id}"
                         })
 puts "Creating student 1, class 1, pre show activity badge!"
-c1s1_pre_show_badge = Badge.create({
-                                    status: 0,
-                                    activity: pre_show,
-                                    user: class1_student1,
-                                    active: true
-                                  })
-puts "Creating student 1, class 1, post show activity badge!"
-c1s1_post_show_badge = Badge.create({
-                                      status: 0,
-                                      activity: post_show,
-                                      user: class1_student1,
-                                      active: true
-                                    })
-puts "Creating student 1, class 1, general theater 1 badge!"
-c1s1_general_theater_badge = Badge.create({
-                                            status: 0,
-                                            activity: general_theater,
-                                            user: class1_student1,
-                                            active: true
-                                          })
 # puts "Creating student 1, class 1, activity 1 badge!"
 # c1s1_badge1 = Badge.create({
 #                         status: 4,
@@ -1295,27 +1006,6 @@ class1_student2 = User.create({
                           classroom: teacher1.classroom,
                           access_code: "class##{teacher1.classroom.id}"
                         })
-puts "Creating student 2, class 1, pre showactivity  badge!"
-c1s2_pre_show_badge = Badge.create({
-                                    status: 0,
-                                    activity: pre_show,
-                                    user: class1_student2,
-                                    active: true
-                                  })
-puts "Creating student 2, class 1, post show activity badge!"
-c1s2_post_show_badge = Badge.create({
-                                      status: 0,
-                                      activity: post_show,
-                                      user: class1_student2,
-                                      active: true
-                                    })
-puts "Creating student 2, class 1, general theater activity badge!"
-c1s2_general_theater_badge = Badge.create({
-                                            status: 0,
-                                            activity: general_theater,
-                                            user: class1_student2,
-                                            active: true
-                                          })
 # puts "Creating student 2, class 1, activity 1 badge!"
 # c1s2_badge1 = Badge.create({
 #                         status: 4,
@@ -1643,27 +1333,6 @@ class1_student3 = User.create({
                           classroom: teacher1.classroom,
                           access_code: "class##{teacher1.classroom.id}"
                         })
-puts "Creating student 3, class 1, pre show activity badge!"
-c1s3_pre_show_badge = Badge.create({
-                            status: 0,
-                            activity: pre_show,
-                            user: class1_student3,
-                            active: true
-                          })
-puts "Creating student 3, class 1, post show activity badge!"
-c1s3_post_show_badge = Badge.create({
-                            status: 0,
-                            activity: post_show,
-                            user: class1_student3,
-                            active: true
-                          })
-puts "Creating student 3, class 1, general theater activity badge!"
-c1s3_general_theater_badge = Badge.create({
-                            status: 0,
-                            activity: general_theater,
-                            user: class1_student3,
-                            active: true
-                          })
 # puts "Creating student 3, class 1, activity 1 badge!"
 # c1s3_badge1 = Badge.create({
 #                         status: 4,
@@ -2559,8 +2228,6 @@ c1s3_general_theater_badge = Badge.create({
 #                         activity: activity8,
 #                         user: class1_student5
 #                       })
-
-
 
 # puts "Creating student 6, class 1!"
 # class1_student6 = User.create({
@@ -4988,8 +4655,6 @@ c1s3_general_theater_badge = Badge.create({
 #                         user: class2_student5
 #                       })
 
-
-
 # puts "Creating student 6, class 2!"
 # class2_student6 = User.create({
 #                           first_name: "Tom",
@@ -5648,7 +5313,7 @@ c1s3_general_theater_badge = Badge.create({
 
 # puts "Creating student 8, class 2, activity 8 badge!"
 # c2s8_badge8 = Badge.create({
-                      #   status: 0,
-                      #   activity: activity8,
-                      #   user: class2_student8
-                      # })
+#                         status: 0,
+#                         activity: activity8,
+#                         user: class2_student8
+#                             })
