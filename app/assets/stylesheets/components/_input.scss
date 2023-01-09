@@ -1,11 +1,12 @@
 .category-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .category-item {
   flex: 0 0 30%;
+  margin-right: 10px;
 }
 
 .category-selector {
@@ -28,5 +29,5 @@
 
 .category-selector:checked + label {
   color: white !important;
-  background-color: $primary;
+  background-color: rgba(55, 130, 241, 0.7);
 }
