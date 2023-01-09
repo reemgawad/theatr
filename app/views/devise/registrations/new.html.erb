@@ -1,49 +1,91 @@
 <div class="container" style="width: 60%">
-  <h2 class="text-center mt-3">Create an account</h2>
+  <div id="frame0" class="frame">
+    <h1 class="my-3">Welcome to the <span class="text-primary">Interactive Theater Companion</span> </h1>
+    <h3 class="my-3">We're thrilled to have you here. Create your account to begin your experience.</h3>
+    <%= link_to "Get started", "#frame1", class: "btn btn-primary my-3", data: { controller: "scroll-to" } %>
+    <p class="my-3">Already have an account? <%= render "devise/shared/links" %></p>
+  </div>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }, html: { onkeydown: "return event.key != 'Enter';"} ) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <div class="d-flex" style="width: 100%">
-        <div class="flex-fill me-2">
-          <%= f.input :first_name,
+    <div class="form-inputs" data-controller="signup">
+      <div id="frame1" class="frame">
+        <h3 class="my-5">Let's start with your name.</h3>
+        <div class="d-flex" style="width: 100%">
+          <div class="flex-fill me-2">
+            <%= f.input :first_name,
                         required: true,
-                        autofocus: true,
                         input_html: { autocomplete: "First Name"} %>
-        </div>
-        <div class="flex-fill">
-          <%= f.input :last_name,
+          </div>
+          <div class="flex-fill">
+            <%= f.input :last_name,
                         required: true,
-                        autofocus: true,
                         input_html: { autocomplete: "Last Name" } %>
+          </div>
+        </div>
+        <%= link_to "#frame2", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+          OK <i class="fa-solid fa-check"></i>
+        <% end %>
+      </div>
+
+      <div id="frame2" class="frame">
+        <h3 class="my-5">Are you a teacher or student?</h3>
+        <%= f.input :teacher, as: :radio_buttons,
+                    collection: [[true, 'Teacher'], [false, 'Student']],
+                    label_method: :second, value_method: :first,
+                    required: true,
+                    collection_wrapper_tag: 'div',
+                    collection_wrapper_class: 'category-wrapper',
+                    item_wrapper_class: 'category-item',
+                    input_html: { class: 'category-selector', data: { action: "change->signup#displayText" }} %>
+        <%= link_to "#frame3", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+          OK <i class="fa-solid fa-check"></i>
+        <% end %>
+      </div>
+
+      <div id="frame3" class="frame">
+        <h3 class="my-3">What is your access code?</h3>
+        <p class="code-text mb-4" data-signup-target="codeText">This is the code given to you by your teacher. <br> With this code, you will be added to your virtual classroom with your teacher and your peers.</p>
+
+        <%= f.input :access_code,
+                    required: true,
+                    label: false,
+                    placeholder: "Enter your code...",
+                    input_html: { autocomplete: "access_code" } %>
+        <%= link_to "#frame4", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+          OK <i class="fa-solid fa-check"></i>
+        <% end %>
+      </div>
+
+      <div id="frame4" class="frame">
+        <h3 class="my-5">What is your email address?</h3>
+        <%= f.input :email,
+                    required: true,
+                    label: false,
+                    placeholder: "Enter your email...",
+                    input_html: { autocomplete: "email" } %>
+        <%= link_to "#frame5", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+          OK <i class="fa-solid fa-check"></i>
+        <% end %>
+      </div>
+
+      <div id="frame5" class="frame">
+        <h3 class="my-5">Lastly, please create a password for your account.</h3>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "btn btn-primary mb-2 rounded-2" %>
         </div>
       </div>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :access_code,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "access_code" }%>
-      <%#= f.select :classroom_id,
-                  options_from_collection_for_select(Classroom.all, "id", "name"),
-                  required: true,
-                  input_html: { autocomplete: "classroom" }%>
+
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn btn-primary mb-2" %>
-    </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
 </div>

@@ -1,0 +1,34 @@
+.category-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+  margin-right: 10px;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.category-selector:checked + label {
+  color: white !important;
+  background-color: rgba(55, 130, 241, 0.7);
+  border: 2px solid $blue;
+}
