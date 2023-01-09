@@ -1,15 +1,21 @@
 class BadgesController < ApplicationController
-  after_action :verify_authorized, except: [:marked]
+  # after_action :verify_authorized, except: [:marked]
 
   def completed
     @badge = Badge.find(params[:id])
+    authorize @badge
 
     @badge.status = "completed"
-    @badge.save
+
+    if @badge.save
+      redirect_to classroom_path(current_user.classroom), notice: "The quiz is completed"
+    end
+
   end
 
   def marked
     @badge = Badge.find(params[:id])
+    authorize @badge
     @activity = @badge.activity
     @user_responses = UserResponse.where(user: current_user)
 
