@@ -15,3 +15,9 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import { Application } from '@hotwired/stimulus'
+import ScrollReveal from 'stimulus-scroll-reveal'
+
+const application = Application.start()
+application.register('scroll-reveal', ScrollReveal)
