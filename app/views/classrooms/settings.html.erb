@@ -10,8 +10,10 @@
 
   <% @activities.each do |e| %>
     <div data-controller="classroom-activity" data-classroom-activity-activity-id-value="<%= e.id %>">
+
       <div class="setting-box">
         <h2><%= link_to e.title, activity_path(e),  class:"settings-act"%></h2>
+
         <% if @classroom.activities.include?(e.title) %>
           <form  data-classroom-activity-target="form" action="/activities/<%= e.id %>/remove_activity">
             <input data-action="click->classroom-activity#changeButton" type="submit" value="Remove Activity" class="btn btn-danger">
