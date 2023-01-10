@@ -211,6 +211,29 @@ pre_show_question = ActivityQuestion.create({
                                           choices: []
                                         })
 
+puts "Creating Activity: CLICKABLE PHOTO WITH POP-UP!"
+photo_popup = Activity.create({
+                          title: "CLICKABLE PHOTO WITH POP-UP",
+                          question_amount: 2,
+                          description: "Click on the photo to learn more about these Asian Canadian theatre artists",
+                          activity_type: type9,
+                          phase: phase2
+                          })
+
+puts "Creating CLICKABLE PHOTO WITH POP-UP activity questions!"
+photo_popup_question = ActivityQuestion.create({
+                                          question_text: "Joyce Lam (January 27, 1959 - April 11, 2022) founded the Vancouver Asian Canadian Theatre company in 1999 to announce her life's purpose - to change negative perceptions of Asians, and to raise the visibility and authenticity of the Canadian Asian experience via the stage. Joyce oversaw over 45 productions, including 14 years of Annual Asian Comedy Nights, the first ever competition between Asian comedy teams from all over North America, a series of plays called 'Sex in Vancouver', Vancouver's first big production of 'Flower Drum Song' and her personally most satisfying play, the original musical 'Red Letters', based on the Chinese Head Tax. For this work, Joyce was recognized many times, including a B.C. Community Achievement Award in 2010, and a Vancouver Cultural Harmony Award in 2012.",
+                                          response_text: "",
+                                          activity: photo_popup,
+                                          choices: []
+                                        })
+
+photo_popup_question = ActivityQuestion.create({
+                                          question_text: "Jean Yoon is well known in the Toronto arts and Korean-Canadian communities as an actor, playwright, and theatre artist. She was born in Illinois but raised in Toronto where she currently resides. Yoon is Seoul Babe/Artistic Director of Loud Mouth Asian Babes, a theatre company that is committed to the development of new Canadian drama by, for, and about Asian women. In recent years, Yoon has played the role of the mother in the CBC television series 'Kim’s Convenience.'",
+                                          response_text: "",
+                                          activity: photo_popup,
+                                          choices: []
+                                        })
 
 puts "Creating activity 1!"
 activity1 = Activity.create({
