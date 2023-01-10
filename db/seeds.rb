@@ -46,7 +46,7 @@ type6 = ActivityType.create({ name: "Crossword" })
 type7 = ActivityType.create({ name: "Audio" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
-type10 = ActivityType.create({ name: "PhotoPopup" })
+type10 = ActivityType.create({ name: "Photo Popup" })
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
