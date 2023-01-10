@@ -42,6 +42,10 @@ type2 = ActivityType.create({ name: "Essay" })
 type3 = ActivityType.create({ name: "Review" })
 type4 = ActivityType.create({ name: "Match" })
 type5 = ActivityType.create({ name: "Art" })
+type6 = ActivityType.create({ name: "Crossword" })
+type7 = ActivityType.create({ name: "Audio" })
+type8 = ActivityType.create({ name: "Video" })
+type9 = ActivityType.create({ name: "Info" })
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -335,7 +339,7 @@ activity3 = Activity.create({
                               phase: phase2
                             })
 
-puts "Createing activity 3 questions!"
+puts "Creating activity 3 questions!"
 act3_question1 = ActivityQuestion.create({
                                           question_text: "Match 1",
                                           response_text: "Match 2",

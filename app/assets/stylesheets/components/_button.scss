@@ -1,9 +1,15 @@
+.btn {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
 .btn-primary {
   color: white;
   font-weight: bold;
 
   &:hover {
-    color: white
+    color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -12,6 +18,8 @@
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 
   &:hover {
-    color: $gray
+    color: $gray;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
   }
 }
