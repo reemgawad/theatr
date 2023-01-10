@@ -43,7 +43,7 @@ type3 = ActivityType.create({ name: "Review" })
 type4 = ActivityType.create({ name: "Match" })
 type5 = ActivityType.create({ name: "Art" })
 type6 = ActivityType.create({ name: "Crossword" })
-type7 = ActivityType.create({ name: "Audio" })
+type7 = ActivityType.create({ name: "Audio Pop-up" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
 
@@ -234,6 +234,28 @@ photo_popup_question = ActivityQuestion.create({
                                           activity: photo_popup,
                                           choices: []
                                         })
+
+puts "Creating Photo with Audio activity"
+audio_activity1 = Activity.create({
+  title: "CLICKABLE PHOTO WITH EMBEDDED AUDIO INTERVIEW",
+  question_amount: 1,
+  description: " Click to hear an interview with Mizushōbai’s playwright, Julie Tamiko Manning.",
+  activity_type: type7,
+  phase: phase1
+})
+
+puts "Creating Photo with Audio Activity Questions"
+audio_activity1_question1 = ActivityQuestion.create({
+  question_text: "",
+  response_text: "",
+  activity: audio_activity1,
+  choices: []
+})
+
+audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Mannig.png"), filename: "JulieaTamikoManning.png")
+audio_activity1_question1.save
+# audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Mannig.png"), filename: "JulieaTamikoManning.png")
+# audio_activity1_question1.save
 
 puts "Creating activity 1!"
 activity1 = Activity.create({
