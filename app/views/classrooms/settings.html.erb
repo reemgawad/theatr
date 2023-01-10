@@ -1,5 +1,12 @@
 <div class="container">
-  <h1 class="text-center p-5"><%= @classroom.access_code %></h1>
+  <h1 class="text-center pt-5"><%= @classroom.access_code %></h1>
+
+  <div class="blurb">
+    <p><strong>The activities you can add to your classroom are listed below.</strong></p>
+    <p class="text-center"><strong>Make an activity available to your students by clicking 'Add Activity'. The activity will then be displayed in the Activities page and the students will be able to access it.</strong></p>
+    <p class="text-center"><strong>You can also remove an activity from your classroom by clicking 'Remove Activity'.</strong></p>
+    <p><%= link_to "Back to your classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+  </div>
 
   <% @activities.each do |e| %>
     <div data-controller="classroom-activity" data-classroom-activity-activity-id-value="<%= e.id %>">
