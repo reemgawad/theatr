@@ -10,7 +10,7 @@
 
   <% @activities.each do |e| %>
     <div data-controller="classroom-activity" data-classroom-activity-activity-id-value="<%= e.id %>">
-      <div class="setting-box">
+      <div class="setting-box mb-4">
         <h2><%= e.title %></h2>
         <% if @classroom.activities.include?(e.title) %>
           <form  data-classroom-activity-target="form" action="/activities/<%= e.id %>/remove_activity">
