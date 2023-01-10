@@ -5,7 +5,19 @@
     <p><%#= question.question_text %></p>
   <%# end %>
 
-  <h4 class="question"><%= @activity.description %></h4>
+  <div class="d-flex flex-column align-items-center">
+    <h4 class="question"><%= @activity.description %></h4>
+    <% if @activity.title == "Clickable Photos with Pop-ups" %>
+      <div>
+        <% @activity.activity_questions.each do |aq| %>
+          <% aq.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <%# Only show this link to students %>
   <%# && Only show this link if the badge is not unavailable %>
   <div class="d-flex justify-content-evenly">
