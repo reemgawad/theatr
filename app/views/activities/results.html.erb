@@ -1,4 +1,7 @@
 <div class="container">
+  <% if @activity.activity_type.name == "Video" %>
+    <%= render 'activities/video_popup', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response %>
+  <% else %>
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
     <div>
@@ -79,4 +82,5 @@
   <% else %>
     <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
   <% end %>
+<% end %>
 </div>
