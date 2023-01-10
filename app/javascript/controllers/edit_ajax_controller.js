@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-
 // Connects to data-controller="edit-ajax"
 export default class extends Controller {
 
@@ -49,6 +48,5 @@ export default class extends Controller {
     this.commentInfoTarget.classList.add("d-none");
     this.commentEditTarget.classList.remove("d-none");
   }
-
 
 }
