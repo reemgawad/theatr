@@ -235,6 +235,35 @@ photo_popup_question = ActivityQuestion.create({
                                           choices: []
                                         })
 
+puts "Creating VIDEO WITH POP-UP Activity"
+video_activity = Activity.create({
+                          title: "VIDEO QUIZ WITH RESPONSE POP-UPS",
+                          question_amount: 2,
+                          description: "After watching this short film, choose the correct answer below.",
+                          activity_type: type8,
+                          phase: phase2,
+                          video: "qLiAJ-ws5bU"
+                          })
+
+video_popup_question1 = ActivityQuestion.create({
+                                          question_text: "In this video, what is best described as the production concept of this version of William Shakespeare’s A Midsummer Night’s Dream was described as:",
+                                          response_text: "“contemporary England [with a] music festival and it’s kind of a bit psychedelic”",
+                                          activity: video_activity,
+                                          choices: ["Comtemporary England [with a] music festival and it's kind of a bit psychadelic", "there’s a lot of love triangles and then we all go to the forest", "hate and love and lust","You have to use your body and your voice in a way that you normally wouldn’t"]
+                                        })
+
+video_popup_questions2 = ActivityQuestion.create({
+                                        question_text: "Which answer best describes the plot?",
+                                        response_text: "here’s a lot of love triangles and then we all go to the forest",
+                                        activity: video_activity,
+                                        choices: ["Contemporary England [with a] music festival and it’s kind of a bit psychedelic", "there’s a lot of love triangles and then we all go to the forest","hate and love and lust", "You have to use your body and your voice in a way that you normally wouldn’t"]
+                                        })
+
+puts "Creating VIDEO WITH POP-UP activity questions!"
+
+
+
+
 puts "Creating activity 1!"
 activity1 = Activity.create({
                               title: "Quiz 1",
