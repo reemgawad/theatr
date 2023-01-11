@@ -1,3 +1,7 @@
-<% @activity.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div>
+  <% @activity.activity_questions.each do |aq| %>
+    <% aq.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+</div>
