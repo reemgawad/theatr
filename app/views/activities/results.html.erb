@@ -1,4 +1,4 @@
-<% if @activity.activity_type.name == "Video" || @activity.activity_type.name == "Quiz"  %>
+<% if @activity.activity_type.name == "Video" || @activity.activity_type.name == "Quiz" %>
   <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% elsif @activity.activity_type.name == "Multiple" %>
   <%= render 'activities/multiple_pop_up', activity: @activity %>

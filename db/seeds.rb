@@ -46,7 +46,7 @@ type6 = ActivityType.create({ name: "Crossword" })
 type7 = ActivityType.create({ name: "Audio" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
-type10 = ActivityType.create({name: "Multiple"})
+type13 = ActivityType.create({name: "Multiple"})
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -275,7 +275,7 @@ video_activity = Activity.create({
                           title: "VIDEO QUIZ WITH RESPONSE POP-UPS",
                           question_amount: 2,
                           description: "After watching this short film, choose the correct answer below.",
-                          activity_type: type8,
+                          activity_type: type13,
                           phase: phase2,
                           video: "qLiAJ-ws5bU"
                           })
