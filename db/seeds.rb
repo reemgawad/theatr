@@ -1,6 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
 
 # 2 classrooms, each with 1 teacher (2 total) and 8 students (16 total), all unique
 # 8 activities:
@@ -46,6 +45,7 @@ type6 = ActivityType.create({ name: "Crossword" })
 type7 = ActivityType.create({ name: "Audio Pop-up" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
+type10 = ActivityType.create({ name: "Photo Popup" })
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -213,11 +213,11 @@ pre_show_question = ActivityQuestion.create({
 
 puts "Creating Activity: CLICKABLE PHOTO WITH POP-UP!"
 photo_popup = Activity.create({
-                          title: "CLICKABLE PHOTO WITH POP-UP",
-                          question_amount: 2,
-                          description: "Click on the photo to learn more about these Asian Canadian theatre artists",
-                          activity_type: type9,
-                          phase: phase2
+                            title: "Clickable Photos with Pop-ups",
+                            question_amount: 2,
+                            description: "Click on the photos to learn more about these Asian Canadian theatre artists",
+                            activity_type: type10,
+                            phase: phase2
                           })
 
 puts "Creating CLICKABLE PHOTO WITH POP-UP activity questions!"
@@ -227,12 +227,17 @@ photo_popup_question1 = ActivityQuestion.create({
                                           activity: photo_popup,
                                           choices: []
                                         })
+photo_popup_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/joyce_lam.png"), filename: "joyce_lam.png")
+photo_popup_question1.save!
+
 photo_popup_question2 = ActivityQuestion.create({
                                           question_text: "Jean Yoon is well known in the Toronto arts and Korean-Canadian communities as an actor, playwright, and theatre artist. She was born in Illinois but raised in Toronto where she currently resides. Yoon is Seoul Babe/Artistic Director of Loud Mouth Asian Babes, a theatre company that is committed to the development of new Canadian drama by, for, and about Asian women. In recent years, Yoon has played the role of the mother in the CBC television series 'Kim’s Convenience.'",
                                           response_text: "",
                                           activity: photo_popup,
                                           choices: []
                                         })
+photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
+photo_popup_question2.save!                                        
 
 
 puts "Creating Photo with Audio activity"
@@ -268,6 +273,7 @@ video_activity = Activity.create({
                           })
 
 puts "Creating VIDEO WITH POP-UP activity questions!"
+
 video_popup_question1 = ActivityQuestion.create({
                                           question_text: "In this video, what is best described as the production concept of this version of William Shakespeare’s A Midsummer Night’s Dream was described as:",
                                           response_text: "“contemporary England [with a] music festival and it’s kind of a bit psychedelic”",
@@ -281,8 +287,6 @@ video_popup_questions2 = ActivityQuestion.create({
                                         activity: video_activity,
                                         choices: ["Contemporary England [with a] music festival and it’s kind of a bit psychedelic", "there’s a lot of love triangles and then we all go to the forest","hate and love and lust", "You have to use your body and your voice in a way that you normally wouldn’t"]
                                         })
-
-
 
 puts "Creating activity 1!"
 activity1 = Activity.create({
