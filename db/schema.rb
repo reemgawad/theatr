@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_10_173034) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_181514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_173034) do
     t.text "description"
     t.bigint "activity_type_id", null: false
     t.bigint "phase_id", null: false
+    t.string "video"
     t.index ["activity_type_id"], name: "index_activities_on_activity_type_id"
     t.index ["phase_id"], name: "index_activities_on_phase_id"
   end

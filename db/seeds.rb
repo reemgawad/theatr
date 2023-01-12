@@ -221,19 +221,19 @@ photo_popup = Activity.create({
                           })
 
 puts "Creating CLICKABLE PHOTO WITH POP-UP activity questions!"
-photo_popup_question = ActivityQuestion.create({
+photo_popup_question1 = ActivityQuestion.create({
                                           question_text: "Joyce Lam (January 27, 1959 - April 11, 2022) founded the Vancouver Asian Canadian Theatre company in 1999 to announce her life's purpose - to change negative perceptions of Asians, and to raise the visibility and authenticity of the Canadian Asian experience via the stage. Joyce oversaw over 45 productions, including 14 years of Annual Asian Comedy Nights, the first ever competition between Asian comedy teams from all over North America, a series of plays called 'Sex in Vancouver', Vancouver's first big production of 'Flower Drum Song' and her personally most satisfying play, the original musical 'Red Letters', based on the Chinese Head Tax. For this work, Joyce was recognized many times, including a B.C. Community Achievement Award in 2010, and a Vancouver Cultural Harmony Award in 2012.",
                                           response_text: "",
                                           activity: photo_popup,
                                           choices: []
                                         })
-
-photo_popup_question = ActivityQuestion.create({
+photo_popup_question2 = ActivityQuestion.create({
                                           question_text: "Jean Yoon is well known in the Toronto arts and Korean-Canadian communities as an actor, playwright, and theatre artist. She was born in Illinois but raised in Toronto where she currently resides. Yoon is Seoul Babe/Artistic Director of Loud Mouth Asian Babes, a theatre company that is committed to the development of new Canadian drama by, for, and about Asian women. In recent years, Yoon has played the role of the mother in the CBC television series 'Kim’s Convenience.'",
                                           response_text: "",
                                           activity: photo_popup,
                                           choices: []
                                         })
+
 
 puts "Creating Photo with Audio activity"
 audio_activity1 = Activity.create({
@@ -252,10 +252,37 @@ audio_activity1_question1 = ActivityQuestion.create({
   choices: []
 })
 
-audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Mannig.png"), filename: "JulieaTamikoManning.png")
+audio_activity1_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png", content_type: "image/png" )
 audio_activity1_question1.save
-# audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Mannig.png"), filename: "JulieaTamikoManning.png")
+# audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png")
 # audio_activity1_question1.save
+
+puts "Creating VIDEO WITH POP-UP Activity"
+video_activity = Activity.create({
+                          title: "VIDEO QUIZ WITH RESPONSE POP-UPS",
+                          question_amount: 2,
+                          description: "After watching this short film, choose the correct answer below.",
+                          activity_type: type8,
+                          phase: phase2,
+                          video: "qLiAJ-ws5bU"
+                          })
+
+puts "Creating VIDEO WITH POP-UP activity questions!"
+video_popup_question1 = ActivityQuestion.create({
+                                          question_text: "In this video, what is best described as the production concept of this version of William Shakespeare’s A Midsummer Night’s Dream was described as:",
+                                          response_text: "“contemporary England [with a] music festival and it’s kind of a bit psychedelic”",
+                                          activity: video_activity,
+                                          choices: ["Comtemporary England [with a] music festival and it's kind of a bit psychadelic", "there’s a lot of love triangles and then we all go to the forest", "hate and love and lust","You have to use your body and your voice in a way that you normally wouldn’t"]
+                                        })
+
+video_popup_questions2 = ActivityQuestion.create({
+                                        question_text: "Which answer best describes the plot?",
+                                        response_text: "here’s a lot of love triangles and then we all go to the forest",
+                                        activity: video_activity,
+                                        choices: ["Contemporary England [with a] music festival and it’s kind of a bit psychedelic", "there’s a lot of love triangles and then we all go to the forest","hate and love and lust", "You have to use your body and your voice in a way that you normally wouldn’t"]
+                                        })
+
+
 
 puts "Creating activity 1!"
 activity1 = Activity.create({
@@ -495,7 +522,7 @@ activity6 = Activity.create({
                               phase: phase2
                             })
 
-puts "Createing activity 6 questions!"
+puts "Creating activity 6 questions!"
 act6_question1 = ActivityQuestion.create({
                                           question_text: "Match 1",
                                           response_text: "Match 2",
