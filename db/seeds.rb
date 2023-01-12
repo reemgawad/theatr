@@ -18,7 +18,6 @@
 # - - corrected and reviewed have all answers completed, started have 4
 # 1 student has done nothing
 # - 1 badge available, 7 unavailable
-require "open-uri"
 
 puts "Destroying everything in the database!"
 TeacherComment.destroy_all
@@ -216,7 +215,7 @@ puts "Creating Activity: CLICKABLE PHOTO WITH POP-UP!"
 photo_popup = Activity.create({
                             title: "Clickable Photos with Pop-ups",
                             question_amount: 2,
-                            description: "Click on the photo to learn more about these Asian Canadian theatre artists",
+                            description: "Click on the photos to learn more about these Asian Canadian theatre artists",
                             activity_type: type10,
                             phase: phase2
                           })
@@ -229,9 +228,8 @@ photo_popup_question1 = ActivityQuestion.create({
                                           choices: []
                                         })
 
-file = URI.open("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80")
-photo_popup_question1.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-photo_popup_question1.save
+photo_popup_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/joyce_lam.png"), filename: "joyce_lam.png")
+photo_popup_question1.save!
 
 photo_popup_question2 = ActivityQuestion.create({
                                           question_text: "Jean Yoon is well known in the Toronto arts and Korean-Canadian communities as an actor, playwright, and theatre artist. She was born in Illinois but raised in Toronto where she currently resides. Yoon is Seoul Babe/Artistic Director of Loud Mouth Asian Babes, a theatre company that is committed to the development of new Canadian drama by, for, and about Asian women. In recent years, Yoon has played the role of the mother in the CBC television series 'Kim’s Convenience.'",
@@ -240,9 +238,8 @@ photo_popup_question2 = ActivityQuestion.create({
                                           choices: []
                                         })
 
-file = URI.open("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3087&q=80")
-photo_popup_question1.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-photo_popup_question1.save
+photo_popup_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
+photo_popup_question1.save!
 
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
