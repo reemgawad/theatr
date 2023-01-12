@@ -1,0 +1,8 @@
+<h1><%= @activity.title %></h1>
+
+<% @activity_questions.each do |e| %>
+  <div class="character-icons">
+    <h1 class="text-center mt-4"><%= e.question_text %></h1>
+    <span class="tooltiptext"><%= e.response_text %></span>
+  </div>
+<% end %>
