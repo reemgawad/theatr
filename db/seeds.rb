@@ -42,7 +42,7 @@ type3 = ActivityType.create({ name: "Review" })
 type4 = ActivityType.create({ name: "Match" })
 type5 = ActivityType.create({ name: "Art" })
 type6 = ActivityType.create({ name: "Crossword" })
-type7 = ActivityType.create({ name: "Audio" })
+type7 = ActivityType.create({ name: "Audio Pop-up" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
 type10 = ActivityType.create({ name: "Photo Popup" })
@@ -227,7 +227,6 @@ photo_popup_question1 = ActivityQuestion.create({
                                           activity: photo_popup,
                                           choices: []
                                         })
-
 photo_popup_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/joyce_lam.png"), filename: "joyce_lam.png")
 photo_popup_question1.save!
 
@@ -237,9 +236,31 @@ photo_popup_question2 = ActivityQuestion.create({
                                           activity: photo_popup,
                                           choices: []
                                         })
-
 photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
-photo_popup_question2.save!
+photo_popup_question2.save!                                        
+
+
+puts "Creating Photo with Audio activity"
+audio_activity1 = Activity.create({
+  title: "CLICKABLE PHOTO WITH EMBEDDED AUDIO INTERVIEW",
+  question_amount: 1,
+  description: " Click to hear an interview with Mizushōbai’s playwright, Julie Tamiko Manning.",
+  activity_type: type7,
+  phase: phase1
+})
+
+puts "Creating Photo with Audio Activity Questions"
+audio_activity1_question1 = ActivityQuestion.create({
+  question_text: "",
+  response_text: "",
+  activity: audio_activity1,
+  choices: []
+})
+
+audio_activity1_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png", content_type: "image/png" )
+audio_activity1_question1.save
+# audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png")
+# audio_activity1_question1.save
 
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
@@ -505,7 +526,7 @@ activity6 = Activity.create({
                               phase: phase2
                             })
 
-puts "Createing activity 6 questions!"
+puts "Creating activity 6 questions!"
 act6_question1 = ActivityQuestion.create({
                                           question_text: "Match 1",
                                           response_text: "Match 2",

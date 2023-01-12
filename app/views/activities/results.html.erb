@@ -1,11 +1,24 @@
-<% if @activity.activity_type.name == "Video" || @activity.activity_type.name == "Quiz"  %>
+<% case @activity.activity_type.name %>
+<% when "Quiz" %>
   <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
-<% elsif @activity.activity_type.name == "Photo Popup" %>
-  <%= render 'activities/photo_popup_activity', activity: @activity %>
-<% end %>
-
-<% if current_user.teacher? %>
-  <p class="text-center"><%= link_to "Back to classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+<% when "Essay" %>
+  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Review" %>
+  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Match" %>
+  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Art" %>
+  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Cross-Word" %>
+  <%= render 'activities/crossword_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Audio Pop-up" %>
+  <%= render 'activities/audio_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Photo Popup" %>
+  <%= render 'activities/photo_popup_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Video" %>
+  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Info" %>
+  <%= render 'activities/info_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% else %>
-  <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <%= render 'activities/activity_error', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% end %>
