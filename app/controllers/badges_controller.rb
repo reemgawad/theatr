@@ -8,9 +8,12 @@ class BadgesController < ApplicationController
     @badge.status = "completed"
 
     if @badge.save
-      redirect_to classroom_path(current_user.classroom), notice: "The activity is completed"
+      if current_user.teacher
+        redirect_to classroom_path(current_user.classroom), notice: "The activity is completed"
+      else
+        redirect_to profile_path(current_user)
+      end
     end
-
   end
 
   def marked

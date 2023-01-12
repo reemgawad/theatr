@@ -38,6 +38,8 @@
     <form class="text-center" action="/badges/<%= @badge.id %>/completed">
       <input type="submit" value="Complete Activity" class="btn btn-primary">
     </form>
+  <% elsif current_user == @profile && @badge.status == "completed" %>
+    <p class="text-center mt-3">You have completed this activity.</p>
   <% end %>
   <br>
 </div>
