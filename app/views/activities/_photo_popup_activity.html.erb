@@ -1,15 +1,15 @@
 <div class="container" data-controller="video-questions">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
-
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
+    <h4 class="question"><%= @activity.description %></h4>
     <div class="d-flex justify-content-center">
       <% @activity.activity_questions.each do |question| %>
-        <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-column align-items-center" data-controller="">
           <% question.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= question.id %>" style="box-shadow: none">
+              <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill, class: "rounded-2 m-1", style: "box-shadow: 0 5px 9px rgba(0,0,0,0.2);" %>
+            </button>
           <% end %>
-          <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= question.id %>">
-          </button>
 
           <div class="modal fade" id="staticBackdrop<%= question.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

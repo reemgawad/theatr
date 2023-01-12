@@ -1,17 +1,13 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
 
-  <%# @activity.activity_questions.each do |question| %>
-    <p><%#= question.question_text %></p>
-  <%# end %>
-
   <div class="d-flex flex-column align-items-center">
     <h4 class="question"><%= @activity.description %></h4>
-    <% if @activity.title == "Clickable Photos with Pop-ups" %>
+    <% if @activity.activity_type.name == "Photo Popup" %>
       <div>
         <% @activity.activity_questions.each do |aq| %>
           <% aq.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill, class: "rounded-2 m-3", style: "box-shadow: 0 5px 9px rgba(0,0,0,0.2);" %>
           <% end %>
         <% end %>
       </div>
