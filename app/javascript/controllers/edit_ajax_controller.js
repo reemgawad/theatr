@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-
 // Connects to data-controller="edit-ajax"
 export default class extends Controller {
 
@@ -43,12 +42,11 @@ export default class extends Controller {
       <input type="button" value="Edit" class="btn btn-primary editButton">
     `
   }
-  
+
   revealCommentForm(event) {
     event.preventDefault();
     this.commentInfoTarget.classList.add("d-none");
     this.commentEditTarget.classList.remove("d-none");
   }
-
 
 }

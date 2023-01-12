@@ -18,3 +18,6 @@ application.register("map", MapController)
 
 import SignupController from "./signup_controller"
 application.register("signup", SignupController)
+
+import VideoQuestions from "./video_questions_controller"
+application.register("video-questions", VideoQuestions)
