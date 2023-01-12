@@ -2,14 +2,34 @@
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
 
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
-    <% @activity.activity_questions.each_with_index do |question, i| %>
-      <div class="text-center">
-        <% question.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
-          <%= question.question_text %>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="d-flex justify-content-center">
+      <% @activity.activity_questions.each do |question| %>
+        <div class="d-flex flex-column align-items-center">
+          <% question.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+          <% end %>
+          <button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= question.id %>">
+          </button>
+
+          <div class="modal fade" id="staticBackdrop<%= question.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel"><%= question.question_text.truncate_words(2) %></h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= question.question_text %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cool!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% else %>
     <h3 class="text-center mt-3">You can't complete this activity yet!</h3>
   <% end %>

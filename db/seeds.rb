@@ -238,8 +238,8 @@ photo_popup_question2 = ActivityQuestion.create({
                                           choices: []
                                         })
 
-photo_popup_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
-photo_popup_question1.save!
+photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
+photo_popup_question2.save!
 
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
