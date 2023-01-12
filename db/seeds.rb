@@ -43,9 +43,10 @@ type4 = ActivityType.create({ name: "Match" })
 type5 = ActivityType.create({ name: "Art" })
 type6 = ActivityType.create({ name: "Crossword" })
 type7 = ActivityType.create({ name: "Audio Pop-up" })
-type8 = ActivityType.create({ name: "Video" })
+type8 = ActivityType.create({ name: "Video Quiz" })
 type9 = ActivityType.create({ name: "Info" })
 type10 = ActivityType.create({ name: "Photo Popup" })
+type12 = ActivityType.create({ name: "Video Essay" })
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -237,7 +238,7 @@ photo_popup_question2 = ActivityQuestion.create({
                                           choices: []
                                         })
 photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
-photo_popup_question2.save!                                        
+photo_popup_question2.save!
 
 
 puts "Creating Photo with Audio activity"

@@ -15,10 +15,12 @@
   <%= render 'activities/audio_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Photo Popup" %>
   <%= render 'activities/photo_popup_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
-<% when "Video" %>
+<% when "Video Quiz" %>
   <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Info" %>
   <%= render 'activities/info_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Video Essay" %>
+  <%= render 'activities/video_essay_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% else %>
   <%= render 'activities/activity_error', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% end %>
