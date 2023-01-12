@@ -244,7 +244,7 @@ multiple_photo_popup = Activity.create({
                                 activity_type: type10,
                                 phase: phase2
                                 })
-multiple_photo_popup.photos.attach(io: File.open("#{Rails.root}/app/assets/images/monument-national.jpeg"), filename: 'monument-national.jpeg', content_type: 'image/jpeg')
+multiple_photo_popup.photos.attach(io: File.open("#{Rails.root}/app/assets/images/monument-nat.png"), filename: 'monument-nat.png', content_type: 'image/png')
 
 puts "Creating CLICKABLE PHOTO WITH MULTIPLE POP-UP activity questions!"
 multiple_photo_popup_question1 = ActivityQuestion.create({
