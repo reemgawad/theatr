@@ -46,6 +46,7 @@ type6 = ActivityType.create({ name: "Crossword" })
 type7 = ActivityType.create({ name: "Audio" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
+type10 = ActivityType.create({name: "Multiple"})
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -221,19 +222,53 @@ photo_popup = Activity.create({
                           })
 
 puts "Creating CLICKABLE PHOTO WITH POP-UP activity questions!"
-photo_popup_question = ActivityQuestion.create({
+photo_popup_question1 = ActivityQuestion.create({
                                           question_text: "Joyce Lam (January 27, 1959 - April 11, 2022) founded the Vancouver Asian Canadian Theatre company in 1999 to announce her life's purpose - to change negative perceptions of Asians, and to raise the visibility and authenticity of the Canadian Asian experience via the stage. Joyce oversaw over 45 productions, including 14 years of Annual Asian Comedy Nights, the first ever competition between Asian comedy teams from all over North America, a series of plays called 'Sex in Vancouver', Vancouver's first big production of 'Flower Drum Song' and her personally most satisfying play, the original musical 'Red Letters', based on the Chinese Head Tax. For this work, Joyce was recognized many times, including a B.C. Community Achievement Award in 2010, and a Vancouver Cultural Harmony Award in 2012.",
                                           response_text: "",
                                           activity: photo_popup,
                                           choices: []
                                         })
 
-photo_popup_question = ActivityQuestion.create({
+photo_popup_question2 = ActivityQuestion.create({
                                           question_text: "Jean Yoon is well known in the Toronto arts and Korean-Canadian communities as an actor, playwright, and theatre artist. She was born in Illinois but raised in Toronto where she currently resides. Yoon is Seoul Babe/Artistic Director of Loud Mouth Asian Babes, a theatre company that is committed to the development of new Canadian drama by, for, and about Asian women. In recent years, Yoon has played the role of the mother in the CBC television series 'Kim’s Convenience.'",
                                           response_text: "",
                                           activity: photo_popup,
                                           choices: []
                                         })
+
+puts "Creating Activity: CLICKABLE PHOTO WITH MULTIPLE POP-UP!"
+multiple_photo_popup = Activity.create({
+                                title: "CLICKABLE PHOTO WITH MULTIPLE POP-UP",
+                                question_amount: 3,
+                                description: "Learn more about Montreal’s Monument-Nationale by clicking on the stars",
+                                activity_type: type10,
+                                phase: phase2
+                                })
+multiple_photo_popup.photos.attach(io: File.open("#{Rails.root}/app/assets/images/monument-national.jpeg"), filename: 'monument-national.jpeg', content_type: 'image/jpeg')
+
+puts "Creating CLICKABLE PHOTO WITH MULTIPLE POP-UP activity questions!"
+multiple_photo_popup_question1 = ActivityQuestion.create({
+                                          question_text: "Located on Saint-Laurent Boulevard in Montréal, Quebec, the Monument National National Historic Site of Canada is an impressive, four-storey theatre and cultural centre constructed in an eclectic Renaissance style. ",
+                                          response_text: "",
+                                          activity: multiple_photo_popup,
+                                          choices: []
+                                        })
+
+multiple_photo_popup_question2 = ActivityQuestion.create({
+                                          question_text: "The Monument National also served as a venue for political discussion in Montréal, hosting the likes of Honoré Mercier, Wilfrid Laurier and Henri Bourrassa.The Monument National also served the Jewish, Chinese and English communities in Montréal. The building housed religious offices between 1903 and 1935, it hosted the first meeting of the Canadian Jewish Congress in 1919, Yiddish productions were held there until the 1950s, and Chinese and English performances were held in the building.",
+                                          response_text: "",
+                                          activity: multiple_photo_popup,
+                                          choices: []
+                                        })
+
+multiple_photo_popup_question3 = ActivityQuestion.create({
+                                          question_text: "The Monument National was purchased by the National Theatre School of Canada in 1978 and was renovated between 1991 and 1993",
+                                          response_text: "",
+                                          activity: multiple_photo_popup,
+                                          choices: []
+                                        })
+
+
 
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
