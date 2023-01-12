@@ -124,7 +124,7 @@ gen_theater_ques10 = ActivityQuestion.create({
 
 puts "Creating Post Show Activity!"
 post_show = Activity.create({
-                              title: "Post Show: Mizushōbai: At a Glance",
+                              title: "Mizushōbai: At a Glance",
                               question_amount: 10,
                               description: "What ideas, concepts and facts can you remember from Julie Tamiko Manning’s play, Mizushōbai? Let’s find out with this little post-show quiz!",
                               activity_type: type1,
@@ -274,19 +274,35 @@ video_activity = Activity.create({
                           })
 
 puts "Creating VIDEO WITH POP-UP activity questions!"
-
 video_popup_question1 = ActivityQuestion.create({
                                           question_text: "In this video, what is best described as the production concept of this version of William Shakespeare’s A Midsummer Night’s Dream was described as:",
-                                          response_text: "“contemporary England [with a] music festival and it’s kind of a bit psychedelic”",
+                                          response_text: "Contemporary England [with a] music festival and it's kind of a bit psychedelic",
                                           activity: video_activity,
-                                          choices: ["Comtemporary England [with a] music festival and it's kind of a bit psychadelic", "there’s a lot of love triangles and then we all go to the forest", "hate and love and lust","You have to use your body and your voice in a way that you normally wouldn’t"]
+                                          choices: ["Contemporary England [with a] music festival and it's kind of a bit psychedelic", "There’s a lot of love triangles and then we all go to the forest", "Hate and love and lust","You have to use your body and your voice in a way that you normally wouldn’t"]
                                         })
 
 video_popup_questions2 = ActivityQuestion.create({
                                         question_text: "Which answer best describes the plot?",
-                                        response_text: "here’s a lot of love triangles and then we all go to the forest",
+                                        response_text: "There’s a lot of love triangles and then we all go to the forest",
                                         activity: video_activity,
-                                        choices: ["Contemporary England [with a] music festival and it’s kind of a bit psychedelic", "there’s a lot of love triangles and then we all go to the forest","hate and love and lust", "You have to use your body and your voice in a way that you normally wouldn’t"]
+                                        choices: ["Contemporary England [with a] music festival and it’s kind of a bit psychedelic", "There’s a lot of love triangles and then we all go to the forest","Hate and love and lust", "You have to use your body and your voice in a way that you normally wouldn’t"]
+                                        })
+
+puts "Creating Video Essay Activity"
+video_essay_activity = Activity.create({
+                          title: "Video Review of Mizushōbai",
+                          question_amount: 2,
+                          description: "Record a review of Mizushōbai’ with regards to three of the following elements of the play: plot, characters, acting, direction, costumes, lighting, sound - 5 minutes max.",
+                          activity_type: type12,
+                          phase: phase3
+                          })
+
+puts "Creating Video Essay activity questions!"
+video_essay_question1 = ActivityQuestion.create({
+                                        question_text: "",
+                                        response_text: "",
+                                        activity: video_essay_activity,
+                                        choices: []
                                         })
 
 puts "Creating activity 1!"
