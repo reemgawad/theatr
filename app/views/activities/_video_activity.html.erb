@@ -1,8 +1,8 @@
 <div class="container" data-controller="video-questions">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
-    <% if @activity.video %>
-      <div class="text-center" ><iframe data-video-questions-target="video" width="560" height="315" src="https://www.youtube.com/embed/<%= activity.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-    <% end %>
+  <% if @activity.video %>
+    <div class="text-center" ><iframe data-video-questions-target="video" width="560" height="315" src="https://www.youtube.com/embed/<%= activity.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  <% end %>
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
     <% activity_questions.each_with_index do |question, i| %>
       <div class="question"
@@ -12,26 +12,26 @@
         data-edit-ajax-activity-id-value="<%= question.id %>"
         data-edit-ajax-user-id-value="<%= current_user.id %>"
       >
-      <h4 class="mb-2"><%= i + 1 %>. <%= question.question_text %></h4>
-      <p class="my-2"><%= "The correct answer is: #{question.response_text}" if current_user.teacher %></p>
-      <%# Submit a response to each question ONLY if no response is already present %>
-      <%# to prevent multiple responses to 1 question %>
-      <% if question.user_responses.where(user: profile).empty? && !current_user.teacher? %>
-        <%= simple_form_for([question, user_response], data: {edit_ajax_target: "form"}) do |f| %>
-          <%# If it's a review, the input field is a text field %>
-          <% if question.activity.activity_type == "Review" %>
-            <%= f.input :text, as: :text, label: false %>
-          <% elsif question.choices.any? %>
-            <%= f.input :text, as: :radio_buttons, collection: question.choices %>
-          <% else %>
-            <%= f.input :text, label: false, placeholder: "Write your answer..." %>
+        <h4 class="mb-2"><%= i + 1 %>. <%= question.question_text %></h4>
+        <p class="my-2"><%= "The correct answer is: #{question.response_text}" if current_user.teacher %></p>
+        <%# Submit a response to each question ONLY if no response is already present %>
+        <%# to prevent multiple responses to 1 question %>
+        <% if question.user_responses.where(user: profile).empty? && !current_user.teacher? %>
+          <%= simple_form_for([question, user_response], data: {edit_ajax_target: "form"}) do |f| %>
+            <%# If it's a review, the input field is a text field %>
+            <% if question.activity.activity_type == "Review" %>
+              <%= f.input :text, as: :text, label: false %>
+            <% elsif question.choices.any? %>
+              <%= f.input :text, as: :radio_buttons, collection: question.choices %>
+            <% else %>
+              <%= f.input :text, label: false, placeholder: "Write your answer..." %>
+            <% end %>
+            <%= f.hidden_field :activity_question_id, value: question.id %>
+            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
           <% end %>
-          <%= f.hidden_field :activity_question_id, value: question.id %>
-          <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
         <% end %>
-      <% end %>
 
-      <% question.user_responses.where(user: profile).each do |response| %>
+        <% question.user_responses.where(user: profile).each do |response| %>
           <%= render 'activities/user_responses_info', question: question, response: response %>
           <% if @badge.status == "marked" || @badge.status == "completed" %>
             <% if response.text == question.response_text %>
@@ -52,9 +52,8 @@
 
           <%= render 'activities/teacher_comments_info', response: response %>
         <% end %>
-
-    </div>
-  <% end %>
+      </div>
+    <% end %>
   <% else %>
     <h3 class="text-center mt-3">You can't complete this activity yet!</h3>
   <% end %>
