@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="text-center mt-4"><%= @activity.title %></h1>
+  <div>
+    <div class="character-icons">
+      <% icons = [] %>
+      <% @activity_questions.each do |e| %>
+        <% icons << e.question_text %>
+      <% end %>
+      <h1 class="text-center mt-4" ><%= icons.join %></h1>
+      <%= audio_tag("#{icons.join} audio.m4a", id:"icon-audio") %>
+    </div>
+    <% @activity_questions.each do |e| %>
+      <div class="character-icons">
+        <h1 class="text-center mt-4" id="icon-symbol"><%= e.question_text %></h1>
+        <span class="tooltiptext"><%= e.response_text %></span>
+        <%= audio_tag("#{e.question_text} audio.m4a", id:"icon-audio") %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user == @profile && @badge.status != "completed" %>
+    <form  data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
+      <input type="submit" value="Mark As Completed" class="btn btn-primary">
+    </form>
+  <% end %>
+  <br>
+  <% if current_user.teacher? %>
+    <p class="text-center"><%= link_to "Back to classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+  <% else %>
+    <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <% end %>
+
+</div>

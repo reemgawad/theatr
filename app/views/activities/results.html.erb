@@ -17,6 +17,8 @@
   <%= render 'activities/photo_popup_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Video" %>
   <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+<% when "Icon" %>
+  <%= render 'activities/icon_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Info" %>
   <%= render 'activities/info_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% else %>

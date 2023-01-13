@@ -46,6 +46,7 @@ type7 = ActivityType.create({ name: "Audio Pop-up" })
 type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
 type10 = ActivityType.create({ name: "Photo Popup" })
+type11 = ActivityType.create({ name: "Icon"})
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -237,8 +238,7 @@ photo_popup_question2 = ActivityQuestion.create({
                                           choices: []
                                         })
 photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
-photo_popup_question2.save!                                        
-
+photo_popup_question2.save!
 
 puts "Creating Photo with Audio activity"
 audio_activity1 = Activity.create({
@@ -256,11 +256,37 @@ audio_activity1_question1 = ActivityQuestion.create({
   activity: audio_activity1,
   choices: []
 })
-
 audio_activity1_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png", content_type: "image/png" )
 audio_activity1_question1.save
-# audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png")
-# audio_activity1_question1.save
+
+puts "Creating Icons with Audio and Pop Up activity!"
+icon_activity = Activity.create({
+  title: "SCROLLING OVER ICONS WITH POP-UP & AUDIO",
+  question_amount: 3,
+  description: "What does the word Mizushōbai mean? One type of Japanese character is called Kanji. There are three Kanji which make up the full word, Mizushōbai.",
+  activity_type: type11,
+  phase: phase1
+})
+
+puts "Creating Icons with Audio and Pop Up activity questions!"
+icon_activity_question1 = ActivityQuestion.create({
+  question_text: "水",
+  response_text: "Water.",
+  activity: icon_activity,
+  choices: []
+})
+icon_activity_question2 = ActivityQuestion.create({
+  question_text: "商",
+  response_text: "Make a deal, selling, dealing in, merchant.",
+  activity: icon_activity,
+  choices: []
+})
+icon_activity_question3 = ActivityQuestion.create({
+  question_text: "売",
+  response_text: "Sell.",
+  activity: icon_activity,
+  choices: []
+})
 
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
@@ -273,7 +299,6 @@ video_activity = Activity.create({
                           })
 
 puts "Creating VIDEO WITH POP-UP activity questions!"
-
 video_popup_question1 = ActivityQuestion.create({
                                           question_text: "In this video, what is best described as the production concept of this version of William Shakespeare’s A Midsummer Night’s Dream was described as:",
                                           response_text: "“contemporary England [with a] music festival and it’s kind of a bit psychedelic”",
