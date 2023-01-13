@@ -1,18 +1,23 @@
- <div id="puzzle_container">
+ <div class="container">
+
+  <div id="puzzle_container">
     <table id="puzzle">
     </table>
-</div>
+  </div>
 
-<div id="hints_container">
+  <div id="hints_container text-center">
     <h3>Vertical</h3>
-        <div id="vertical_hints_container"></div>
+    <div id="vertical_hints_container"></div>
     <h3>Horizontal</h3>
-        <div id="horizontal_hints_container"></div>
-</div>
+    <div id="horizontal_hints_container"></div>
+  </div>
 
-<div id="buttons_container">
+  <div id="buttons_container">
     <button id="clear_all">Clear All</button>
     <button id="check">Check</button>
     <button id="solve">Solve</button>
     <button id="clue">Clue</button>
-</div>
+  </div>
+
+ </div>
+<%= javascript_include_tag 'crossword' %>
