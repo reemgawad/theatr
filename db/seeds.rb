@@ -323,12 +323,21 @@ multiple_photo_popup_question3 = ActivityQuestion.create({
 
 
 
+puts "Creating Crossword Acivity"
+crossword = Activity.create({
+                            title: "CROSSWORD",
+                            question_amount: 0,
+                            description: "Identify the theatre-worker role with the clues given below by placing them in the crossword spaces.",
+                            phase: phase2,
+                            activity_type: type6
+                            })
+
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
                           title: "VIDEO QUIZ WITH RESPONSE POP-UPS",
                           question_amount: 2,
                           description: "After watching this short film, choose the correct answer below.",
-                          activity_type: type13,
+                          activity_type: type8,
                           phase: phase2,
                           video: "qLiAJ-ws5bU"
                           })

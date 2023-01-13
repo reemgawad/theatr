@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
 import "@hotwired/stimulus"
+// import "./crossword"
 
 const elements = document.querySelectorAll('.character-icons');
 elements.forEach((e) => (
