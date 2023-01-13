@@ -294,7 +294,7 @@ multiple_photo_popup = Activity.create({
                                 title: "CLICKABLE PHOTO WITH MULTIPLE POP-UP",
                                 question_amount: 3,
                                 description: "Learn more about Montreal’s Monument-Nationale by clicking on the stars",
-                                activity_type: type10,
+                                activity_type: type13,
                                 phase: phase2
                                 })
 multiple_photo_popup.photos.attach(io: File.open("#{Rails.root}/app/assets/images/monument-nat.png"), filename: 'monument-nat.png', content_type: 'image/png')
