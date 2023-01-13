@@ -47,6 +47,7 @@ type8 = ActivityType.create({ name: "Video" })
 type9 = ActivityType.create({ name: "Info" })
 type10 = ActivityType.create({ name: "Photo Popup" })
 type11 = ActivityType.create({ name: "Icon"})
+type13 = ActivityType.create({name: "Multiple"})
 
 puts "Creating General Theater activity!"
 general_theater = Activity.create({
@@ -288,12 +289,46 @@ icon_activity_question3 = ActivityQuestion.create({
   choices: []
 })
 
+puts "Creating Activity: CLICKABLE PHOTO WITH MULTIPLE POP-UP!"
+multiple_photo_popup = Activity.create({
+                                title: "CLICKABLE PHOTO WITH MULTIPLE POP-UP",
+                                question_amount: 3,
+                                description: "Learn more about Montreal’s Monument-Nationale by clicking on the stars",
+                                activity_type: type13,
+                                phase: phase2
+                                })
+multiple_photo_popup.photos.attach(io: File.open("#{Rails.root}/app/assets/images/monument-nat.png"), filename: 'monument-nat.png', content_type: 'image/png')
+
+puts "Creating CLICKABLE PHOTO WITH MULTIPLE POP-UP activity questions!"
+multiple_photo_popup_question1 = ActivityQuestion.create({
+                                          question_text: "Located on Saint-Laurent Boulevard in Montréal, Quebec, the Monument National National Historic Site of Canada is an impressive, four-storey theatre and cultural centre constructed in an eclectic Renaissance style. ",
+                                          response_text: "",
+                                          activity: multiple_photo_popup,
+                                          choices: []
+                                        })
+
+multiple_photo_popup_question2 = ActivityQuestion.create({
+                                          question_text: "The Monument National also served as a venue for political discussion in Montréal, hosting the likes of Honoré Mercier, Wilfrid Laurier and Henri Bourrassa.The Monument National also served the Jewish, Chinese and English communities in Montréal. The building housed religious offices between 1903 and 1935, it hosted the first meeting of the Canadian Jewish Congress in 1919, Yiddish productions were held there until the 1950s, and Chinese and English performances were held in the building.",
+                                          response_text: "",
+                                          activity: multiple_photo_popup,
+                                          choices: []
+                                        })
+
+multiple_photo_popup_question3 = ActivityQuestion.create({
+                                          question_text: "The Monument National was purchased by the National Theatre School of Canada in 1978 and was renovated between 1991 and 1993",
+                                          response_text: "",
+                                          activity: multiple_photo_popup,
+                                          choices: []
+                                        })
+
+
+
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
                           title: "VIDEO QUIZ WITH RESPONSE POP-UPS",
                           question_amount: 2,
                           description: "After watching this short film, choose the correct answer below.",
-                          activity_type: type8,
+                          activity_type: type13,
                           phase: phase2,
                           video: "qLiAJ-ws5bU"
                           })
