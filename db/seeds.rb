@@ -237,7 +237,7 @@ photo_popup_question2 = ActivityQuestion.create({
                                           choices: []
                                         })
 photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
-photo_popup_question2.save!                                        
+photo_popup_question2.save!
 
 
 puts "Creating Photo with Audio activity"
@@ -261,6 +261,15 @@ audio_activity1_question1.photos.attach(io: File.open("#{Rails.root}/app/assets/
 audio_activity1_question1.save
 # audio_activity1_question1.photos.attach(io: File.open("app/assets/images/Julie Tamiko Manning.png"), filename: "JulieTamikoManning.png")
 # audio_activity1_question1.save
+
+puts "Creating Crossword Acivity"
+crossword = Activity.create({
+                            title: "CROSSWORD",
+                            question_amount: 0,
+                            description: "Identify the theatre-worker role with the clues given below by placing them in the crossword spaces.",
+                            phase: phase2,
+                            activity_type: type6
+                            })
 
 puts "Creating VIDEO WITH POP-UP Activity"
 video_activity = Activity.create({
