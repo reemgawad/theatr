@@ -4,6 +4,7 @@
     <h4 class="question"><%= @activity.description %></h4>
     <% activity_questions.each_with_index do |question, i| %>
       <div class="question">
+        <h4 class="mb-2"><%= i + 1 %>. <%= question.question_text %></h4>
         <%# Submit a response to each question ONLY if no response is already present %>
         <%# to prevent multiple responses to 1 question %>
         <% if question.user_responses.where(user: profile).empty? && !current_user.teacher? %>

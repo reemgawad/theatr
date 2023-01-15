@@ -369,7 +369,7 @@ video_essay_activity = Activity.create({
 
 puts "Creating Video Essay activity questions!"
 video_essay_question1 = ActivityQuestion.create({
-                                        question_text: "Insert your Youtube video link here (click the 'Share' button under the video and copy the link displayed).",
+                                        question_text: "Paste your Youtube video link here (click the 'Share' button under the video and copy the link displayed).",
                                         response_text: "",
                                         activity: video_essay_activity,
                                         choices: []
