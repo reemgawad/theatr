@@ -1,0 +1,52 @@
+<div class="container">
+  <h1 class="text-center mt-3"><%= @activity.title %></h1>
+  <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
+    <h4 class="question"><%= @activity.description %></h4>
+    <% activity_questions.each_with_index do |question, i| %>
+      <div class="question">
+        <%# Submit a response to each question ONLY if no response is already present %>
+        <%# to prevent multiple responses to 1 question %>
+        <% if question.user_responses.where(user: profile).empty? && !current_user.teacher? %>
+          <%= simple_form_for([question, user_response]) do |f| %>
+            <%= f.input :text, label: false, placeholder: "Paste video link here..." %>
+            <%= f.hidden_field :activity_question_id, value: question.id %>
+            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+
+        <% question.user_responses.where(user: profile).each do |response| %>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= response.text.scan(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/).first.last %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <% if current_user.teacher? && response.teacher_comments.empty? %>
+            <%= simple_form_for([response, teacher_comment]) do |f| %>
+              <%= f.input :text, label: false, placeholder: "Leave a comment..." %>
+              <%= f.hidden_field :user_response_id, value: response.id %>
+              <%= f.submit "Save Comment", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+          <br>
+          <%= render 'activities/teacher_comments_info', response: response %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <h3 class="text-center mt-3">You can't complete this activity yet!</h3>
+  <% end %>
+
+  <% if current_user == @profile && @badge.status != "completed" %>
+    <form class="text-center" action="/badges/<%= @badge.id %>/marked">
+      <input type="submit" value="Complete Activity" class="btn btn-primary">
+    </form>
+  <% end %>
+
+  <% if current_user.teacher? && @badge.status != "completed" %>
+    <form  data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
+      <input type="submit" value="Mark As Completed" class="btn btn-primary">
+    </form>
+  <% end %>
+  <br>
+  <% if current_user.teacher? %>
+    <p class="text-center"><%= link_to "Back to classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+  <% else %>
+    <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <% end %>
+</div>
