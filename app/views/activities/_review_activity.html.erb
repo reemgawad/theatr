@@ -1,14 +1,11 @@
-<div class="container" data-controller="video-questions">
+<div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
-  <% if @activity.video %>
-    <div class="text-center" ><iframe data-video-questions-target="video" width="560" height="315" src="https://www.youtube.com/embed/<%= activity.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-  <% end %>
+
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
     <% activity_questions.each_with_index do |question, i| %>
       <div class="question"
         data-controller="edit-ajax"
         data-edit-ajax-target="question"
-        data-video-questions-target="form"
         data-edit-ajax-activity-id-value="<%= question.id %>"
         data-edit-ajax-user-id-value="<%= current_user.id %>"
       >
@@ -19,15 +16,9 @@
         <% if question.user_responses.where(user: profile).empty? && !current_user.teacher? %>
           <%= simple_form_for([question, user_response], data: {edit_ajax_target: "form"}) do |f| %>
             <%# If it's a review, the input field is a text field %>
-            <% if question.activity.activity_type == "Review" || question.activity.activity_type == "Essay"  %>
-              <%= f.input :text, as: :text, label: false, placeholder: "Write your review..." %>
-            <% elsif question.choices.any? %>
-              <%= f.input :text, as: :radio_buttons, collection: question.choices %>
-            <% else %>
-              <%= f.input :text, label: false, placeholder: "Write your answer..." %>
-            <% end %>
+            <%= f.input :text, as: :text, label: false, placeholder: "Write your review..." %>
             <%= f.hidden_field :activity_question_id, value: question.id %>
-            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
+            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefreshReview"}%>
           <% end %>
         <% end %>
 

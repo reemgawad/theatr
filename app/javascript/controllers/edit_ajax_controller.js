@@ -29,10 +29,28 @@ export default class extends Controller {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({"text": answer, "activity_question_id": this.activityIdValue})
-    }).then(response => response.json())
-      .then((data) => {
-        console.log(data)
-      })
+    })
+
+    this.formTarget.classList.add("d-none")
+
+    this.questionTarget.innerHTML +=
+    `
+      <p>${answer}</p>
+      <input type="button" value="Edit" class="btn btn-primary editButton">
+    `
+  }
+
+  preventRefreshReview(event) {
+    event.preventDefault();
+    let answer = (this.formTarget.querySelector("#user_response_text").value);
+
+    fetch(this.formTarget.action, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"text": answer, "activity_question_id": this.activityIdValue})
+    })
 
     this.formTarget.classList.add("d-none")
 
