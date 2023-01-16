@@ -21,7 +21,7 @@
           <% student.badges.each do |b| %>
             <% if @classroom.activities.include?(b.activity.title) %>
               <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
-                <%= link_to b.activity.title, results_path(student, b.activity), class: "badge #{b.status.to_sym}-color" %>
+                <%= link_to b.activity.title, results_path(student, b.activity), class: "badge #{b.status.to_sym}-color", style: "white-space:normal" %>
                 <% completed_badges << b if b.status == "completed" %>
               </div>
             <% end %>
