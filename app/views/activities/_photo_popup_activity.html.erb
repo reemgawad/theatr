@@ -42,4 +42,9 @@
     <p class="text-center mt-3">You have completed this activity.</p>
   <% end %>
   <br>
+  <% if current_user.teacher? %>
+    <p class="text-center"><%= link_to "Back to classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+  <% else %>
+    <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <% end %>
 </div>
