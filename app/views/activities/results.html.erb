@@ -2,9 +2,9 @@
 <% when "Quiz" %>
   <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Essay" %>
-  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+  <%= render 'activities/review_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Review" %>
-  <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+  <%= render 'activities/review_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Match" %>
   <%= render 'activities/video_activity', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
 <% when "Art" %>
