@@ -12,7 +12,7 @@
   </div>
 
   <hr>
-  <% unless current_user.teacher? %>
+  <% unless @user.teacher? %>
     <div class="conatiner mb-4">
       <div class="d-flex flex-row justify-content-around">
         <p>Type</p>
@@ -21,6 +21,13 @@
         <p>Updated</p>
       </div>
       <% @badges.each do |badge| %>
+        <% activity = badge.activity %>
+        <% comments = 0 %>
+        <% activity.activity_questions.each do |questions| %>
+          <% questions.user_responses.each do |response| %>
+            <% response.teacher_comments != nil ? comments += 1 : comments == comments %>
+          <% end %>
+        <% end %>
         <div class="profile-box d-flex flex-row justify-content-around">
         <p><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></p>
         <%# <p><%= badge.activity.title %>
@@ -29,6 +36,7 @@
           <% end %>
           <p>You have <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
           <p><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></p>
+          <p>You have <%= comments %> comments on this activity</p>
         </div>
       <% end %>
     <% end %>
