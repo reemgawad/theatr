@@ -19,5 +19,22 @@
     <button id="clue">Clue</button>
   </div>
 
+   <% if current_user == @profile && @badge.status != "completed" %>
+    <form class="text-center" action="/badges/<%= @badge.id %>/marked">
+      <input type="submit" value="Complete Activity" class="btn btn-primary">
+    </form>
+  <% end %>
+
+  <% if current_user.teacher? && @badge.status != "completed" %>
+    <form  data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
+      <input type="submit" value="Mark As Completed" class="btn btn-primary">
+    </form>
+  <% end %>
+  <br>
+  <% if current_user.teacher? %>
+    <p class="text-center"><%= link_to "Back to classroom", classroom_path(@classroom), class: "btn btn-primary" %></p>
+  <% else %>
+    <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
+  <% end %>
  </div>
 <%= javascript_include_tag 'crossword' %>

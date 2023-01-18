@@ -8,6 +8,13 @@
       <% end %>
       <h1 class="text-center mt-4" ><%= icons.join %></h1>
       <%= audio_tag("#{icons.join} audio.m4a", id:"icon-audio") %>
+      <span class="tooltiptext">
+        <ul >
+          <li>chancy trade (business) with a high turnover rate and uncertain profitability</li>
+          <li>the entertainment, eating, and drinking business</li>
+          <li>the night entertainment (nightlife) business</li>
+        </ul>
+      </span>
     </div>
     <% @activity_questions.each do |e| %>
       <div class="character-icons">
@@ -31,3 +38,5 @@
   <% end %>
 
 </div>
+
+<%= javascript_include_tag 'icons' %>
