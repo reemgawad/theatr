@@ -20,10 +20,17 @@
           <% completed_badges = [] %>
           <% student.badges.each do |b| %>
             <% if @classroom.activities.include?(b.activity.title) %>
-              <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
-                <%= link_to b.activity.title, results_path(student, b.activity), class: "badge #{b.status.to_sym}-color", style: "white-space:normal" %>
-                <% completed_badges << b if b.status == "completed" %>
-              </div>
+              <% if b.status == "marked" || b.status == "completed" %>
+                <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
+                  <%= link_to b.activity.title, results_path(student, b.activity), class: "badge #{b.status.to_sym}-color", style: "white-space:normal" %>
+                  <% completed_badges << b if b.status == "completed" %>
+                </div>
+              <% else %>
+                 <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
+                  <p class="badge <%= b.status.to_sym %>-color" style="white-space:normal"><%=  b.activity.title  %></p>
+                  <% completed_badges << b if b.status == "completed" %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -39,7 +46,6 @@
   <% end %>
   <div class="d-flex justify-content-evenly flex-wrap">
     <%= link_to "Home", root_path, class: "btn btn-primary mb-1", style: "min-width: 200px;"  %>
-    <%= link_to "Enter The Classroom", classroom_path(current_user.classroom), class: "btn btn-primary mb-1", style: "min-width: 200px;" if current_user.teacher? %>
     <%= link_to "Activities", activities_path, class: "btn btn-primary mb-1", style: "min-width: 200px;" unless current_user.teacher?  %>
   </div>
 </div>
