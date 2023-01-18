@@ -11,6 +11,48 @@
   text-decoration: none;
   color: black;
   font-size: 12px;
+  position: relative;
+}
+
+/* badge text */
+.badge .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  bottom: 50%;
+  left: 0px;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the badge */
+  opacity: 0;
+  transition: opacity 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+}
+
+
+/* Show the badge text when you mouse over the badge container */
+.badge:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.badge .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the badge */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 
 .available-color {
@@ -27,4 +69,9 @@
 
 .completed-color {
   background-color: rgba(0,128,0,0.25)
+}
+
+.badge a {
+  text-decoration: none;
+  color: inherit;
 }
