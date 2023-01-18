@@ -12,7 +12,7 @@
   </div>
 
   <hr>
-  <% unless current_user.teacher? %>
+  <% unless @user.teacher? %>
     <div class="conatiner mb-4">
       <div class="d-flex flex-row justify-content-around">
         <p>Type</p>
@@ -27,7 +27,11 @@
           <% if current_user.teacher? || current_user == @user%>
             <%= link_to badge.activity.title, results_path(@user, badge.activity) %>
           <% end %>
-          <p>You have <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
+          <% if current_user == @user %>
+            <p>You <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
+          <% else %>
+            <p><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
+          <% end %>
           <p><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></p>
         </div>
       <% end %>
