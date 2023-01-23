@@ -1,8 +1,7 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
-
+  <h4 class="question"><%= @activity.description %></h4>
   <div class="d-flex flex-column align-items-center">
-    <h4 class="question"><%= @activity.description %></h4>
     <% if @activity.activity_type.name == "Photo Popup" %>
       <div>
         <% @activity.activity_questions.each do |aq| %>

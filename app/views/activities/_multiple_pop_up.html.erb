@@ -1,6 +1,8 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= activity.title %></h1>
-  <h4 class="question"><%= activity.description %></h4>
+  <div>
+    <h4 class="question"><%= activity.description %></h4>
+  </div>
   <div class="text-center">
     <%= cl_image_tag activity.photos.first.key, usemap: "#map", class: "rounded-2" %>
     <map name="map">
