@@ -1,9 +1,8 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= activity.title %></h1>
-  <h4 class="text-center mt-3"><%= activity.description %></h4>
-
+  <h4 class="question"><%= activity.description %></h4>
   <div class="text-center">
-    <%= cl_image_tag activity.photos.first.key, usemap: "#map" %>
+    <%= cl_image_tag activity.photos.first.key, usemap: "#map", class: "rounded-2" %>
     <map name="map">
         <area id="star1" shape="rect" coords="146,390,288,533" href="" alt="star1" data-bs-toggle="modal" data-bs-target="#modal1">
         <area id="star2" shape="rect" coords="526,90,646,198" href="https://setapp.com/how-to/paint-for-mac" alt="star2" data-bs-toggle="modal" data-bs-target="#modal2">
