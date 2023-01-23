@@ -246,7 +246,7 @@ puts "Creating Photo with Audio activity"
 audio_activity1 = Activity.create({
   title: "CLICKABLE PHOTO WITH EMBEDDED AUDIO INTERVIEW",
   question_amount: 1,
-  description: " Click to hear an interview with Mizushōbai’s playwright, Julie Tamiko Manning.",
+  description: "Click to hear an interview with Mizushōbai’s playwright, Julie Tamiko Manning.",
   activity_type: type7,
   phase: phase1
 })

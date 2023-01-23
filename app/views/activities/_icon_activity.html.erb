@@ -1,5 +1,9 @@
 <div class="container">
   <h1 class="text-center mt-4"><%= @activity.title %></h1>
+  <div class="question">
+    <h4><%= @activity.description %></h4>
+    <p>Scroll over the Kanji to see their meaning. Click on the Kanji to hear them pronounced.</p>
+  </div>
   <div>
     <div class="character-icons">
       <% icons = [] %>
@@ -9,11 +13,11 @@
       <h1 class="text-center mt-4" ><%= icons.join %></h1>
       <%= audio_tag("#{icons.join} audio.m4a", id:"icon-audio") %>
       <span class="tooltiptext">
-        <ul >
-          <li>chancy trade (business) with a high turnover rate and uncertain profitability</li>
-          <li>the entertainment, eating, and drinking business</li>
-          <li>the night entertainment (nightlife) business</li>
-        </ul>
+        <div>
+          <p>Chancy trade (business) with a high turnover rate and uncertain profitability.</p>
+          <p>The entertainment, eating, and drinking business.</p>
+          <p>The night entertainment (nightlife) business.</p>
+        </div>
       </span>
     </div>
     <% @activity_questions.each do |e| %>
@@ -24,7 +28,7 @@
       </div>
     <% end %>
   </div>
-
+  <br>
   <% if current_user == @profile && @badge.status != "completed" %>
     <form  data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
       <input type="submit" value="Mark As Completed" class="btn btn-primary">
