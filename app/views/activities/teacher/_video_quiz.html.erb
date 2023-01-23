@@ -1,0 +1,16 @@
+<% if @activity.video %>
+  <div class="question d-flex flex-column align-items-center">
+    <div class="text-center mb-3"><iframe data-video-questions-target="video" width="560" height="315" src="https://www.youtube.com/embed/<%= activity.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  </div>
+<% end %>
+<% @activity.activity_questions.each_with_index do |question, i| %>
+  <div class="question">
+    <h4 class="mb-2"><%= i + 1 %>. <%= question.question_text %></h4>
+    <% if question.choices.any? %>
+      <% question.choices.each do |choice| %>
+        <li> <%= choice %> </li>
+      <% end %>
+    <% end %>
+    <p class="my-2"><%= "The correct answer is: #{question.response_text}" %></p>
+  </div>
+<% end %>

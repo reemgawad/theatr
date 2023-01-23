@@ -1,21 +1,37 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
   <h4 class="question"><%= @activity.description %></h4>
-  <div class="d-flex flex-column align-items-center">
-    <% if @activity.activity_type.name == "Photo Popup" %>
-      <div>
-        <% @activity.activity_questions.each do |aq| %>
-          <% aq.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill, class: "rounded-2 m-3", style: "box-shadow: 0 5px 9px rgba(0,0,0,0.2);" %>
-          <% end %>
-        <% end %>
-      </div>
+  <% if current_user.teacher? %>
+    <% case @activity.activity_type.name %>
+    <% when "Quiz" %>
+      <%= render 'activities/teacher/video_quiz', activity: @activity %>
+    <% when "Essay" %>
+    <% when "Review" %>
+    <% when "Video Essay" %>
+    <% when "Match" %>
+      <%= render 'activities/teacher/video_quiz', activity: @activity %>
+    <% when "Art" %>
+      <%= render 'activities/teacher/video_quiz', activity: @activity %>
+    <% when "Crossword" %>
+      <%= render 'activities/teacher/crossword', activity: @activity %>
+    <% when "Audio Pop-up" %>
+      <%= render 'activities/teacher/audio', activity: @activity %>
+    <% when "Photo Popup" %>
+      <%= render 'activities/teacher/photo_popup', activity: @activity %>
+    <% when "Video Quiz" %>
+      <%= render 'activities/teacher/video_quiz', activity: @activity %>
+    <% when "Icon" %>
+      <%= render 'activities/teacher/icon', activity: @activity %>
+    <% when "Multiple" %>
+      <%= render 'activities/teacher/multiple', activity: @activity %>
+    <% else %>
+      <%= render 'activities/activity_error', activity: @activity %>
     <% end %>
-  </div>
+  <% end %>
 
-  <%# Only show this link to students %>
-  <%# && Only show this link if the badge is not unavailable %>
   <div class="d-flex justify-content-evenly">
+    <%# Only show this link to students %>
+    <%# && Only show this link if the badge is not unavailable %>
     <% if current_user.teacher? || @activity.badges.find_by(user: current_user).active?  %>
       <p class="text-center"><%= link_to "Start this activity", results_path([current_user, @activity]), class: "btn btn-primary mb-1", style: "min-width: 200px;" unless current_user.teacher %></p>
     <% else %>
