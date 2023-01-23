@@ -24,7 +24,7 @@
             <% comments = 0 %>
             <% activity.activity_questions.each do |question| %>
               <% question.user_responses.each do |response| %>
-                <% response.teacher_comments != nil ? comments += 1 : comments = comments %>
+                <% response.teacher_comments.blank? ? comments = comments : comments += 1 %>
               <% end %>
             <% end %>
             <% if @classroom.activities.include?(b.activity.title) %>
