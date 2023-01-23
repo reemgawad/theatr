@@ -69,8 +69,7 @@ $.each(grid,function(i){
     if(starting_number != ""){
       question_number_span = '<span class="question_number">'+starting_number.replace(/(^,)|(,$)/g, "")+'</span>';
     }
-
-    $(row).append('<td>'+question_number_span+'<div class="square letter" data-number="'+this+'" contenteditable="true"></div></td>');
+    $(row).append('<td>'+question_number_span+'<div class="square letter '+direction+'" data-number="'+this+'" contenteditable="true"></div></td>');
     }
   });
   $("#puzzle").append(row);
@@ -155,7 +154,6 @@ function showClue(question_number,i,j){
 }
 
 
-
 //Draw hints
 var vertical_hints = $('<div id="vertical_hints"></div>');
 var horizontal_hints = $('<div id="horizontal_hints"></div>');
@@ -164,10 +162,10 @@ $.each(clues,function(index){
   var direction = get_direction(index+1);
 
   if(direction == "horizontal"){
-    $(horizontal_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint>');
+    $(horizontal_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form class="horizontale"><input id="'+(index + 1)+'" type="text"></form>');
   }
   else if(direction == "vertical"){
-    $(vertical_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint>');
+    $(vertical_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form class="verticale"><input id="'+(index + 1)+'" type="text"></form>');
   }
 });
 
@@ -175,9 +173,22 @@ $("#vertical_hints_container").append(vertical_hints);
 $("#horizontal_hints_container").append(horizontal_hints);
 
 $(".letter").keyup(function(){
-  var this_text = $(this).text();
-  if(this_text.length > 1){
-    $(this).text(this_text.slice(0,1));
+  // const dataTarget = $(this).data('number')
+  var index = $(this).closest('td').index()
+  // console.log($(this).parent().parent())
+  if (this.classList[2] == "horizontal") {
+    var this_text = $(this).text();
+    if(this_text.length > 1){
+      $(this).parent().next().find('.letter').focus();
+      $(this).text(this_text.slice(0,1));
+    }
+  }
+    if (this.classList[2] == "vertical") {
+    var this_text = $(this).text();
+    if(this_text.length > 1){
+      $(this).closest('tr').next().find('td').eq(index).focus();
+      $(this).text(this_text.slice(0,1));
+    }
   }
 });
 
