@@ -1,0 +1,4 @@
+<div class="image-audio text-center d-flex flex-column justify-content-center align-items-center">
+  <%= cl_image_tag @activity.activity_questions.first.photos.first.key, height: 485, width: 400, crop: :fill, class: "rounded-3 mb-1" %>
+  <%= audio_tag("Julie Tamiko Manning interview.m4a", controls: true) %>
+</div>

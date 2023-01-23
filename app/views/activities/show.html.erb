@@ -7,16 +7,23 @@
       <%= render 'activities/teacher/video_quiz', activity: @activity %>
     <% when "Essay" %>
     <% when "Review" %>
+    <% when "Video Essay" %>
     <% when "Match" %>
       <%= render 'activities/teacher/video_quiz', activity: @activity %>
     <% when "Art" %>
       <%= render 'activities/teacher/video_quiz', activity: @activity %>
     <% when "Crossword" %>
-      <%= render 'activities/teacher/crossword', activity: @activity, activity_questions: @activity_questions, profile: @profile, user_response: @user_response, teacher_comment: @teacher_comment %>
+      <%= render 'activities/teacher/crossword', activity: @activity %>
+    <% when "Audio Pop-up" %>
+      <%= render 'activities/teacher/audio', activity: @activity %>
     <% when "Photo Popup" %>
       <%= render 'activities/teacher/photo_popup', activity: @activity %>
     <% when "Video Quiz" %>
       <%= render 'activities/teacher/video_quiz', activity: @activity %>
+    <% when "Icon" %>
+      <%= render 'activities/teacher/icon', activity: @activity %>
+    <% when "Multiple" %>
+      <%= render 'activities/teacher/multiple', activity: @activity %>
     <% else %>
       <%= render 'activities/activity_error', activity: @activity %>
     <% end %>
