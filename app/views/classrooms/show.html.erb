@@ -30,12 +30,14 @@
             <% if @classroom.activities.include?(b.activity.title) %>
               <% if b.status == "marked" || b.status == "completed" %>
                 <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
-                  <div class="badge <%= b.status.to_sym %>-color" style="white-space:normal">
-                    <p ><%= link_to b.activity.title, results_path(student, b.activity) %></p>
-                    <span class="tooltiptext">
-                      You have <%= comments %> comments on this activity
-                    </span>
-                  </div>
+                  <%= link_to results_path(student, b.activity), style: "text-decoration: none" do %>
+                    <div class="badge <%= b.status.to_sym %>-color" style="white-space:normal">
+                      <p><%= b.activity.title %></p>
+                      <span class="tooltiptext">
+                        You have <%= comments %> comments on this activity
+                      </span>
+                    </div>
+                  <% end %>
                   <% completed_badges << b if b.status == "completed" %>
                   <%# <%= link_to b.activity.title, results_path(student, b.activity), class: "badge #{b.status.to_sym}-color", style: "white-space:normal" %>
                 </div>

@@ -24,14 +24,6 @@
 
         <% question.user_responses.where(user: profile).each do |response| %>
           <%= render 'activities/user_responses_info', question: question, response: response %>
-          <% if @badge.status == "marked" || @badge.status == "completed" %>
-            <% if response.text == question.response_text %>
-              <p class="my-2">Correction: <span class="text-success">Correct Answer</span></p>
-            <% else %>
-              <p class="my-2">Correction: <span class="text-danger">Wrong Answer</span></p>
-              <p><%= "The correct answer is: #{question.response_text}" unless current_user.teacher %>  </p>
-            <% end %>
-          <% end %>
 
           <% if current_user.teacher? && response.teacher_comments.empty? %>
             <%= simple_form_for([response, teacher_comment]) do |f| %>
