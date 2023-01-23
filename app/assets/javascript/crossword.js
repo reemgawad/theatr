@@ -172,25 +172,35 @@ $.each(clues,function(index){
 $("#vertical_hints_container").append(vertical_hints);
 $("#horizontal_hints_container").append(horizontal_hints);
 
-$(".letter").keyup(function(){
-  // const dataTarget = $(this).data('number')
+let dir = ""
 
-  // console.log(index)
-  // console.log($(this).parent().parent())
-  if (this.classList[2] == "horizontal") {
+$(".letter").click(function(){
+  dir = this.classList[2]
+})
+
+$(".letter").keyup(function(){
+
+
+  if (dir == "horizontal") {
     var this_text = $(this).text();
-    if(this_text.length > 1){
+
+    if(this_text.length >= 1){
       $(this).closest('td').next().find('.letter').focus();
       $(this).text(this_text.slice(0,1));
     }
+
   }
-    if (this.classList[2] == "vertical") {
+
+  if (dir == "vertical") {
+
     var this_text = $(this).text();
     var index = $(this).closest('td').index()
-    if(this_text.length > 1){
+
+    if(this_text.length >= 1){
       $(this).closest('tr').next().find('td').eq(index).find('.letter').focus();
       $(this).text(this_text.slice(0,1));
     }
+
   }
 });
 
