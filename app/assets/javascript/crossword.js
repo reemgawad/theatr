@@ -162,10 +162,10 @@ $.each(clues,function(index){
   var direction = get_direction(index+1);
 
   if(direction == "horizontal"){
-    $(horizontal_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form class="horizontale"><input id="'+(index + 1)+'" type="text"></form>');
+    $(horizontal_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form id="'+(index + 1)+'" class="horizontal"><input type="text"></form>');
   }
   else if(direction == "vertical"){
-    $(vertical_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form class="verticale"><input id="'+(index + 1)+'" type="text"></form>');
+    $(vertical_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form id="'+(index + 1)+'" class="vertical"><input type="text"></form>');
   }
 });
 
@@ -174,23 +174,56 @@ $("#horizontal_hints_container").append(horizontal_hints);
 
 $(".letter").keyup(function(){
   // const dataTarget = $(this).data('number')
-  var index = $(this).closest('td').index()
+
+  // console.log(index)
   // console.log($(this).parent().parent())
   if (this.classList[2] == "horizontal") {
     var this_text = $(this).text();
     if(this_text.length > 1){
-      $(this).parent().next().find('.letter').focus();
+      $(this).closest('td').next().find('.letter').focus();
       $(this).text(this_text.slice(0,1));
     }
   }
     if (this.classList[2] == "vertical") {
     var this_text = $(this).text();
+    var index = $(this).closest('td').index()
     if(this_text.length > 1){
-      $(this).closest('tr').next().find('td').eq(index).focus();
+      $(this).closest('tr').next().find('td').eq(index).find('.letter').focus();
       $(this).text(this_text.slice(0,1));
     }
   }
 });
+
+// $('form').submit(function(event) {
+//   event.preventDefault();
+
+//   const word = "adfsf"
+
+//   const id = this.id
+
+//   for (let td of document.querySelectorAll("td")) {
+//     try {
+
+//       if (td.querySelector("span").innerHTML === id) {
+
+//         if (this.classList.contains("vertical")) {
+//           for (const letter of word) {
+
+//             var index = $(td).closest('td').index()
+
+//             td.querySelector("div").innerHTML = letter
+//             td = $(td).closest('tr').next().children().eq(index).find('.letter');
+//               // $(td).text(this_text.slice(0,1));
+
+//           }
+//         }
+//       }
+
+//     } catch (error) {
+
+//     }
+//   }
+// });
 
 $(".letter").click(function(){
   document.execCommand('selectAll',false,null);
