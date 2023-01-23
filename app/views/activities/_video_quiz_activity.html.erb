@@ -1,7 +1,10 @@
 <div class="container" data-controller="video-questions">
   <h1 class="text-center mt-3"><%= @activity.title %></h1>
   <% if @activity.video %>
-    <div class="text-center" ><iframe data-video-questions-target="video" width="560" height="315" src="https://www.youtube.com/embed/<%= activity.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    <div class="question d-flex flex-column align-items-center">
+      <div class="text-center mb-3"><iframe data-video-questions-target="video" width="560" height="315" src="https://www.youtube.com/embed/<%= activity.video %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      <h4><%= activity.description %></h4>
+    </div>
   <% end %>
   <% if current_user.teacher || @activity.badges.find_by(user: current_user).active? %>
     <% activity_questions.each_with_index do |question, i| %>
