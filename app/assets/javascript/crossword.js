@@ -176,6 +176,10 @@ let dir = ""
 
 $(".letter").click(function(){
   dir = this.classList[2]
+
+  if (this.closest("td").querySelector("span").innerHTML == 4) {
+    dir = "horizontal"
+  }
 })
 
 $(".letter").keyup(function(){
