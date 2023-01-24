@@ -172,41 +172,41 @@ $.each(clues,function(index){
 $("#vertical_hints_container").append(vertical_hints);
 $("#horizontal_hints_container").append(horizontal_hints);
 
-// let dir = ""
+let dir = ""
 
-// $(".letter").click(function(){
-//   dir = this.classList[2]
+$(".letter").click(function(){
+  dir = this.classList[2]
 
-//   if (this.closest("td").querySelector("span").innerHTML == 4) {
-//     dir = "horizontal"
-//   }
-// })
+  if (this.closest("td").querySelector("span").innerHTML == 4) {
+    dir = "horizontal"
+  }
+})
 
-// $(".letter").keyup(function(){
+$(".letter").keyup(function(){
 
 
-//   if (dir == "horizontal") {
-//     var this_text = $(this).text();
+  if (dir == "horizontal") {
+    var this_text = $(this).text();
 
-//     if(this_text.length >= 1){
-//       $(this).closest('td').next().find('.letter').focus();
-//       $(this).text(this_text.slice(0,1));
-//     }
+    if(this_text.length >= 1){
+      $(this).closest('td').next().find('.letter').focus();
+      $(this).text(this_text.slice(0,1));
+    }
 
-//   }
+  }
 
-//   if (dir == "vertical") {
+  if (dir == "vertical") {
 
-//     var this_text = $(this).text();
-//     var index = $(this).closest('td').index()
+    var this_text = $(this).text();
+    var index = $(this).closest('td').index()
 
-//     if(this_text.length >= 1){
-//       $(this).closest('tr').next().find('td').eq(index).find('.letter').focus();
-//       $(this).text(this_text.slice(0,1));
-//     }
+    if(this_text.length >= 1){
+      $(this).closest('tr').next().find('td').eq(index).find('.letter').focus();
+      $(this).text(this_text.slice(0,1));
+    }
 
-//   }
-// });
+  }
+});
 
 $('form').submit(function(event) {
   event.preventDefault();
