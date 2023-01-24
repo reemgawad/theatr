@@ -69,8 +69,7 @@ $.each(grid,function(i){
     if(starting_number != ""){
       question_number_span = '<span class="question_number">'+starting_number.replace(/(^,)|(,$)/g, "")+'</span>';
     }
-
-    $(row).append('<td>'+question_number_span+'<div class="square letter" data-number="'+this+'" contenteditable="true"></div></td>');
+    $(row).append('<td>'+question_number_span+'<div class="square letter '+direction+'" data-number="'+this+'" contenteditable="true"></div></td>');
     }
   });
   $("#puzzle").append(row);
@@ -155,7 +154,6 @@ function showClue(question_number,i,j){
 }
 
 
-
 //Draw hints
 var vertical_hints = $('<div id="vertical_hints"></div>');
 var horizontal_hints = $('<div id="horizontal_hints"></div>');
@@ -164,21 +162,85 @@ $.each(clues,function(index){
   var direction = get_direction(index+1);
 
   if(direction == "horizontal"){
-    $(horizontal_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint>');
+    $(horizontal_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form id="'+(index + 1)+'" class="horizontal"><input type="text" placeholder="Your Answer"><input class="btn btn-primary mx-4" type="submit"></form>');
   }
   else if(direction == "vertical"){
-    $(vertical_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint>');
+    $(vertical_hints).append('<div class="hint"><b>'+(index+1)+'</b>.-'+clues[index]+'</hint><form id="'+(index + 1)+'" class="vertical"><input type="text" placeholder="Your Answer"><input class="btn btn-primary mx-4" type="submit"></form>');
   }
 });
 
 $("#vertical_hints_container").append(vertical_hints);
 $("#horizontal_hints_container").append(horizontal_hints);
 
-$(".letter").keyup(function(){
-  var this_text = $(this).text();
-  if(this_text.length > 1){
-    $(this).text(this_text.slice(0,1));
+var dir = ""
+
+$(".letter").click(function(){
+  dir = this.classList[2]
+
+  if (this.closest("td").querySelector("span").innerHTML == 4) {
+    dir = "horizontal"
   }
+})
+
+$(".letter").keyup(function(){
+
+
+  if (dir == "horizontal") {
+    var this_text = $(this).text();
+
+    if(this_text.length >= 1){
+      $(this).closest('td').next().find('.letter').focus();
+      $(this).text(this_text.slice(0,1));
+    }
+
+  }
+
+  if (dir == "vertical") {
+
+    var this_text = $(this).text();
+    var index = $(this).closest('td').index()
+
+    if(this_text.length >= 1){
+      $(this).closest('tr').next().find('td').eq(index).find('.letter').focus();
+      $(this).text(this_text.slice(0,1));
+    }
+
+  }
+});
+
+$('form').submit(function(event) {
+  event.preventDefault();
+
+  const word = this.querySelector('input').value
+  const id = this.id
+
+  for (var td of document.querySelectorAll("td")) {
+
+    try {
+      if (td.querySelector("span").innerHTML === id) {
+        if (this.classList.contains("vertical")) {
+          for (const letter of word) {
+            var index = $(td).closest('td').index()
+
+            td.querySelector("div").innerHTML = letter
+
+            td = td.closest("tr").nextElementSibling.querySelectorAll("td")[index]
+          }
+        } else if (this.classList.contains("horizontal")) {
+          for (const letter of word) {
+            td.querySelector("div").innerHTML = letter
+            td = td.closest('td').nextElementSibling
+          }
+        }
+      }
+
+    } catch (error) {
+
+    }
+  }
+
+  this.querySelector('input').value = ""
+
 });
 
 $(".letter").click(function(){
