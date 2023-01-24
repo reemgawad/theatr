@@ -172,7 +172,7 @@ $.each(clues,function(index){
 $("#vertical_hints_container").append(vertical_hints);
 $("#horizontal_hints_container").append(horizontal_hints);
 
-let dir = ""
+var dir = ""
 
 $(".letter").click(function(){
   dir = this.classList[2]
