@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CharacterCounterController from "./character_counter_controller"
+application.register("character-counter", CharacterCounterController)
+
 import ClassroomActivityController from "./classroom_activity_controller"
 application.register("classroom-activity", ClassroomActivityController)
 
@@ -19,5 +22,5 @@ application.register("map", MapController)
 import SignupController from "./signup_controller"
 application.register("signup", SignupController)
 
-import VideoQuestions from "./video_questions_controller"
-application.register("video-questions", VideoQuestions)
+import VideoQuestionsController from "./video_questions_controller"
+application.register("video-questions", VideoQuestionsController)
