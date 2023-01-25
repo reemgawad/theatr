@@ -5,6 +5,23 @@
   <div class="container">
 
     <div class="home-box">
+      <% if current_user.teacher? %>
+        <p>Welcome <%= current_user.first_name %>, you are now logged in as a teacher (Placeholder for JA's text) </p>
+        <ul>
+          <li>You can now access the classroom to see your students progress.</li>
+          <li>You can add or remove activities from the classroom in the classroom setting</li>
+          <li>You can leave comment on your students activities</li>
+        </ul>
+      <% else %>
+        <p>Welcome <%= current_user.first_name %>, you are now logged in as a student (Placeholder for JA's text)</p>
+        <ul>
+          <li>You can now complete activities and earn badges</li>
+          <li>You can see which activities you completed on your profile</li>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="home-box">
       <p>
         Welcome to the show Mizushōbai (The Water Trade), this is an interactive theatre companion:
         We're so lucky to have you here!

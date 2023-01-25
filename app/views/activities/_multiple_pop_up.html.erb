@@ -1,31 +1,32 @@
 <div class="container">
   <h1 class="text-center mt-3"><%= activity.title %></h1>
-  <h4 class="text-center mt-3"><%= activity.description %></h4>
-
+  <div>
+    <h4 class="question"><%= activity.description %></h4>
+  </div>
   <div class="text-center">
-    <%= cl_image_tag activity.photos.first.key, usemap: "#map" %>
+    <%= cl_image_tag activity.photos.first.key, usemap: "#map", class: "rounded-2" %>
     <map name="map">
-        <area id="star1" shape="rect" coords="146,390,288,533" href="" alt="star1" data-bs-toggle="modal" data-bs-target="#modal1">
-        <area id="star2" shape="rect" coords="526,90,646,198" href="https://setapp.com/how-to/paint-for-mac" alt="star2" data-bs-toggle="modal" data-bs-target="#modal2">
-        <area id="star3" shape="rect" coords="973,246,1097,352" href="https://setapp.com/how-to/paint-for-mac" alt="star3" data-bs-toggle="modal" data-bs-target="#modal3">
-        <% activity.activity_questions.each_with_index do |question, i| %>
-          <div class="modal fade" id="modal<%= i + 1 %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Monument National</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p><%= question.question_text %></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+      <area id="star1" shape="rect" coords="146,390,288,533" href="" alt="star1" data-bs-toggle="modal" data-bs-target="#modal1">
+      <area id="star2" shape="rect" coords="526,90,646,198" href="https://setapp.com/how-to/paint-for-mac" alt="star2" data-bs-toggle="modal" data-bs-target="#modal2">
+      <area id="star3" shape="rect" coords="973,246,1097,352" href="https://setapp.com/how-to/paint-for-mac" alt="star3" data-bs-toggle="modal" data-bs-target="#modal3">
+      <% activity.activity_questions.each_with_index do |question, i| %>
+        <div class="modal fade" id="modal<%= i + 1 %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Monument National</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><%= question.question_text %></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     </map>
 
   <% if current_user == @profile && @badge.status != "completed" %>
