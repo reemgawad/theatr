@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="signup"
 export default class extends Controller {
-  static targets = ["codeText"]
+  static targets = ["codeText", "nameField", "accessCode", "email", "password", "passwordComfirm"]
 
   connect() {
   }
@@ -42,6 +42,47 @@ export default class extends Controller {
         event.target.classList.add("is-valid")
         event.target.classList.remove("is-invalid","border", "border-danger", "rounded")
       }
+    }
+  }
+
+  formSubmitName(event) {
+    this.nameFieldTargets.forEach(function(field) {
+      if (field.value == "") {
+        event.preventDefault();
+
+      }
+    })
+  }
+
+  formSubmitCode(event) {
+    if (this.codeTextTarget.id == 'teacher-code') {
+      if (this.accessCodeTarget.value != "placeholderTC") {
+        event.preventDefault()
+      }
+    }
+  }
+
+  formSubmitEmail(event) {
+    if (this.emailTarget.value == "") {
+      event.preventDefault()
+    }
+  }
+
+  formSubmitPassword(event) {
+    if (this.passwordTarget.value.length < 6) {
+      event.preventDefault()
+      this.passwordTarget.classList.add("is-invalid", "border", "border-danger", "rounded")
+      this.passwordTarget.setAttribute("placeholder", "Cannot be shorter than 6 characters")
+    }
+    if (this.passwordComfirmTarget.value.length < 6) {
+      event.preventDefault()
+      this.passwordComfirmTarget.classList.add("is-invalid", "border", "border-danger", "rounded")
+      this.passwordComfirmTarget.setAttribute("placeholder", "Cannot be shorter than 6 characters")
+    }
+
+    if (this.passwordTarget.value != this.passwordComfirmTarget.value) {
+      event.preventDefault()
+      alert("the password do not match")
     }
   }
 }

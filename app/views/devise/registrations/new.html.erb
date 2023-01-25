@@ -16,15 +16,15 @@
           <div class="flex-fill me-2">
             <%= f.input :first_name,
                         required: true,
-                        input_html: { autocomplete: "First Name", data: { action: "focusout->signup#displayError" }} %>
+                        input_html: { autocomplete: "First Name", data: { action: "focusout->signup#displayError", signup_target: "nameField" }} %>
           </div>
           <div class="flex-fill">
             <%= f.input :last_name,
                         required: true,
-                        input_html: { autocomplete: "Last Name", data: { action: "focusout->signup#displayError" } } %>
+                        input_html: { autocomplete: "Last Name", data: { action: "focusout->signup#displayError", signup_target: "nameField" } } %>
           </div>
         </div>
-        <%= link_to "#frame2", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+        <%= link_to "#frame2", class: "btn btn-primary", data: { controller: "scroll-to", action: "click->signup#formSubmitName" } do %>
           OK <i class="fa-solid fa-check"></i>
         <% end %>
       </div>
@@ -38,7 +38,7 @@
                     collection_wrapper_tag: 'div',
                     collection_wrapper_class: 'category-wrapper',
                     item_wrapper_class: 'category-item',
-                    input_html: { class: 'category-selector', data: { action: "change->signup#displayText" }} %>
+                    input_html: { class: 'category-selector', data: { action: "change->signup#displayText"}} %>
         <%= link_to "#frame3", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
           OK <i class="fa-solid fa-check"></i>
         <% end %>
@@ -52,8 +52,8 @@
                     required: true,
                     label: false,
                     placeholder: "Enter your code...",
-                    input_html: { autocomplete: "access_code", data: { action: "focusout->signup#displayCodeError" }} %>
-        <%= link_to "#frame4", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+                    input_html: { autocomplete: "access_code", data: { action: "focusout->signup#displayCodeError", signup_target: "accessCode"  }} %>
+        <%= link_to "#frame4", class: "btn btn-primary", data: { controller: "scroll-to", action: "click->signup#formSubmitCode" } do %>
           OK <i class="fa-solid fa-check"></i>
         <% end %>
       </div>
@@ -64,8 +64,8 @@
                     required: true,
                     label: false,
                     placeholder: "Enter your email...",
-                    input_html: { autocomplete: "email", data: { action: "focusout->signup#displayError" } } %>
-        <%= link_to "#frame5", class: "btn btn-primary", data: { controller: "scroll-to" } do %>
+                    input_html: { autocomplete: "email", data: { action: "focusout->signup#displayError", signup_target: "email" } } %>
+        <%= link_to "#frame5", class: "btn btn-primary", data: { controller: "scroll-to", action: "click->signup#formSubmitEmail" } do %>
           OK <i class="fa-solid fa-check"></i>
         <% end %>
       </div>
@@ -75,11 +75,11 @@
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
+                    input_html: { autocomplete: "new-password", data: { signup_target: "password"} } %>
         <%= f.input :password_confirmation,
                     required: true,
-                    input_html: { autocomplete: "new-password" } %>
-        <div class="form-actions">
+                    input_html: { autocomplete: "new-password", data: { signup_target: "passwordComfirm"} } %>
+        <div class="form-actions" data-action="click->signup#formSubmitPassword">
           <%= f.button :submit, "Sign up", class: "btn btn-primary mb-2 rounded-2" %>
         </div>
       </div>
