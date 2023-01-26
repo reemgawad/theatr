@@ -209,37 +209,41 @@ $(".letter").keyup(function(){
 });
 
 $('form').submit(function(event) {
-  event.preventDefault();
 
-  const word = this.querySelector('input').value
-  const id = this.id
+  if (this.id != "completed") {
 
-  for (var td of document.querySelectorAll("td")) {
+    event.preventDefault();
 
-    try {
-      if (td.querySelector("span").innerHTML === id) {
-        if (this.classList.contains("vertical")) {
-          for (const letter of word) {
-            var index = $(td).closest('td').index()
+    const word = this.querySelector('input').value
+    const id = this.id
 
-            td.querySelector("div").innerHTML = letter
+    for (var td of document.querySelectorAll("td")) {
 
-            td = td.closest("tr").nextElementSibling.querySelectorAll("td")[index]
-          }
-        } else if (this.classList.contains("horizontal")) {
-          for (const letter of word) {
-            td.querySelector("div").innerHTML = letter
-            td = td.closest('td').nextElementSibling
+      try {
+        if (td.querySelector("span").innerHTML === id) {
+          if (this.classList.contains("vertical")) {
+            for (const letter of word) {
+              var index = $(td).closest('td').index()
+
+              td.querySelector("div").innerHTML = letter
+
+              td = td.closest("tr").nextElementSibling.querySelectorAll("td")[index]
+            }
+          } else if (this.classList.contains("horizontal")) {
+            for (const letter of word) {
+              td.querySelector("div").innerHTML = letter
+              td = td.closest('td').nextElementSibling
+            }
           }
         }
+
+      } catch (error) {
+
       }
-
-    } catch (error) {
-
     }
-  }
 
-  this.querySelector('input').value = ""
+    this.querySelector('input').value = ""
+  }
 
 });
 
