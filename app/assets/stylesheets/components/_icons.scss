@@ -1,33 +1,32 @@
 .character-icons {
   position: relative;
-}
-
-.character-icons:hover {
-  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
 }
 
 /* character-icons text */
 .character-icons .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: black;
+  background-color: $black-one;
   color: #fff;
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  width: 250px;
-  top: 100%;
-  left: 45%;
-  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the character-icons */
+  width: 26vw;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -13vw; /* Use half of the width (120/2 = 60), to center the character-icons */
   opacity: 0;
   transition: opacity 1s;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: normal;
-}
+  box-shadow: $gray-one 0px 4px 12px;}
 
 
 /* Show the character-icons text when you mouse over the character-icons container */
@@ -39,10 +38,21 @@
 .character-icons .tooltiptext::after {
   content: " ";
   position: absolute;
-  top: 100%; /* At the bottom of the character-icons */
+  top: 100%; /* At the bottom of the tooltip */
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: black transparent transparent transparent;
+  border-color: $black-one transparent transparent transparent;
+}
+
+#icon-symbol {
+  font-size: 4em;
+  // width: auto;
+}
+
+#icon-symbol:hover {
+  background-color: $yellow-one;
+  border-radius: 8px;
+  box-shadow: $yellow-two 0px 10px 10px -10px;
 }
