@@ -33,12 +33,18 @@ class BadgesController < ApplicationController
       end
     end
 
-    if @activity.question_amount == arr.length
-      @badge.status = "marked"
-      @badge.save
-      redirect_to results_path(current_user, @activity), notice: "The quiz is completed"
+    if @activity.activity_type.name == "Video Essay"
+        @badge.status = "marked"
+        @badge.save
+        redirect_to results_path(current_user, @activity), notice: "The quiz is completed"
     else
-      redirect_to results_path(current_user, @activity), notice: "Please fill out all the questions"
+      if @activity.question_amount == arr.length
+        @badge.status = "marked"
+        @badge.save
+        redirect_to results_path(current_user, @activity), notice: "The quiz is completed"
+      else
+        redirect_to results_path(current_user, @activity), notice: "Please fill out all the questions"
+      end
     end
 
   end
