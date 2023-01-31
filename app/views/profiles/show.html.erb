@@ -20,7 +20,7 @@
         <p>Status</p>
         <p>Updated</p>
       </div>
-      <% @badges.each do |badge| %>
+      <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
         <div class="profile-box d-flex flex-row justify-content-around">
         <p><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></p>
         <%# <p><%= badge.activity.title %>
