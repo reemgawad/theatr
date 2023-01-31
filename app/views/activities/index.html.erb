@@ -26,7 +26,7 @@
             <h4><%= link_to act.title, activity_path(act) %></h4>
           <% else %>
             <h4><%= act.title %></h4>
-            <p>Activity <%= @badge.status %></p>
+            <p class="<%= @badge.status.to_sym %>-color">Activity <%= @badge.status %></p>
           <% end %>
         </div>
       <% end %>
@@ -46,7 +46,7 @@
             <h4><%= link_to act.title, activity_path(act) %></h4>
           <% else %>
             <h4><%= act.title %></h4>
-            <p>Activity <%= @badge.status %></p>
+            <p class="<%= @badge.status.to_sym %>-color">Activity <%= @badge.status %></p>
           <% end %>
         </div>
       <% end %>
@@ -72,7 +72,7 @@
           <h4><%= link_to act.title, activity_path(act) %></h4>
         <% else %>
           <h4><%= act.title %></h4>
-          <p>Activity <%= @badge.status %></p>
+          <p class="<%= @badge.status.to_sym %>-color">Activity <%= @badge.status %></p>
         <% end %>
       </div>
     <% end %>
