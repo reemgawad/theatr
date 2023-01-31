@@ -12,31 +12,36 @@
   </div>
 
   <hr>
-  <% unless @user.teacher? %>
-    <div class="conatiner mb-4">
-      <div class="d-flex flex-row justify-content-around">
-        <p>Type</p>
-        <p>Activity</p>
-        <p>Status</p>
-        <p>Updated</p>
-      </div>
-      <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
-        <div class="profile-box d-flex flex-row justify-content-around">
-        <p><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></p>
-        <%# <p><%= badge.activity.title %>
-          <% if current_user.teacher? || current_user == @user%>
-            <%= link_to badge.activity.title, results_path(@user, badge.activity) %>
-          <% end %>
-          <% if current_user == @user %>
-            <p>You <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
-          <% else %>
-            <p><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
-          <% end %>
-          <p><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></p>
-        </div>
-      <% end %>
+
+  <table class="profile-table">
+    <tr class="profile-header">
+      <th>Type</th>
+      <th>Activity</th>
+      <th>Status</th>
+      <th>Updated</th>
+      <th>Notifications</th>
+    </tr>
+    <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
+      <tr class="profile-box">
+        <td><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></td>
+        <% if current_user.teacher? || current_user == @user %>
+          <td><%= link_to badge.activity.title, results_path(@user, badge.activity) %></td>
+        <% end %>
+        <% if current_user == @user %>
+          <td>You <%= badge.status == "completed" ? "completed" : "started" %> this activity!</td>
+        <% else %>
+          <td><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "started" %> this activity!</td>
+        <% end %>
+        <td><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></td>
+         <% if current_user == @user %>
+          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></td>
+        <% else %>
+          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></td>
+        <% end %>
+      </tr>
     <% end %>
-  </div>
+  </table>
+
 
   <div class="d-flex justify-content-evenly flex-wrap">
     <%= link_to "Home", root_path, class: "btn btn-primary", style: "min-width: 200px;"  %>
