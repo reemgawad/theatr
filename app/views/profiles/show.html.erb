@@ -33,7 +33,11 @@
           <td><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "started" %> this activity!</td>
         <% end %>
         <td><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></td>
-        <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments yet." : "#{badge.activity.teacher_comments.count} comment(s) left by your teacher." %></td>
+         <% if current_user == @user %>
+          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></td>
+        <% else %>
+          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
