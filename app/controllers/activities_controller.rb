@@ -26,6 +26,7 @@ class ActivitiesController < ApplicationController
     @classroom = current_user.classroom
     @profile = User.find(params[:user_id])
     @activity = Activity.find(params[:id])
+    @activity_questions = @activity.activity_questions
     @badge = Badge.find_by(user: @profile, activity: @activity)
     @teacher_comment = TeacherComment.new
     @user_response = UserResponse.new()
@@ -33,7 +34,6 @@ class ActivitiesController < ApplicationController
 
 
     # find the activity_questions
-    @activity_questions = @activity.activity_questions
 
     # authorize @profile with the ActivityPolicy
     authorize @profile, policy_class: ActivityPolicy
