@@ -22,7 +22,7 @@
           <% @badge = Badge.where(user: current_user, activity: act).first%>
             <div class="activity">
               <p><%= act.activity_type.name %></p>
-              <% if @badge.status == "available" %>
+              <% if current_user.teacher == true || @badge.status == "available"   %>
                 <h4><%= link_to act.title, activity_path(act) %></h4>
               <% else %>
                 <h4><%= act.title %></h4>
@@ -42,7 +42,7 @@
             <% @badge = Badge.where(user: current_user, activity: act).first%>
             <div class="activity">
               <p><%= act.activity_type.name %></p>
-              <% if @badge.status == "available" %>
+              <% if current_user.teacher == true || @badge.status == "available" %>
                 <h4><%= link_to act.title, activity_path(act) %></h4>
               <% else %>
                 <h4><%= act.title %></h4>
@@ -68,7 +68,7 @@
           <% @badge = Badge.where(user: current_user, activity: act).first%>
             <div class="activity">
               <p><%= act.activity_type.name %></p>
-              <% if @badge.status == "available" %>
+              <% if current_user.teacher == true || @badge.status == "available" %>
                 <h4><%= link_to act.title, activity_path(act) %></h4>
               <% else %>
                 <h4><%= act.title %></h4>
