@@ -16,49 +16,49 @@
   </div>
     <h3 class=" d-flex align-items-center justify-content-center"><%= @phases[0].name %></h3>
   <div class=" d-flex align-items-center justify-content-center flex-wrap">
-      <% @activities.each do |activity| %>
-        <% act = Activity.find_by(title: activity) %>
-          <% if act.phase == @phases[0] %>
-            <div class="activity">
-              <p><%= act.activity_type.name %></p>
-              <h4><%= link_to act.title, activity_path(act) %></h4>
-            </div>
-          <% end %>
-      <% end %>
+    <% @activities.each do |activity| %>
+      <% act = Activity.find_by(title: activity) %>
+        <% if act.phase == @phases[0] %>
+          <div class="activity">
+            <p><%= act.activity_type.name %></p>
+            <h4><%= link_to act.title, activity_path(act) %></h4>
+          </div>
+        <% end %>
+    <% end %>
   </div>
   <hr>
 
-    <h3 class=" d-flex align-items-center justify-content-center"><%= @phases[1].name %></h3>
+  <h3 class=" d-flex align-items-center justify-content-center"><%= @phases[1].name %></h3>
   <div class=" d-flex align-items-center justify-content-center flex-wrap">
-      <% @activities.each do |activity| %>
-        <% act = Activity.find_by(title: activity) %>
-          <% if act.phase == @phases[1] %>
-            <div class="activity">
-              <p><%= act.activity_type.name %></p>
-              <h4><%= link_to act.title, activity_path(act) %></h4>
-            </div>
-          <% end %>
-      <% end %>
+    <% @activities.each do |activity| %>
+      <% act = Activity.find_by(title: activity) %>
+        <% if act.phase == @phases[1] %>
+          <div class="activity">
+            <p><%= act.activity_type.name %></p>
+            <h4><%= link_to act.title, activity_path(act) %></h4>
+          </div>
+        <% end %>
+    <% end %>
   </div>
   <hr>
-    <% if DateTime.now < @classroom.date %>
-      <h3 class=" d-flex align-items-center justify-content-center"><i class="fa-solid fa-lock mx-3"></i><%= @phases[2].name %></h3>
-    <% else %>
-      <h3 class=" d-flex align-items-center justify-content-center"><i class="fa-solid fa-unlock mx-3"></i><%= @phases[2].name %></h3>
-    <% end %>
-    <% if DateTime.now < @classroom.date %>
-      <p  class=" d-flex align-items-center justify-content-center">These activities will unlock after <%= @classroom.date %></p>
-    <% end %>
+  <% if DateTime.now < @classroom.date %>
+    <h3 class=" d-flex align-items-center justify-content-center"><i class="fa-solid fa-lock mx-3"></i><%= @phases[2].name %></h3>
+  <% else %>
+    <h3 class=" d-flex align-items-center justify-content-center"><i class="fa-solid fa-unlock mx-3"></i><%= @phases[2].name %></h3>
+  <% end %>
+  <% if DateTime.now < @classroom.date %>
+    <p  class=" d-flex align-items-center justify-content-center">These activities will unlock after <%= @classroom.date %></p>
+  <% end %>
   <div class=" d-flex align-items-center justify-content-center flex-wrap">
-      <% @activities.each do |activity| %>
-        <% act = Activity.find_by(title: activity) %>
-          <% if act.phase == @phases[2] && DateTime.now > @classroom.date%>
-            <div class="activity">
-              <p><%= act.activity_type.name %></p>
-              <h4><%= link_to act.title, activity_path(act) %></h4>
-            </div>
-          <% end %>
-      <% end %>
+    <% @activities.each do |activity| %>
+      <% act = Activity.find_by(title: activity) %>
+        <% if act.phase == @phases[2] && DateTime.now > @classroom.date%>
+          <div class="activity">
+            <p><%= act.activity_type.name %></p>
+            <h4><%= link_to act.title, activity_path(act) %></h4>
+          </div>
+        <% end %>
+    <% end %>
   </div>
   <hr>
     <%# @unlocked_activities&.each do |activity| %>
