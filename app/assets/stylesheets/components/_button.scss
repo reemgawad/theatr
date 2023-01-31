@@ -10,6 +10,7 @@
   color: white;
   font-weight: bold;
   border: none;
+  transition: 0.3s;
 
   &:hover {
     background-color: $black-one;
@@ -22,6 +23,7 @@
 .btn-secondary {
   color: gray;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  transition: 0.3s;
 
   &:hover {
     color: $gray;

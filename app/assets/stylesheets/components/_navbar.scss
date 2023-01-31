@@ -16,6 +16,7 @@
 
 .nav-link {
   color: $gray-one;
+  transition: 0.8s;
 
   &:hover  {
     color: $white;
@@ -27,6 +28,7 @@
   color: $gray-one;
   font-size: larger;
   font-weight: bold;
+  transition: 0.8s;
 
   &:hover  {
     color: $white;

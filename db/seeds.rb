@@ -62,7 +62,7 @@ gen_theater_ques3 = ActivityQuestion.create({
                                           choices: ["The Meisner Technique","Postmodern theatre","The Stanislavski Method","Elizabethan Theatre"]
                                         })
 gen_theater_ques4 = ActivityQuestion.create({
-                                          question_text: "She was English an playwright, poet, prose writer and translator from the Restoration Era.",
+                                          question_text: "She was an English playwright, poet, prose writer and translator from the Restoration Era.",
                                           response_text: "Aphra Behn",
                                           activity: general_theater,
                                           choices: ["Sarah Bernhardt","Aphra Behn","Ada Lovelace","Jane Fonda"]
