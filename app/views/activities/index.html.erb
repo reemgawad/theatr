@@ -14,16 +14,22 @@
       <%# <%= submit_tag "Search", class: "btn btn-primary" %>
     <%# <% end %>
   </div>
-    <h3 class=" d-flex align-items-center justify-content-center"><%= @phases[0].name %></h3>
+  <h3 class="d-flex align-items-center justify-content-center"><%= @phases[0].name %></h3>
   <div class=" d-flex align-items-center justify-content-center flex-wrap">
     <% @activities.each do |activity| %>
-      <% act = Activity.find_by(title: activity) %>
-        <% if act.phase == @phases[0] %>
-          <div class="activity">
-            <p><%= act.activity_type.name %></p>
+    <% act = Activity.find_by(title: activity) %>
+      <% if act.phase == @phases[0] %>
+        <% @badge = Badge.where(user: current_user, activity: act).first%>
+        <div class="activity">
+          <p><%= act.activity_type.name %></p>
+          <% if current_user.teacher == true || @badge.status == "available"   %>
             <h4><%= link_to act.title, activity_path(act) %></h4>
-          </div>
-        <% end %>
+          <% else %>
+            <h4><%= act.title %></h4>
+            <p>Activity <%= @badge.status %></p>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <hr>
@@ -32,12 +38,18 @@
   <div class=" d-flex align-items-center justify-content-center flex-wrap">
     <% @activities.each do |activity| %>
       <% act = Activity.find_by(title: activity) %>
-        <% if act.phase == @phases[1] %>
-          <div class="activity">
-            <p><%= act.activity_type.name %></p>
+      <% if act.phase == @phases[1] %>
+        <% @badge = Badge.where(user: current_user, activity: act).first%>
+        <div class="activity">
+          <p><%= act.activity_type.name %></p>
+          <% if current_user.teacher == true || @badge.status == "available" %>
             <h4><%= link_to act.title, activity_path(act) %></h4>
-          </div>
-        <% end %>
+          <% else %>
+            <h4><%= act.title %></h4>
+            <p>Activity <%= @badge.status %></p>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <hr>
@@ -51,13 +63,19 @@
   <% end %>
   <div class=" d-flex align-items-center justify-content-center flex-wrap">
     <% @activities.each do |activity| %>
-      <% act = Activity.find_by(title: activity) %>
-        <% if act.phase == @phases[2] && DateTime.now > @classroom.date%>
-          <div class="activity">
-            <p><%= act.activity_type.name %></p>
-            <h4><%= link_to act.title, activity_path(act) %></h4>
-          </div>
+    <% act = Activity.find_by(title: activity) %>
+    <% if act.phase == @phases[2] && DateTime.now > @classroom.date%>
+    <% @badge = Badge.where(user: current_user, activity: act).first%>
+      <div class="activity">
+        <p><%= act.activity_type.name %></p>
+        <% if current_user.teacher == true || @badge.status == "available" %>
+          <h4><%= link_to act.title, activity_path(act) %></h4>
+        <% else %>
+          <h4><%= act.title %></h4>
+          <p>Activity <%= @badge.status %></p>
         <% end %>
+      </div>
+    <% end %>
     <% end %>
   </div>
   <hr>
