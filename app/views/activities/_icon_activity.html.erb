@@ -1,30 +1,17 @@
-<div class="container">
+<div class="container justify-content-center">
   <h1 class="text-center mt-4"><%= @activity.title %></h1>
   <div class="question">
     <h4><%= @activity.description %></h4>
     <p>Scroll over the Kanji to see their meaning. Click on the Kanji to hear them pronounced.</p>
   </div>
-  <div>
-    <div class="character-icons">
-      <% icons = [] %>
-      <% @activity_questions.each do |e| %>
-        <% icons << e.question_text %>
-      <% end %>
-      <h1 class="text-center mt-4" ><%= icons.join %></h1>
-      <%= audio_tag("#{icons.join} audio.m4a", id:"icon-audio") %>
-      <span class="tooltiptext">
-        <div>
-          <p>Chancy trade (business) with a high turnover rate and uncertain profitability.</p>
-          <p>The entertainment, eating, and drinking business.</p>
-          <p>The night entertainment (nightlife) business.</p>
-        </div>
-      </span>
-    </div>
+  <div class="question align-items-center">
+
     <% @activity_questions.each do |e| %>
       <div class="character-icons">
-        <h1 class="text-center mt-4" id="icon-symbol"><%= e.question_text %></h1>
+        <h1 class="text-center mt-4" id="icon-symbol">
+          <%= e.question_text %><%= audio_tag("#{e.question_text} audio.m4a", id:"icon-audio") %>
+        </h1>
         <span class="tooltiptext"><%= e.response_text %></span>
-        <%= audio_tag("#{e.question_text} audio.m4a", id:"icon-audio") %>
       </div>
     <% end %>
   </div>

@@ -7,16 +7,23 @@
     <div class="home-box">
       <% if current_user.teacher? %>
         <p>Welcome <%= current_user.first_name %>, you are now logged in as a teacher (Placeholder for JA's text) </p>
+        <p>How to use the app:</p>
         <ul>
-          <li>You can now access the classroom to see your students progress.</li>
-          <li>You can add or remove activities from the classroom in the classroom setting</li>
-          <li>You can leave comment on your students activities</li>
+          <li>Click on your icon to see the navigation menu.</li>
+          <li>Read up on the show using the 'Show Information' button below.</li>
+          <li>You can access the classroom to see your students progress.</li>
+          <li>You can add or remove activities from the classroom in the classroom setting.</li>
+          <li>You can leave comment on your students activities.</li>
         </ul>
       <% else %>
         <p>Welcome <%= current_user.first_name %>, you are now logged in as a student (Placeholder for JA's text)</p>
         <ul>
-          <li>You can now complete activities and earn badges</li>
-          <li>You can see which activities you completed on your profile</li>
+          <li>Click on your icon to see the navigation menu.</li>
+          <li>Read up on the show using the 'Show Information' button below.</li>
+          <li>You can complete activities and earn badges.</li>
+          <li>View your teacher's comments when you're done!</li>
+          <li>You can see which activities you completed on your profile.</li>
+          <li>Access your activities using the 'Your Activities' button below or using the navigation menu.</li>
         </ul>
       <% end %>
     </div>
@@ -38,26 +45,26 @@
       </p>
     </div>
 
-    <div class="home-box">
+    <!-- <div class="home-box">
       <p>How to use the app:</p>
       <ul>
-        <%# if user_signed_in? %>
+        <% if user_signed_in? %>
           <li>Click on your icon to see the navigation menu</li>
           <li>Read up on the show using the 'Show Information' button below</li>
           <li>Access your activities using the 'Your Activities' button below or using the navigation menu</li>
           <li>Complete an activity to earn a badge and view your teacher's comments when you're done!</li>
-        <%# else %>
-          <%# <li>If you are a new user, make sure you have your access code handy</li>
+        <% else %>
+          <li>If you are a new user, make sure you have your access code handy</li>
           <li>Sign up using the button below and enter your access code</li>
-          <li>After creating your account, you will be able to view your classroom and activities!</li> %>
-        <%# end %>
+          <li>After creating your account, you will be able to view your classroom and activities!</li>
+        <% end %>
       </ul>
-    </div>
+    </div> -->
 
     <div class="d-flex justify-content-evenly flex-wrap">
-      <%= link_to "Enter The Classroom", classroom_path(current_user.classroom), class: "btn btn-primary mb-1", style: "min-width: 200px;" if current_user.teacher? %>
-      <%= link_to "Show Information", play_path, class: "btn btn-primary mb-1", style: "min-width: 200px;"  %>
-      <%= link_to "Activities", activities_path, class: "btn btn-primary mb-1", style: "min-width: 200px;" unless current_user.teacher?  %>
+      <%= link_to "Enter The Classroom", classroom_path(current_user.classroom), class: "btn btn-primary", style: "min-width: 200px;" if current_user.teacher? %>
+      <%= link_to "Show Information", play_path, class: "btn btn-primary", style: "min-width: 200px;"  %>
+      <%= link_to "Activities", activities_path, class: "btn btn-primary", style: "min-width: 200px;" unless current_user.teacher?  %>
     </div>
   </div>
 <% else %>

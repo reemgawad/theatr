@@ -62,7 +62,7 @@
     <% end %>
   <% end %>
   <div class="d-flex justify-content-evenly flex-wrap">
-    <%= link_to "Home", root_path, class: "btn btn-primary mb-1", style: "min-width: 200px;"  %>
-    <%= link_to "Activities", activities_path, class: "btn btn-primary mb-1", style: "min-width: 200px;" unless current_user.teacher?  %>
+    <%= link_to "Home", root_path, class: "btn btn-primary", style: "min-width: 200px;"  %>
+    <%= link_to "Activities", activities_path, class: "btn btn-primary", style: "min-width: 200px;" unless current_user.teacher?  %>
   </div>
 </div>

@@ -15,14 +15,14 @@ var grid = [[0,0,0,0,0,0,'1',0,'2',0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,'5',0,0,0,0,0]
 ];
 
-var clues = ["provide practical and organizational support to the director, actors, designers, stage crew and technicians throughout the production",
- "expert who supervises the activities of all technical departments and oversees the use and maintenance of theater equipment",
- "a person who learns another's role in order to be able to act as a replacement at short notice",
- "the eyes, ears and hands of the stage manager in the back-stage area (abbreviated)",
- "oversees and orchestrates the mounting of a theatre production",
- "also known as the dramatist who is a person who writes plays",
- "a person whose profession is acting on the stage",
- "a person who oversees all aspects of mounting a theatre production (abbreviated)"
+var clues = ["Provide practical and organizational support to the director, actors, designers, stage crew and technicians throughout the production",
+  "Expert who supervises the activities of all technical departments and oversees the use and maintenance of theater equipment (Abbreviated)",
+  "A person who learns another's role in order to be able to act as a replacement at short notice",
+  "The eyes, ears and hands of the stage manager in the back-stage area (Abbreviated)",
+  "Oversees and orchestrates the mounting of a theatre production",
+  "Also known as the dramatist who is a person who writes plays",
+  "A person whose profession is acting on the stage",
+  "A person who oversees all aspects of mounting a theatre production (Abbreviated)"
 ];
 
 var answers = ["stagemanager",
@@ -33,7 +33,7 @@ var answers = ["stagemanager",
   "playwright",
   "actor",
   "producer"
- ];
+  ];
 
 //Draw grid
 $.each(grid,function(i){

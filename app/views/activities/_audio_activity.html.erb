@@ -4,11 +4,11 @@
   <div class="image-audio text-center d-flex flex-column justify-content-center align-items-center">
     <%# <%= image_tag "Julie Tamiko Manning.png", id:"julie-interview" %>
     <%= cl_image_tag activity_questions.first.photos.first.key, height: 485, width: 400, crop: :fill, class: "rounded-3 mb-1" %>
-    <%= audio_tag("Julie Tamiko Manning interview.m4a", controls: true) %>
+    <%= audio_tag("#{activity_questions.first.question_text}.m4a", controls: true) %>
   </div>
 
   <% if current_user == @profile && @badge.status != "completed" %>
-    <form  data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
+    <form data-action="click->edit-ajax#preventRefresh" class="text-center" action="/badges/<%= @badge.id %>/completed">
       <input type="submit" value="Mark As Completed" class="btn btn-primary">
     </form>
   <% end %>
