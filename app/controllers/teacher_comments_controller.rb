@@ -20,7 +20,7 @@ class TeacherCommentsController < ApplicationController
     if @teacher_comment.save!
       redirect_to results_path(@user, @activity)
     else
-      render 'activities/results', status: :unprocessable_entity
+      redirect_to results_path(@user, @activity), notice: "Comment can't be blank"
     end
     authorize @teacher_comment
   end
