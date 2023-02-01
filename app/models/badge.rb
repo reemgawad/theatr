@@ -6,7 +6,7 @@ class Badge < ApplicationRecord
   enum status: {
     available: 0,
     started: 1,
-    marked: 2,
+    submitted: 2,
     completed: 3
   }
 end

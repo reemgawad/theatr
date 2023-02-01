@@ -1,5 +1,5 @@
 class BadgesController < ApplicationController
-  # after_action :verify_authorized, except: [:marked]
+  # after_action :verify_authorized, except: [:submitted]
 
   def completed
     @badge = Badge.find(params[:id])
@@ -16,7 +16,7 @@ class BadgesController < ApplicationController
     end
   end
 
-  def marked
+  def submitted
     @badge = Badge.find(params[:id])
     authorize @badge
     @activity = @badge.activity
@@ -34,12 +34,12 @@ class BadgesController < ApplicationController
     end
 
     if @activity.activity_type.name == "Video Essay"
-        @badge.status = "marked"
+        @badge.status = "submitted"
         @badge.save
         redirect_to results_path(current_user, @activity), notice: "The quiz is completed"
     else
       if @activity.question_amount == arr.length
-        @badge.status = "marked"
+        @badge.status = "submitted"
         @badge.save
         redirect_to results_path(current_user, @activity), notice: "The quiz is completed"
       else

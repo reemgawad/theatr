@@ -34,10 +34,7 @@ export default class extends Controller {
     this.formTarget.classList.add("d-none")
 
     this.questionTarget.innerHTML +=
-    `
-      <p>${answer}</p>
-      <input type="button" value="Edit" class="btn btn-primary editButton">
-    `
+    `<p>${answer}</p>`
   }
 
   preventRefreshReview(event) {

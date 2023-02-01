@@ -30,13 +30,13 @@
               <%= f.input :text, label: false, placeholder: "Write your answer..." %>
             <% end %>
             <%= f.hidden_field :activity_question_id, value: question.id %>
-            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefresh"} %>
+            <%= f.submit "Save Answer", id: "quiz-submit", class: "btn btn-primary d-none", data: {action: "click->edit-ajax#preventRefresh"} %>
           <% end %>
         <% end %>
 
         <% question.user_responses.where(user: profile).each do |response| %>
           <%= render 'activities/user_responses_info', question: question, response: response %>
-          <% if @badge.status == "marked" || @badge.status == "completed" %>
+          <% if @badge.status == "submitted" || @badge.status == "completed" %>
             <% if response.text == question.response_text %>
               <p class="my-2">Correction: <span class="text-success">Correct Answer</span></p>
             <% else %>
@@ -62,8 +62,8 @@
   <% end %>
 
   <% if current_user == @profile && @badge.status != "completed" %>
-    <form class="text-center" action="/badges/<%= @badge.id %>/marked">
-      <input type="submit" value="Complete Activity" class="btn btn-primary">
+    <form class="text-center" action="/badges/<%= @badge.id %>/completed">
+      <input type="submit" value="Submit Activity" class="btn btn-primary" id="submit-all">
     </form>
   <% end %>
 
@@ -79,3 +79,5 @@
     <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary" %></p>
   <% end %>
 </div>
+
+<%= javascript_include_tag 'submit' %>

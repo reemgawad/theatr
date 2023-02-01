@@ -4,7 +4,7 @@
       <% if response.user == current_user %>
         <p><%= response.text %></p>
         <% unless @badge.status == "completed" %>
-          <%= link_to "Edit", "#", class: "btn btn-primary mt-2", data: {action: "click->edit-ajax#revealForm"} %>
+          <%# <%= link_to "Edit", "#", class: "btn btn-primary mt-2", data: {action: "click->edit-ajax#revealForm"} %>
         <% end %>
       <% elsif current_user.teacher %>
         <h5><%= response.user.first_name %>'s answer:</h5>
