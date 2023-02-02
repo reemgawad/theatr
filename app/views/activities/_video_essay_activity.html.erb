@@ -8,10 +8,10 @@
         <%# Submit a response to each question ONLY if no response is already present %>
         <%# to prevent multiple responses to 1 question %>
         <% if question.user_responses.where(user: profile).empty? && !current_user.teacher? %>
-          <%= simple_form_for([question, user_response]) do |f| %>
-            <%= f.input :text, label: false, placeholder: "Paste video link here..." %>
+          <%= simple_form_for([question, user_response], data: {controller: "regex"}) do |f| %>
+            <%= f.input :text, label: false, placeholder: "Paste video link here...", input_html: { data: {regex_target: "input", action: "keyup->regex#validate"} } %>
             <%= f.hidden_field :activity_question_id, value: question.id %>
-            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary" %>
+            <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: { regex_target: "button" } %>
           <% end %>
         <% end %>
 
