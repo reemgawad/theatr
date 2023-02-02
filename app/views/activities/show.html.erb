@@ -39,6 +39,9 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-evenly flex-wrap">
-    <p class="text-center"><%= link_to "Back to activities", activities_path, class: "btn btn-primary", style: "min-width: 200px;" %></p>
+    <p class="text-center"><%= link_to "Back to Activities", activities_path, class: "btn btn-primary", style: "min-width: 200px;" %></p>
+    <% if current_user.teacher? %>
+    <p> <%= link_to "Classroom Settings", settings_path(current_user.classroom), class: "btn btn-primary" %></p>
+    <% end %>
   </div>
 </div>
