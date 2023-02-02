@@ -350,7 +350,7 @@ video_popup_questions2 = ActivityQuestion.create({
 puts "Creating Video Essay Activity"
 video_essay_activity = Activity.create({
                           title: "Video Review of Mizushōbai",
-                          question_amount: 2,
+                          question_amount: 1,
                           description: "Record a review of Mizushōbai’ with regards to three of the following elements of the play: plot, characters, acting, direction, costumes, lighting, sound - 5 minutes max.",
                           activity_type: type12,
                           phase: phase3

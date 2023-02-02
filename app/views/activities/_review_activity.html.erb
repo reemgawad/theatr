@@ -17,10 +17,10 @@
           <%= simple_form_for([question, user_response], data: {edit_ajax_target: "form"}) do |f| %>
             <%# If it's a review, the input field is a text field %>
             <div data-controller="character-counter"
-                 data-character-counter-limit-value="500">
+                  data-character-counter-limit-value="500">
               <%= f.input :text, as: :text, label: false, placeholder: "Write your review...",
                           input_html: {data: { action: "keyup->character-counter#wordCount" }}%>
-               <i data-character-counter-target="counter" class="fw-lighter"></i>
+                <i data-character-counter-target="counter" class="fw-lighter"></i>
             </div>
             <%= f.hidden_field :activity_question_id, value: question.id %>
             <%= f.submit "Save Answer", id: "submit", class: "btn btn-primary", data: {action: "click->edit-ajax#preventRefreshReview"}%>
@@ -47,7 +47,7 @@
   <% end %>
 
   <% if current_user == @profile && @badge.status != "completed" %>
-    <form class="text-center" action="/badges/<%= @badge.id %>/marked">
+    <form class="text-center" action="/badges/<%= @badge.id %>/submitted">
       <input type="submit" value="Complete Activity" class="btn btn-primary">
     </form>
   <% end %>

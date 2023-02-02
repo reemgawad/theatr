@@ -6,7 +6,7 @@ class BadgePolicy < ApplicationPolicy
     # end
   end
 
-  def marked?
+  def submitted?
     true
   end
 
