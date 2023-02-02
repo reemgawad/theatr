@@ -2,12 +2,13 @@
   <p class="text-center">Scroll over the Kanji to see their meaning. Click on the Kanji to hear them pronounced.</p>
     <div class="question align-items-center">
       <% @activity.activity_questions.each do |e| %>
-        <div class="character-icons">
-          <h1 class="text-center mt-4" id="icon-symbol"><%= e.question_text %></h1>
-          <span class="tooltiptext"><%= e.response_text %></span>
-          <%= audio_tag("#{e.question_text} audio.m4a", id:"icon-audio") %>
-        </div>
-      <% end %>
+      <div class="character-icons">
+        <h1 class="text-center mt-4" id="icon-symbol">
+          <%= e.question_text %><%= audio_tag("#{e.question_text} audio.m4a", id:"icon-audio") %>
+        </h1>
+        <span class="tooltiptext"><%= e.response_text %></span>
+      </div>
+    <% end %>
     </div>
 </div>
 <%= javascript_include_tag 'icons' %>
