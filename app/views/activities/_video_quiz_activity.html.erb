@@ -61,7 +61,8 @@
     <h3 class="text-center mt-3">You can't complete this activity yet!</h3>
   <% end %>
 
-  <% if current_user == @profile && @badge.status != "completed" %>
+
+  <% if current_user == @profile && (@badge.status != "completed" && @badge.status != "submitted") %>
     <form class="text-center" action="/badges/<%= @badge.id %>/submitted">
       <input type="submit" value="Submit Activity" class="btn btn-primary" id="submit-all">
     </form>
