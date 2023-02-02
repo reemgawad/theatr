@@ -15,21 +15,21 @@
 
   <% if agent_mobile?%>
     <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
-      <div class="mobile-profile-box">
-        <div class="d-flex"><p>Type:</p> <p class="px-5"><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %> </p></div>
+      <div class="mobile-profile-box <%= badge.status.to_sym %>-color">
+        <div class="d-flex justify-content-between"><p>Type:</p> <p class=""><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %> </p></div>
         <% if current_user.teacher? || current_user == @user %>
-          <div class="d-flex"><p>Activity:</p> <p class="px-5"><%= link_to badge.activity.title, results_path(@user, badge.activity), class: "profile-btn" %></p></div>
+          <div class="d-flex justify-content-between"><p>Activity:</p> <p class=""><%= link_to badge.activity.title, results_path(@user, badge.activity), class: "profile-btn" %></p></div>
         <% end %>
         <% if current_user == @user %>
-          <div class="d-flex"><p>Status:</p> <p class="px-5">You've <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</p></div>
+          <div class="d-flex justify-content-between"><p>Status:</p> <p class="">You've <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</p></div>
         <% else %>
-          <div class="d-flex"><p>Status:</p> <p class="px-5"><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</p></div>
+          <div class="d-flex justify-content-between"><p>Status:</p> <p class=""><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</p></div>
         <% end %>
-        <div class="d-flex"><p>Updated:</p> <p class="px-5"></p> <%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></div>
+        <div class="d-flex justify-content-between"><p>Updated:</p> <p class=""></p> <%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></div>
         <% if current_user == @user %>
-          <div class="d-flex"><p>Notification:</p> <p class="px-5"><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "#{badge.activity.teacher_comments.count} comment(s) left by your teacher." %></p></div>
+          <div class="d-flex justify-content-between"><p>Notification:</p> <p class=""><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "#{badge.activity.teacher_comments.count} comment(s) left by your teacher." %></p></div>
         <% else %>
-          <div class="d-flex"><p>Notification:</p> <p class="px-5"><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></p></div>
+          <div class="d-flex justify-content-between"><p>Notification:</p> <p class=""><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></p></div>
         <% end %>
       </div>
     <% end %>
@@ -43,7 +43,7 @@
         <th>Notifications</th>
       </tr>
       <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
-        <tr class="profile-box">
+        <tr class="profile-box <%= badge.status.to_sym %>-color">
           <td><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></td>
           <% if current_user.teacher? || current_user == @user %>
             <td><%= link_to badge.activity.title, results_path(@user, badge.activity) %></td>
