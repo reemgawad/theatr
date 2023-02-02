@@ -19,6 +19,9 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import RegexController from "./regex_controller"
+application.register("regex", RegexController)
+
 import SignupController from "./signup_controller"
 application.register("signup", SignupController)
 
