@@ -220,6 +220,7 @@ photo_popup_question2 = ActivityQuestion.create({
                                           activity: photo_popup,
                                           choices: []
                                         })
+
 photo_popup_question2.photos.attach(io: File.open("#{Rails.root}/app/assets/images/jean_yoon.png"), filename: "jean_yoon.png")
 photo_popup_question2.save!
 

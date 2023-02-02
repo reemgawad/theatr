@@ -11,7 +11,20 @@
       <p>The showing is on <%= @classroom.date.strftime("%A, %B %d %Y at %H%M %Z") %></p>
       <p>This classroom's access code is: <strong><%= @classroom.access_code %></strong> - Share it with your students!</p>
       <p><%= link_to "Your classroom settings", settings_path(@classroom), class: "btn btn-primary" %></p>
-      <p> <%= "Have a look at your students progress:" unless @students.empty? %> </p>
+      <% unless @students.empty? %>
+        <p><%= "Have a look at your students progress:"  %></p>
+        <div class="">
+          <div class="d-flex me-2">
+            <div class="legend not-started me-1"></div>Not started
+          </div>
+          <div class="d-flex me-2">
+            <div class="legend submitted me-1"></div>Submitted for your review
+          </div>
+          <div class="d-flex me-2">
+            <div class="legend completed me-1"></div>Completed
+          </div>
+        </div>
+      <% end %>
     </div>
     <% @students.each do |student| %>
       <div class="student-row">
@@ -52,11 +65,11 @@
           <% end %>
         </div>
         <div>
-        <% if !completed_badges.empty? %>
-          <p class="student-name" ><%= "#{((completed_badges.length / student_badges.length.to_f) * 100).to_i}%" %></p>
-        <% else %>
-          <p>0%</p>
-        <% end %>
+          <% if !completed_badges.empty? %>
+            <p class="student-name" ><%= "#{((completed_badges.length / student_badges.length.to_f) * 100).to_i}%" %></p>
+          <% else %>
+            <p>0%</p>
+          <% end %>
         </div>
       </div>
     <% end %>
