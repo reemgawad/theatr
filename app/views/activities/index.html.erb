@@ -15,7 +15,7 @@
     <%# <% end %>
   </div>
   <h3 class="d-flex align-items-center justify-content-center"><%= @phases[0].name %></h3>
-  <div class=" d-flex align-items-center justify-content-center flex-wrap">
+  <div class="activity-container ">
     <% @activities.each do |activity| %>
     <% act = Activity.find_by(title: activity) %>
       <% if act.phase == @phases[0] %>

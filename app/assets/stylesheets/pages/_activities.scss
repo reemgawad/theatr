@@ -4,6 +4,9 @@
 }
 
 .activity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 20vw;
   height: 25vh;
   padding: 16px;
@@ -21,12 +24,35 @@
       text-shadow: 1px 1px 2px $white;
     }
   }
-
   p, h4 {
     text-align: center;
   }
 }
 
+.activity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .col-form-label {
   display: none;
+}
+
+@media only screen and (max-width: 1110px)
+{
+
+  .activity {
+    width: 25vh;
+    height: 35vh;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .image-popup {
+    flex-direction: column;
+  }
+
 }
