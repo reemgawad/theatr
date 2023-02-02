@@ -14,6 +14,7 @@
   <hr>
 
   <table class="profile-table">
+    <% unless @user.teacher? %>
     <tr class="profile-header">
       <th>Type</th>
       <th>Activity</th>
@@ -21,6 +22,7 @@
       <th>Updated</th>
       <th>Notifications</th>
     </tr>
+    <% end %>
     <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
       <tr class="profile-box <%= badge.status.to_sym %>-color">
         <td><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></td>
@@ -30,13 +32,13 @@
         <% if current_user == @user %>
           <td>You've <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</td>
         <% else %>
-          <td><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "started" %> this activity!</td>
+          <td><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</td>
         <% end %>
         <td><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></td>
         <% if current_user == @user %>
-          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "#{badge.activity.teacher_comments.count} comment(s) left by your teacher." %></td>
+          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "Nothing yet." : "#{badge.activity.teacher_comments.count} comment(s) left by your teacher." %></td>
         <% else %>
-          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "No comments left." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></td>
+          <td><%= badge.activity.teacher_comments.count.eql?(0) ? "Nothing yet." : "You left #{badge.activity.teacher_comments.count} comment(s)." %></td>
         <% end %>
       </tr>
     <% end %>
