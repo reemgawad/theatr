@@ -61,3 +61,16 @@
   font-size: xx-large;
   font-weight: bolder;
 }
+
+
+@media only screen and (max-width: 768px) {
+
+  .header-box {
+    flex-direction: column;
+  }
+
+  .info-box {
+    width: 300px;
+  }
+
+}
