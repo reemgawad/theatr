@@ -41,7 +41,7 @@
               <% end %>
             <% end %>
             <% if @classroom.activities.include?(b.activity.title) %>
-              <% if b.status == "marked" || b.status == "completed" %>
+              <% if b.status == "submitted" || b.status == "completed" %>
                 <div class="mx-2 d-flex flex-column align-items-center" style="width: 150px">
                   <%= link_to results_path(student, b.activity), style: "text-decoration: none" do %>
                     <div class="badge <%= b.status.to_sym %>-color" style="white-space:normal">
