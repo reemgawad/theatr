@@ -25,7 +25,7 @@
       <tr class="profile-box <%= badge.status.to_sym %>-color">
         <td><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></td>
         <% if current_user.teacher? || current_user == @user %>
-          <td><%= link_to badge.activity.title, results_path(@user, badge.activity), class: "btn btn-primary" %></td>
+          <td><%= link_to badge.activity.title, results_path(@user, badge.activity), class: "profile-btn" %></td>
         <% end %>
         <% if current_user == @user %>
           <td>You've <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</td>
