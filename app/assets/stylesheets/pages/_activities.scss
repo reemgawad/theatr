@@ -54,4 +54,13 @@
   .image-popup {
     flex-direction: column;
   }
+
+  .crossword {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pad-left {
+    padding-left: 0px !important;
+  }
 }
