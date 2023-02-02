@@ -62,7 +62,7 @@
   <% end %>
 
   <% if current_user == @profile && @badge.status != "completed" %>
-    <form class="text-center" action="/badges/<%= @badge.id %>/completed">
+    <form class="text-center" action="/badges/<%= @badge.id %>/submitted">
       <input type="submit" value="Submit Activity" class="btn btn-primary" id="submit-all">
     </form>
   <% end %>

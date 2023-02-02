@@ -7,8 +7,6 @@ var submitAll = document.querySelector('#submit-all')
 submitAll.addEventListener('click', (event) => {
   allSubmitButtons.forEach((e) => {
     // console.log(e);
-    // HTMLFormElement.prototype.submit.call(e);
     e.click();
-    // console.log("Hello");
   })
 })

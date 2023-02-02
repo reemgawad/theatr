@@ -28,9 +28,9 @@
             <%= link_to badge.activity.title, results_path(@user, badge.activity) %>
           <% end %>
           <% if current_user == @user %>
-            <p>You <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
+            <p>You've <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</p>
           <% else %>
-            <p><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "started" %> this activity!</p>
+            <p><%= @user.first_name %> <%= badge.status == "completed" ? "completed" : "submitted" %> this activity!</p>
           <% end %>
           <p><%= badge.updated_at.localtime("-05:00").strftime("%a %b %e at %l:%M %p") %></p>
         </div>
