@@ -13,6 +13,7 @@
 
   <hr>
 
+
   <% if agent_mobile?%>
     <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
       <div class="mobile-profile-box <%= badge.status.to_sym %>-color">
@@ -35,6 +36,7 @@
     <% end %>
   <% else %>
     <table class="profile-table">
+    <% unless current_user.teacher? %>
       <tr class="profile-header">
         <th>Type</th>
         <th>Activity</th>
@@ -42,6 +44,7 @@
         <th>Updated</th>
         <th>Notifications</th>
       </tr>
+     <% end %>
       <% @badges.sort_by{ |badge| badge.updated_at }.reverse!.each do |badge| %>
         <tr class="profile-box <%= badge.status.to_sym %>-color">
           <td><%= badge.activity.phase.name %>: <%= badge.activity.activity_type.name %></td>
