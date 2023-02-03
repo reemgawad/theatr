@@ -61,3 +61,26 @@
   font-size: xx-large;
   font-weight: bolder;
 }
+
+
+@media only screen and (max-width: 768px) {
+
+  .header-box {
+    flex-direction: column;
+  }
+
+  .info-box {
+    width: 300px;
+  }
+
+}
+
+.mobile-profile-box {
+  border: solid 1px $gray;
+  border-radius: $border-radius;
+  padding: 16px;
+  margin: 12px;
+  box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
