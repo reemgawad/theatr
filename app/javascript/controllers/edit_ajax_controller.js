@@ -60,7 +60,6 @@ export default class extends Controller {
     this.questionTarget.innerHTML +=
     `
       <p>${answer}</p>
-      <input type="button" value="Edit" class="btn btn-primary editButton">
     `
   }
 

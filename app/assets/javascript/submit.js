@@ -4,17 +4,25 @@ var allSubmitButtons = document.querySelectorAll("#quiz-submit");
 var submitAll = document.querySelector('#submit-all')
 // console.log(submitAll);
 
-submitAll.addEventListener('click', (event) => {
-  // event.preventDefault()
+var delay = ms => new Promise(res => setTimeout(res, ms));
+
+var multiSubmit = async (event) => {
 
   allSubmitButtons.forEach((e) => {
     // console.log(e);
     e.click();
   })
 
-  // fetch(submitAll.parentElement.action)
+  await delay(300);
+  // console.log(submitAll.parentElement.action)
+  fetch(submitAll.parentElement.action)
+  await delay(100);
+  window.location.reload()
+}
 
-  // window.location.reload()
+submitAll.addEventListener('click', (event) => {
+  event.preventDefault()
 
+  multiSubmit();
 
 })
