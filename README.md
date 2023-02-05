@@ -4,6 +4,8 @@ Interactive Theatre Companion is a prototype interactive web application, design
 
 The current prototype is considered phase 1, with all of the data pertaining to one play, and no customizability for the activities or the play's information by the user. An ideal phase 2 would scale to allow for all of this, as well as multiple classrooms per teacher and student.
 
+Live at: https://theatr-app.herokuapp.com/
+
 ## Challenges during development
 
 Though straightforward, the development of the application was not without it's challenges. As the activities are quite diverse, making sure that each one fit into our database schema was often difficult, and required creative solutions.
