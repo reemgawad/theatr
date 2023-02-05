@@ -1,6 +1,6 @@
 # Interactive Theatre Companion
 
-Interactive Theatre Companion is a prototype interactive web application, designed for teachers and students. The application has a variety of activities that allow students to discover the play, and teachers to track their students' progress.
+Interactive Theatre Companion is a prototype interactive web application, designed for Theatre teachers and students. The application has a variety of activities that allow students to discover the play, and teachers to track their students' progress.
 
 The current prototype is considered phase 1, with all of the data pertaining to one play, and no customizability for the activities or the play's information by the user. An ideal phase 2 would scale to allow for all of this, as well as multiple classrooms per teacher and student.
 
