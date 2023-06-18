@@ -5491,3 +5491,4 @@ class1_student3 = User.create({
 #                         activity: activity8,
 #                         user: class2_student8
 #                             })
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
